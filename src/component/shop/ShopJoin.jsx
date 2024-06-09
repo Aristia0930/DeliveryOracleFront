@@ -1,6 +1,9 @@
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 import React, { useEffect, useState } from 'react';
 import AddressP from './AddressP';
+import Form from 'react-bootstrap/Form';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ShopJoin = () => {
     
@@ -16,8 +19,11 @@ const ShopJoin = () => {
     //이미지
     const[img,setImg]=useState()
         //  x,y좌표
-        const [query, setQuery] = useState('');
-        const [coordinates, setCoordinates] = useState([]);
+    const [query, setQuery] = useState('');
+    const [coordinates, setCoordinates] = useState([]);
+
+    //옵션
+    const [category,setcategory]=useState("")
 
     //후에 해야할거 x,y 좌표 넘기기와 주소받아오기
 
@@ -31,6 +37,7 @@ const ShopJoin = () => {
         formData.append("#백에서받을이름",img)
         formData.append("#백에서받을이름",coordinates[0].x)
         formData.append("#백에서받을이름",coordinates[0].y)
+        formData.append("#백에서받을이름",category)
 
         try{
             const rs=await axios.post("주소", formData)
@@ -58,6 +65,7 @@ const ShopJoin = () => {
 
     useEffect(()=>{
         handleSearch()
+
 
     },[address])
 
@@ -106,9 +114,9 @@ const ShopJoin = () => {
                     <input type="text" id="shop_name" onChange={(e)=>setName(e.target.value)}/>
                 </p>
                 <p>
-                <label for="shop_name">주소</label>
+                <label for="shop_name">주소 <Button variant="primary" size="sm" onClick={handleComplete}>주소 찾기</Button>{' '}</label>
                 <input className="user_enroll_text" placeholder="주소"  type="text" required={true} name="address" onChange={handleInput} value={address.address}/>
-                <button onClick={handleComplete}>우편번호 찾기</button>
+                
                 {popup && <AddressP company={address} setcompany={setAddress}></AddressP>}
              
                 </p>
@@ -119,12 +127,25 @@ const ShopJoin = () => {
                     <textarea name="postContent" rows={6} onChange={(e)=>setTest(e.target.value)}/>
                 </p>
 
+                <p class="shop_category">
+                <label for="shop_category">카테고리</label>
+                  <Form.Select aria-label="Default select example"  onChange={(e)=>setcategory(e.target.value)}>
+                    <option>카테고리 선택</option>
+                    <option value="1">한식</option>
+                    <option value="2">치킨</option>
+                    <option value="3">중국집</option>
+                  </Form.Select>
+                </p>
+
+
+
                 <p class="shop_img">
                     <label for="shop_img">업체이미지</label>
                     <input type="file" required="required/" accept="image/*" onChange={(e)=>setImg(e.target.value)}/>
                 </p>
-
-                <input type="submit" id="submit_btn" value="등록하기" class="submit_btn" onClick={shopjoin}/>
+                <div className="d-grid gap-2">
+                <Button variant="primary" type="submit" id="submit_btn" class="submit_btn" onClick={shopjoin}>등록하기</Button>
+                </div>
             </form>
 
 

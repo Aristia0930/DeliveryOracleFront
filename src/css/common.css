@@ -128,3 +128,8 @@ form .emailpass {
     height:100%;
     width:30%;
 }
+
+
+.form p{
+    padding-top: 5%;
+}
