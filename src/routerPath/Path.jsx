@@ -6,6 +6,8 @@ import ShopMain from '../component/shop/ShopMain';
 import UserLogin from '../component/user/UserLogin';
 import UserJoin from '../component/user/UserJoin';
 import ShopJoin from '../component/shop/ShopJoin';
+import ManagerMain from '../component/manager/ManagerMain';
+import ManagerApprove from '../component/manager/ManagerApprove';
 
 const Path = () => {
     return (
@@ -16,6 +18,8 @@ const Path = () => {
             <Route path="/UserLogin" element={<UserLogin />} />
             <Route path="/UserJoin" element={<UserJoin />} />
             <Route path="/ShopJoin" element={<ShopJoin />} />
+            <Route path="/ManagerMain" element={<ManagerMain />} />
+            <Route path="/ManagerApprove" element={<ManagerApprove />} />
         </Routes>
         
             

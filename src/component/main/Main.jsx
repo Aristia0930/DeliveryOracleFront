@@ -35,11 +35,18 @@ const Main = () => {
     }
     //관리자 페이지 이동
 
+    const managerbutton=(e)=>{
+        e.preventDefault()
+       navigate("/ManagerMain")
+
+    }
+
 
     return (
         <div>
             <button onClick={userbutton}>유저 페이지</button>
             <button onClick={shopbutton}>업체 페이지</button>
+            <button onClick={managerbutton}>관리자 페이지</button>
 
             <button onClick={onButtonClick}>연결테스트</button>
             
