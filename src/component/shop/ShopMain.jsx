@@ -13,7 +13,7 @@ const shopjoin=(e)=>{
     return (
         <div>
             <button onClick={shopjoin}>업체등록하기</button>
-            <button onClick={shopjoin}>업체등록하기</button>
+
         </div>
     );
 };
