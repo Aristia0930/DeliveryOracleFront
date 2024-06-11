@@ -17,7 +17,7 @@ const ShopMenu = () => {
             });
             if (rs.status === 200) {
                 console.log(rs.data)
-                if (rs.data === true) {
+                if (rs.data != -1) {
                     navigate("/ShopMenuRs");
                 } else {
                     console.log("승인받지 못함");
