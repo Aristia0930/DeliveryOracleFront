@@ -5,11 +5,12 @@ import { useNavigate } from 'react-router-dom';
 
 const ShopMain = () => {
     const navigate = useNavigate();    
-const shopjoin=(e)=>{
+    //이것또한 나중에 아이디 값으로 조회해서 역할이 상점 주인일경우에만 넘어가도록 요청 api를 추가한다.
+    const shopjoin=(e)=>{
     e.preventDefault()
     navigate("/ShopJoin")
 
-}
+    }
 
 const shopRS=(e)=>{
     e.preventDefault()
