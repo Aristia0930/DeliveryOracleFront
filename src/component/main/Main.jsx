@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
+import Header from '../commom/Header';
+import Card from 'react-bootstrap/Card';
 
 const Main = () => {
     const navigate = useNavigate();
@@ -44,12 +46,30 @@ const Main = () => {
 
     return (
         <div>
-            <button onClick={userbutton}>유저 페이지</button>
-            <button onClick={shopbutton}>업체 페이지</button>
-            <button onClick={managerbutton}>관리자 페이지</button>
+
+        <Header></Header>
+        <div id="main_container">
+
+        <div class="item-list " onClick={userbutton}>
+            <div class="item ">
+                <p class="item-maintext">유저 페이지</p>
+            </div>
+        </div>
+        <div class="item-list" onClick={shopbutton}>
+            <div class="item">
+                <p class="item-maintext">업체 페이지</p>
+            </div>
+        </div>
+        <div class="item-list" onClick={managerbutton}>
+            <div class="item">
+                <p class="item-maintext">관리자 페이지</p>
+            </div>
+        </div>
+
 
             <button onClick={onButtonClick}>연결테스트</button>
             
+        </div>
         </div>
     );
 };

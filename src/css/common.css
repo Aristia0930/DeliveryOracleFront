@@ -133,3 +133,32 @@ form .emailpass {
 .form p{
     padding-top: 5%;
 }
+
+
+/* 헤더 css */
+.navbar {
+    background-color: #2ac1bc;
+}
+
+/* 메인 */
+
+.item-list {
+    margin-bottom: -10px;
+}
+
+.item-list > .item {
+    width: 237px;
+    height: 170px;
+    margin: 10px;
+    margin-left: 25px;
+    border: 1px solid #dbdbdb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-maintext {
+    font-size: 23px;
+    margin: 0; /* 중앙 정렬을 위해 margin을 제거합니다 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+}

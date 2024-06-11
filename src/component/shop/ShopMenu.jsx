@@ -18,7 +18,7 @@ const ShopMenu = () => {
             if (rs.status === 200) {
                 console.log(rs.data)
                 if (rs.data != -1) {
-                    navigate("/ShopMenuRs");
+                    navigate("/ShopMenuRs", { state: { approvalStatus: rs.data } });
                 } else {
                     console.log("승인받지 못함");
                 }

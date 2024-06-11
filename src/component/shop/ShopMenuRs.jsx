@@ -3,9 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 //메뉴 추가 페이지
 const ShopMenuRs = () => {
+    const location = useLocation();
+    //상점아이디값
+    const approvalStatus = location.state?.approvalStatus;
 
     const navigate=useNavigate()
 
@@ -15,7 +19,6 @@ const ShopMenuRs = () => {
     const [price,setPrice]=useState("")
     //메뉴이미지
     const [img,setImg]=useState(null)
-    //JWT로 내용도 같이 보내서 USER ID 꺼내오고 그걸 가지고 상점 아이디 참조 한다.
 
     const buttonClick=async(e)=>{
        
