@@ -4,9 +4,11 @@ import React, { useEffect, useState } from 'react';
 import AddressP from './AddressP';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 
 const ShopJoin = () => {
     
+  const navigate = useNavigate();
 
     //상점이름
     const [name,setName]=useState("")
@@ -30,19 +32,23 @@ const ShopJoin = () => {
     const shopjoin=async(e)=>{
         e.preventDefault();
         handleSearch()
+        console.log(address)
         const formData = new FormData();
-        formData.append("#백에서받을이름",name)
-        formData.append("#백에서받을이름",address)
-        formData.append("#백에서받을이름",text)
-        formData.append("#백에서받을이름",img)
-        formData.append("#백에서받을이름",coordinates[0].x)
-        formData.append("#백에서받을이름",coordinates[0].y)
-        formData.append("#백에서받을이름",category)
+        formData.append("name", name);
+        formData.append("address", address.address);
+        formData.append("text", text);
+        formData.append("img", img); // 이 부분은 파일 객체여야 합니다.
+        formData.append("storeX", coordinates[0].x);
+        formData.append("storeY", coordinates[0].y);
+        formData.append("category", category);
+        
 
         try{
-            const rs=await axios.post("주소", formData)
+            const rs=await axios.post("http://localhost:8080/store/join", formData)
             if(rs.status==200){
                 alert("넘기기는 성공")
+                navigate("/ShopMain")
+
             }
         }catch(e){
             console.log("등록실패",e)
@@ -141,7 +147,7 @@ const ShopJoin = () => {
 
                 <p class="shop_img">
                     <label for="shop_img">업체이미지</label>
-                    <input type="file" required="required/" accept="image/*" onChange={(e)=>setImg(e.target.value)}/>
+                    <input type="file" required="required/" accept="image/*" onChange={(e)=>setImg(e.target.files[0])}/>
                 </p>
                 <div className="d-grid gap-2">
                 <Button variant="primary" type="submit" id="submit_btn" class="submit_btn" onClick={shopjoin}>등록하기</Button>

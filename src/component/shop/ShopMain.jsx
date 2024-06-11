@@ -10,9 +10,16 @@ const shopjoin=(e)=>{
     navigate("/ShopJoin")
 
 }
+
+const shopRS=(e)=>{
+    e.preventDefault()
+    navigate("/ShopMenu")
+
+}
     return (
         <div>
             <button onClick={shopjoin}>업체등록하기</button>
+            <button onClick={shopRS}>메뉴목록</button>
 
         </div>
     );

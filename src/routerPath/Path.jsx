@@ -8,6 +8,9 @@ import UserJoin from '../component/user/UserJoin';
 import ShopJoin from '../component/shop/ShopJoin';
 import ManagerMain from '../component/manager/ManagerMain';
 import ManagerApprove from '../component/manager/ManagerApprove';
+import ShopMenu from '../component/shop/ShopMenu';
+import ShopMenuRs from '../component/shop/ShopMenuRs';
+import ShopMenuList from '../component/shop/ShopMenuList';
 
 const Path = () => {
     return (
@@ -20,6 +23,9 @@ const Path = () => {
             <Route path="/ShopJoin" element={<ShopJoin />} />
             <Route path="/ManagerMain" element={<ManagerMain />} />
             <Route path="/ManagerApprove" element={<ManagerApprove />} />
+            <Route path="/ShopMenu" element={<ShopMenu />} />
+            <Route path="/ShopMenuRs" element={<ShopMenuRs />} />
+            <Route path="/ShopMenuList" element={<ShopMenuList />} />
         </Routes>
         
             
