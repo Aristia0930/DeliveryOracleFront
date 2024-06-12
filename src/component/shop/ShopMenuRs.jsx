@@ -32,8 +32,14 @@ const ShopMenuRs = () => {
         try{
             const rs=await axios.post("http://localhost:8080/store/menuRs", formData)
             if(rs.status==200){
-                alert("넘기기는 성공")
-                navigate("/ShopMain")
+
+                if(rs.data==1){
+                    navigate("/ShopMain")
+
+                }
+                else{
+                    alert("내용을 수정해주세요 같은 메뉴가 존재하거나 잘못된 입력을 하셨습니다.")
+                }
 
             }
         }catch(e){
