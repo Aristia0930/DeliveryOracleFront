@@ -28,6 +28,7 @@ const ShopMenuRs = () => {
         formData.append("name",name)
         formData.append("price",price)
         formData.append("img",img)
+        formData.append("shopid",approvalStatus)
         try{
             const rs=await axios.post("http://localhost:8080/store/menuRs", formData)
             if(rs.status==200){
