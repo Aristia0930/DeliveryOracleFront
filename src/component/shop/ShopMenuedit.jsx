@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 //메뉴수정
-const ShopMenuRs = () => {
+const ShopMenuedit = () => {
     const location = useLocation();
     //넘어온값
     const approvalStatus = location.state?.menu;
@@ -18,21 +18,9 @@ const ShopMenuRs = () => {
     //메뉴가격
     const [price,setPrice]=useState(approvalStatus.menuPrice)
     //메뉴이미지
-    const [img,setImg]=useState("")
+    const [img,setImg]=useState(null)
 
-    useEffect(() => {
-        // 이미지 URL을 파일로 변환
-        const fetchImage = async (imageUrl) => {
-            const response = await fetch(imageUrl);
-            const blob = await response.blob();
-            const file = new File([blob], imageUrl.split('/').pop(), { type: blob.type });
-            setImg(file);
-        };
 
-        if (approvalStatus.menuImage) {
-            fetchImage(`/imgs/${approvalStatus.menuImage}`);
-        }
-    }, [approvalStatus.menuImage]);
     const buttonClick=async(e)=>{
        
 
@@ -40,10 +28,14 @@ const ShopMenuRs = () => {
         const formData = new FormData();
         formData.append("name",name)
         formData.append("price",price)
-        formData.append("img",img)
         formData.append("shopid",approvalStatus.storeId)
+        if (img){
+          formData.append("img",img)  
+
+        }
+
         try{
-            const rs=await axios.post("http://localhost:8080/store/menuRs", formData)
+            const rs=await axios.post("http://localhost:8080/store/menuedit", formData)
             if(rs.status==200){
 
                 if(rs.data==1){
@@ -73,7 +65,7 @@ const ShopMenuRs = () => {
             <form action="#">
                 <p class="shop_name">
                     <label for="shop_name">메뉴이름</label>
-                    <input type="text" id="shop_name"  onChange={(e)=>setName(e.target.value)} value={name}/>
+                    <input type="text" id="shop_name"  value={name} readOnly/>
                 </p>
 
 
@@ -109,4 +101,4 @@ const ShopMenuRs = () => {
     );
 };
 
-export default ShopMenuRs;
+export default ShopMenuedit;
