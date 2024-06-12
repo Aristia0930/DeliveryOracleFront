@@ -11,6 +11,7 @@ import ManagerApprove from '../component/manager/ManagerApprove';
 import ShopMenu from '../component/shop/ShopMenu';
 import ShopMenuRs from '../component/shop/ShopMenuRs';
 import ShopMenuList from '../component/shop/ShopMenuList';
+import ShopMenuedit from '../component/shop/ShopMenuedit';
 
 const Path = () => {
     return (
@@ -26,6 +27,7 @@ const Path = () => {
             <Route path="/ShopMenu" element={<ShopMenu />} />
             <Route path="/ShopMenuRs" element={<ShopMenuRs />} />
             <Route path="/ShopMenuList" element={<ShopMenuList />} />
+            <Route path="/ShopMenuedit" element={<ShopMenuedit />} />
         </Routes>
         
             

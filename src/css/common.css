@@ -162,3 +162,18 @@ form .emailpass {
     margin: 0; /* 중앙 정렬을 위해 margin을 제거합니다 */
     text-align: center; /* 텍스트 중앙 정렬 */
 }
+
+/* 업체 */
+
+.menu_list{
+    margin-right: 1%;
+
+}
+
+#menu_container {
+    /*height: 100vh;*/
+    padding-top: 135px;
+    display: flex;
+    justify-content: center;
+    order: 1;
+}
