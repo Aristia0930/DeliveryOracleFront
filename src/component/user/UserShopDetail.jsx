@@ -1,20 +1,21 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import UserMenuCa from './UserMenuCa';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
-const UserMenuCaList = () => {
+
+const UserShopDetail = () => {
     const location = useLocation();
-    const caInfo = location.state?.ca;
+    const datas=location.state.data;
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
+            //상점아이디 넘기기 (메뉴 불러오기 위해서)
             try {
-                const rs = await axios.get("http://localhost:8080/search/CaList", {
-                    params: { canum: caInfo }
+                const rs = await axios.get("http://localhost:8080/search/menuList", {
+                    params: { id: datas.store_id}
                 });
                 setData(rs.data);
                 console.log(rs.data)
@@ -27,21 +28,27 @@ const UserMenuCaList = () => {
         };
 
         fetchData();
-    }, [caInfo]);
+    }, [datas]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
 
+
+
     return (
-        <div class="main_container">
-        <div class="form_container">
-            {/* Render your data here {item.store_name} */}
-            {data && data.map(item => (
-                <Link to={`/UserShopDetail`} state={{data:item}}> <UserMenuCa  data={item}></UserMenuCa></Link>
+        <div>
+            <h3>{datas.store_name}</h3>
+            <img  src={`/imgs/${datas.store_image}`} />
+
+            {data.map(array=>(
+            <div>
+                <p>{array.menuName}</p>
+                <img  src={`/imgs/${array.menuImage}`} />
+                </div>
+
             ))}
-        </div>
         </div>
     );
 };
 
-export default UserMenuCaList;
+export default UserShopDetail;
