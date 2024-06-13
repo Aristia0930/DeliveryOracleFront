@@ -34,6 +34,12 @@ const ShopMenu = () => {
         navigate("/ShopMenuRs", { state: { approvalStatus: approvalStatus } });
     };
 
+    //하위 컴퍼넌트 삭제 메세지 넘길때 반영하기 위한
+
+    const handleDelete = (menuName) => {
+        setMenus((prevMenus) => prevMenus.filter(menu => menu.menuName !== menuName));
+    };
+
     return (
         <div>
             <button onClick={shopRS}>메뉴추가하기</button>
@@ -49,7 +55,7 @@ const ShopMenu = () => {
             }, []).map((menuGroup, groupIndex) => (
                 <div id="main_container" key={groupIndex}>
                     {menuGroup.map((menu, index) => (
-                        <ShopMenuList key={index} menu={menu} />
+                        <ShopMenuList key={index} menu={menu} onDelete={handleDelete}/>
                     ))}
                 </div>
             ))}
