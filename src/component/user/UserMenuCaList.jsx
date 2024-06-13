@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import UserMenuCa from './UserMenuCa';
+import Header from '../commom/Header';
+
 
 const UserMenuCaList = () => {
     const location = useLocation();
@@ -33,14 +35,33 @@ const UserMenuCaList = () => {
     if (error) return <div>{error}</div>;
 
     return (
-        <div class="main_container">
-        <div class="form_container">
+        <div>
+            <Header></Header>
             {/* Render your data here {item.store_name} */}
-            {data && data.map(item => (
+            {/* {data && data.map(item => (
+                
                 <Link to={`/UserShopDetail`} state={{data:item}}> <UserMenuCa  data={item}></UserMenuCa></Link>
-            ))}
+            ))} */}
+
+                { data.reduce((acc, da, index) => {
+                    // Every 4th item or the first item, create a new container
+                    if (index % 2 === 0) {
+                        acc.push([]);
+                    }
+                    // Add the current menu item to the last container
+                    acc[acc.length - 1].push(da);
+                    return acc;
+                }, []).map((item, groupIndex) => (
+                    <div id="shop_container" key={groupIndex}>
+                        {item.map((items, index) => (
+                            <Link to={`/UserShopDetail`} state={{data:items}}> <UserMenuCa  data={items}></UserMenuCa></Link>
+                        ))}
+                    </div>
+                ))}
+
         </div>
-        </div>
+
+
     );
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Header from '../commom/Header';
 
 const UserMain = () => {
     const navigate = useNavigate();    
@@ -18,6 +19,7 @@ const UserMain = () => {
 
     return (
         <div>
+            <Header></Header>
             <button onClick={userlogin}>로그인</button>
             <button onClick={userjoiin}>회원가입</button>
 

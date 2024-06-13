@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import Nav from 'react-bootstrap/Nav';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const UserShopDetail = () => {
@@ -36,19 +38,106 @@ const UserShopDetail = () => {
 
 
     return (
-        <div>
-            <h3>{datas.store_name}</h3>
-            <img  src={`/imgs/${datas.store_image}`} />
-
-            {data.map(array=>(
-            <div>
-                <p>{array.menuName}</p>
-                <img  src={`/imgs/${array.menuImage}`} />
-                </div>
-
-            ))}
+    <div className='mv'>
+    {/* <div id='detail_container'>
+        <div class="item-card">
+        <div class="item-image">
+            <img  src={`/imgs/${datas.store_image}`} width="70"/>
         </div>
+        <div class="item-info">
+            <p>{datas.store_name}</p></div>
+        </div>
+        <div>장바구니</div>
+
+
+    </div>
+    <div id='detail_container'>
+
+    </div>
+
+    {data.map(array=>(
+        <div>
+            <p>{array.menuName}</p>
+            <img  src={`/imgs/${array.menuImage}`} width="70"/>
+            </div>
+
+        ))} */}
+        
+        
+        <div class="container">
+            <div class="left-sections">
+                <div class="section" id="a">
+                        <div class="item-card">
+                        <div class="item-image">
+                            <img  src={`/imgs/${datas.store_image}`} width="70"/>
+                    </div>
+                        <div class="item-info">
+                            <p>{datas.store_name}</p></div>
+                        </div>
+
+                </div>
+                <div class="section" id="b">
+                            <Nav fill variant="tabs" defaultActiveKey="/home">
+                                <Nav.Item>
+                                    <Nav.Link href="#">Active</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="link-1">Loooonger NavLink</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="link-2">Link</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="disabled" disabled>
+                                    Disabled
+                                    </Nav.Link>
+                                </Nav.Item>
+                                </Nav>
+                {data.map(array=>(
+                            <div>
+                                <p>{array.menuName}</p>
+                                <img  src={`/imgs/${array.menuImage}`} width="70"/>
+                                </div>
+
+                            ))}
+                </div>
+            </div>
+            <div class="section" id="c">장바구니</div>
+        </div>
+    </div>
+
+    
+
     );
 };
 
 export default UserShopDetail;
+
+
+// return (
+//     <div>
+//     <div id='detail_container'>
+//         <div class="item-card">
+//         <div class="item-image">
+//             <img  src={`/imgs/${datas.store_image}`} width="70"/>
+//         </div>
+//         <div class="item-info">
+//             <p>{datas.store_name}</p></div>
+//         </div>
+//         <div>장바구니</div>
+
+
+//     </div>
+//     <div id='detail_container'>
+
+//     </div>
+
+//     {data.map(array=>(
+//         <div>
+//             <p>{array.menuName}</p>
+//             <img  src={`/imgs/${array.menuImage}`} width="70"/>
+//             </div>
+
+//         ))}
+//     </div>
+// );
