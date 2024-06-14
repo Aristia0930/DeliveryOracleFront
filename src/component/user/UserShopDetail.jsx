@@ -93,6 +93,9 @@ const UserShopDetail = () => {
             const response = await axios.post('http://localhost:8080/search/order', orderData);
             console.log('Order response:', response.data);
             // 주문 성공 처리 (예: 알림, 페이지 리디렉션 등)
+            if(response.data==1){
+                alert("주문성공")
+            }
         } catch (error) {
             console.error('Order error:', error);
             // 주문 실패 처리
