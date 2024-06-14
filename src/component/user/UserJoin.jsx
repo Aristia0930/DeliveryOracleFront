@@ -58,10 +58,10 @@ const UserJoin = () => {
                             <input type="email" id="user_email"  onChange={(e)=>setEmail(e.target.value)}/>
                         </p>
 
-                    <button  class="submit_btn">이메일 인증하기</button>
+                    {/* <button  class="submit_btn">이메일 인증하기</button>
                     {emailPass==true && <p class="login_user_password"> <label for="user_password">인증번호 확인:
                     </label><input type="text"  class="emailpass" /> <button  class="btn_con">확인</button></p>}
-    
+     */}
                         <p class="user_password">
                             <label for="user_password">비밀번호</label>
                             <input type="password" id="user_password" onChange={(e)=>setPassword(e.target.value)}/>
