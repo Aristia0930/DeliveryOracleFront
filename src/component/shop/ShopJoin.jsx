@@ -43,6 +43,7 @@ const ShopJoin = () => {
         formData.append("storeX", coordinates[0].x);
         formData.append("storeY", coordinates[0].y);
         formData.append("category", category);
+        formData.append("id", 1);
         
 
         try{

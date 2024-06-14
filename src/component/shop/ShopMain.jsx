@@ -20,7 +20,7 @@ const shopRS=async(e)=>{
     //상점 아이디값이 받아오는
     try {
         const rs = await axios.get("http://localhost:8080/store/menuRs", {
-            params: { id: 3 }
+            params: { id: 1 }
         });
         if (rs.status === 200) {
             console.log(rs.data)

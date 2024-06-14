@@ -247,7 +247,7 @@ input[readOnly] {
     display: flex;
     width: 80%;
     height: 80%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .left-sections {
@@ -260,12 +260,24 @@ input[readOnly] {
     border: 1px solid black;
     padding: 20px;
     margin: 10px;
+    /* text-align: center; */
+}
+.basketto{
     text-align: center;
 }
 
 #c {
     flex: 1;
-    display: flex;
+
     align-items: center;
     justify-content: center;
+}
+
+.basket{
+    padding: 5px;
+
+}
+
+.basket-data{
+    display: flex;
 }

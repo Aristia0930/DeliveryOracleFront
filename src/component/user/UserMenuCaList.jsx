@@ -8,15 +8,19 @@ import Header from '../commom/Header';
 const UserMenuCaList = () => {
     const location = useLocation();
     const caInfo = location.state?.ca;
+    const y = location.state?.y;
+    const x = location.state?.x;
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const rs = await axios.get("http://localhost:8080/search/CaList", {
-                    params: { canum: caInfo }
+                    params: { canum: caInfo ,x:x,y:y}
                 });
                 setData(rs.data);
                 console.log(rs.data)
