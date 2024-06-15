@@ -63,6 +63,7 @@ const UserShopDetail = () => {
 
     // 장바구니에서 수량 증가
     const increaseQuantity = (menuName) => {
+        console.log("증가")
         setBasket((prevBasket) =>
             prevBasket.map(menu =>
                 menu.menuName === menuName ? { ...menu, quantity: menu.quantity + 1 } : menu
@@ -72,6 +73,7 @@ const UserShopDetail = () => {
 
     // 장바구니에서 수량 감소
     const decreaseQuantity = (menuName) => {
+        console.log("감소")
         setBasket((prevBasket) =>
             prevBasket.map(menu =>
                 menu.menuName === menuName ? { ...menu, quantity: menu.quantity - 1 } : menu
@@ -82,6 +84,7 @@ const UserShopDetail = () => {
        // 주문하기 처리
        const handleOrder = async () => {
         const orderDetails = JSON.stringify(basket);
+
         const orderData = {
             customerId: 1, // 고객 ID, 실제로는 로그인된 사용자 ID를 사용해야 합니다.
             storeId: datas.store_id,
@@ -141,16 +144,16 @@ const UserShopDetail = () => {
                 <div className="section" id="c">
                     <h3 className='basketto'>장바구니</h3>
                     {basket.map((array) => (
-                        <div className='basket' key={array.menuName}>
-                            <div>{array.menuName}</div>
-                            <div className='basket-data'>
-                                <button onClick={() => decreaseQuantity(array.menuName)}>-</button>
-                                {array.quantity}
-                                <button onClick={() => increaseQuantity(array.menuName)}>+</button>
-                                <div>{array.menuPrice * array.quantity} 원</div>
-                            </div>
+                    <div className='basket' key={array.menuName}>
+                        <div>{array.menuName}</div>
+                        <div className='basket-data'>
+                            <button onClick={() => decreaseQuantity(array.menuName)}>-</button>
+                            {array.quantity}
+                            <button onClick={() => increaseQuantity(array.menuName)}>+</button>
+                            <div>{array.menuPrice * array.quantity} 원</div>
                         </div>
-                    ))}
+                    </div>
+                ))}
                     <p onClick={handleOrder}>총금액 {totalPrice} 원 주문하기</p>
                 </div>
             </div>

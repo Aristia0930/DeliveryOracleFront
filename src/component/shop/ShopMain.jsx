@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import { useCookies } from 'react-cookie';
 
 
 const ShopMain = () => {
     const navigate = useNavigate();    
     //이것또한 나중에 아이디 값으로 조회해서 역할이 상점 주인일경우에만 넘어가도록 요청 api를 추가한다.
+    const [cookies] = useCookies(['jwtToken']);
+    const [userDate,setUserDate]=useState("")
+    //쿠키에 저장된 jwt를 기반으로 아이디값 받아오기
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            const token = cookies.jwtToken;
+            console.log("jwt 불러오는ㄴ")
+            try {
+                const response = await axios.get('http://localhost:8080/api/api/userinfo', {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                console.log(response.data);
+                console.log(response.data.user_id);
+                setUserDate(response.data.user_id)
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchUserInfo();
+    }, [cookies]);
+    
     const shopjoin=(e)=>{
     e.preventDefault()
-    navigate("/ShopJoin")
+    navigate("/ShopJoin",{state : {id:userDate}})
 
     }
 
@@ -20,7 +44,7 @@ const shopRS=async(e)=>{
     //상점 아이디값이 받아오는
     try {
         const rs = await axios.get("http://localhost:8080/store/menuRs", {
-            params: { id: 1 }
+            params: { id: userDate }
         });
         if (rs.status === 200) {
             console.log(rs.data)

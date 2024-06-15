@@ -11,21 +11,32 @@ const UserJoin = () => {
     const [password,setPassword]=useState("")
 
 
-
+    
     //회원가입
     const joinClick= (e) => {
         e.preventDefault();
-       axios.post("/user/join/~~",{
-            name:name,
-            password:password,
-            email:email
-
-        }).then(rs => {
+        const signupData = {
+            email: email,
+            password: password,
+            name: name
+            
+          };
+          
+          // JWT 토큰을 설정합니다.
+          const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MTg3OTQyNTMsInVubyI6IjEiLCJ1c2VyIiwicm9sIjpbIlJPTEVfVVNFUiJdfQ.FN8RjlH7_xcvJxGUgN1jAfUOG3i5T5BDiB30cmHS6psbUtpPGxuCmquTamtQmcGHir5n1zQygWbPcr_t28ydHA';
+          
+          // POST 요청을 보냅니다.
+          axios.post('http://localhost:8080/user', signupData, {
+            headers: {
+              'Authorization': `${token}`
+            }
+          })
+        .then(rs => {
             const response = rs.data;
-            console.log("회원가입");
+            console.log(rs.data);
 
             // 회원가입 성공 여부 확인
-            if (response == 1) {
+            if (response == "SUCCESS") {
                 navigate('/');
             } else {
                 alert("가입 실패");
@@ -68,7 +79,7 @@ const UserJoin = () => {
                         </p>
  
     
-                        <input type="submit" id="submit_btn" value="회원가입" class="submit_btn" />
+                        <input type="submit" id="submit_btn" value="회원가입" class="submit_btn" onClick={joinClick}/>
                     </form>
     
     
