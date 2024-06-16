@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-
+import { Container, Row, Col } from 'react-bootstrap';
+import Header from './headside/Header';
+import Sidebar from './headside/Sidebar';
 
 const ShopMain = () => {
     const navigate = useNavigate();    
@@ -13,7 +15,7 @@ const ShopMain = () => {
     useEffect(() => {
         const fetchUserInfo = async () => {
             const token = cookies.jwtToken;
-            console.log("jwt 불러오는ㄴ")
+            console.log("jwt 불러오는 중")
             try {
                 const response = await axios.get('http://localhost:8080/api/api/userinfo', {
                     headers: {
@@ -63,9 +65,22 @@ const shopRS=async(e)=>{
 }
     return (
         <div>
-            <button onClick={shopjoin}>업체등록하기</button>
-            <button onClick={shopRS}>메뉴목록</button>
-
+                
+            <Header />
+            <Container fluid>
+                <Row>
+                    <Col xs={2} id="sidebar-wrapper">
+                        <Sidebar />
+                    </Col>
+                    <Col xs={10} id="page-content-wrapper">
+                        <div style={{ padding: '20px' }}>
+                            <button onClick={shopjoin} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>업체등록하기</button>
+                            <button onClick={shopRS} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>메뉴목록</button>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+    
         </div>
     );
 };
