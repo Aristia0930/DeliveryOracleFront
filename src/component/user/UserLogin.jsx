@@ -22,9 +22,9 @@ const UserLogin = () => {
         console.log(headers.authorization.replace("Bearer ",""))
         if (rs.status==200){
 
+            //토큰으로 저장
+            setCookie('jwtToken', headers.authorization.replace("Bearer ",""), { path: '/', maxAge: 100 }); // 쿠키 유효 기간을 설정
             //플래그에 유저 인증 jwt 토큰 저장
-            setCookie('jwtToken', headers.authorization.replace("Bearer ",""), { path: '/', maxAge: 86400 }); // 쿠키 유효 기간을 설정
-
             setUser(headers.authorization.replace("Bearer ",""))
 
             navigate("/")

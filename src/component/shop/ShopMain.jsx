@@ -33,7 +33,14 @@ const ShopMain = () => {
     
     const shopjoin=(e)=>{
     e.preventDefault()
-    navigate("/ShopJoin",{state : {id:userDate}})
+    if(userDate){
+        navigate("/ShopJoin",{state : {id:userDate}})
+    }
+    else{
+        alert("로그인해주세요")
+    }
+
+    
 
     }
 
