@@ -2,7 +2,7 @@ import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-const Sidebar = () => {
+const Sidebar = ({id}) => {
     return (
         <Nav defaultActiveKey="/dashboard" className="flex-column bg-light" style={{ height: '100vh', padding: '10px' }}>
             <LinkContainer to="/ShopJoin">
@@ -13,6 +13,9 @@ const Sidebar = () => {
             </LinkContainer>
             <LinkContainer to="/manager-approve">
                 <Nav.Link>댓글 관리</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/ShopOrder" state={{id:id}}>
+                <Nav.Link>주문</Nav.Link>
             </LinkContainer>
             {/* Add more links as needed */}
         </Nav>

@@ -2,9 +2,10 @@ import React from 'react';
 import ManagerApproveList from './ManagerApproveList';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
-import Header from './Header';
-import Dashboard from './Dashboard';
-import Sidebar from './Sidebar';
+import Header from './headside/Header';
+import Dashboard from './headside//Dashboard';
+import Sidebar from './headside//Sidebar';
+
 const ManagerApprove = () => {
 
     //요청 받아서 목록 받아오고 이걸전개 한다 

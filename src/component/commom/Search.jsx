@@ -35,7 +35,7 @@ const Search = ({ onSearch }) => {
                 value={searchTerm}
                 onChange={handleInputChange}
               />
-              <Button variant="outline-success" onClick={handleSearch}>Search<p>돋보기 모양 넣기</p></Button>
+              <Button variant="outline-success" onClick={handleSearch}>Search</Button>
             </Form>
           </Col>
         </Row>

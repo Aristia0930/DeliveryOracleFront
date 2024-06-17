@@ -22,6 +22,7 @@ const UserShopDetail = () => {
     const [mes, setMes] = useState("");
     const [useid, setUseid] = useState("");
     const [username, setUserName] = useState("");
+    const[email,setEmail]=useState("")
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,6 +33,23 @@ const UserShopDetail = () => {
                 });
                 setData(rs.data);
                 console.log(rs.data);
+            } catch (e) {
+                setError("연결실패");
+                console.log("연결실패", e);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        //이메일 탐색
+        const emailData = async () => {
+            try {
+                const rs = await axios.get("http://localhost:8080/search/email_shop", {
+                    params: { id: datas.owner_id}
+                });
+                setEmail(rs.data)
+                console.log("이메일탐색",rs.data)
+
             } catch (e) {
                 setError("연결실패");
                 console.log("연결실패", e);
@@ -58,7 +76,7 @@ const UserShopDetail = () => {
 
         fetchData();
         usedata();
-
+        emailData();
         const socket = new SockJS(`http://localhost:8080/ws?token=Bearer ${user}`);
         const client = Stomp.over(socket);
 
@@ -113,6 +131,7 @@ const UserShopDetail = () => {
                     console.error('Order error:', error);
                 }
             } else {
+                alert("현재 음식점이 열려있지 않습니다")
                 console.log("주문 실패");
             }
         };
@@ -160,8 +179,8 @@ const UserShopDetail = () => {
     const handleOrder = async () => {
         console.log("유저아이디", username);
         if (stompClient) {
-            //from 에 나중에 이 상점 주인 아이디를 넣어야 하는데 이때 앞에서 상점 주인 아이디까지 받아와야한다.
-            stompClient.send('/app/sendMessage', {}, JSON.stringify({ from: username, content: "message" }));
+            //from 에 나중에 이 상점 주인 아이디를 넣어야 하는데 이때 앞에서 상점 주인 아이디(이메일을)까지 받아와야한다.
+            stompClient.send('/app/sendMessage', {}, JSON.stringify({ from: email, content: "message" }));
         }
     };
 

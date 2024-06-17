@@ -96,7 +96,7 @@ const shopRS=async(e)=>{
             <Container fluid>
                 <Row>
                     <Col xs={2} id="sidebar-wrapper">
-                        <Sidebar />
+                        <Sidebar id={userDate}/>
                     </Col>
                     <Col xs={10} id="page-content-wrapper">
                         <div style={{ padding: '20px' }}>
