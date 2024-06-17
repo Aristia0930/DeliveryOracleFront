@@ -17,6 +17,8 @@ const ShopMain = () => {
     //이것또한 나중에 아이디 값으로 조회해서 역할이 상점 주인일경우에만 넘어가도록 요청 api를 추가한다.
     const [cookies] = useCookies(['jwtToken']);
     const [userDate,setUserDate]=useState("")
+    //상점아이디
+    const[shopid,setShopid]=useState("")
     const {user,setUser}=useContext(AdminFlagContext)
     //쿠키에 저장된 jwt를 기반으로 아이디값 받아오기
     useEffect(() => {
@@ -55,7 +57,7 @@ const ShopMain = () => {
 
     }
 
-const shopRS=async(e)=>{
+const shoppMenu=async(e)=>{
     e.preventDefault()
     //아이디값을 넘겨서 그 아이디값의 상점 주인이 승인 되었는 확인하는 절차
 
@@ -101,7 +103,7 @@ const shopRS=async(e)=>{
                     <Col xs={10} id="page-content-wrapper">
                         <div style={{ padding: '20px' }}>
                             <button onClick={shopjoin} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>업체등록하기</button>
-                            <button onClick={shopRS} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>메뉴목록</button>
+                            <button onClick={shoppMenu} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>메뉴목록</button>
                             <tr/>
                             // 여기서는 등록이 되는데 사이드바에서는 등록이 안됨
                         </div>
