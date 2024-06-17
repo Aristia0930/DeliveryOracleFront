@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { Container, Row, Col } from 'react-bootstrap';
 import Header from './headside/Header';
 import Sidebar from './headside/Sidebar';
+import ShopJoin from './ShopJoin';
+import ShopMenu from './ShopMenu';
 
 const ShopMain = () => {
     const navigate = useNavigate();    
@@ -76,7 +79,10 @@ const shopRS=async(e)=>{
                         <div style={{ padding: '20px' }}>
                             <button onClick={shopjoin} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>업체등록하기</button>
                             <button onClick={shopRS} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>메뉴목록</button>
+                            <tr/>
+                            // 여기서는 등록이 되는데 사이드바에서는 등록이 안됨
                         </div>
+
                     </Col>
                 </Row>
             </Container>

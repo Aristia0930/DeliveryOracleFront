@@ -16,6 +16,7 @@ const UserShopDetail = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            console.log(datas.store_id)
             try {
                 const rs = await axios.get("http://localhost:8080/search/menuList", {
                     params: { id: datas.store_id } //상점 아이디

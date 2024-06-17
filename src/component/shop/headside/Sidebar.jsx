@@ -5,14 +5,14 @@ import { LinkContainer } from 'react-router-bootstrap';
 const Sidebar = () => {
     return (
         <Nav defaultActiveKey="/dashboard" className="flex-column bg-light" style={{ height: '100vh', padding: '10px' }}>
-            <LinkContainer to="/dashboard">
-                <Nav.Link>Dashboard</Nav.Link>
+            <LinkContainer to="/ShopJoin">
+                <Nav.Link>업체 등록</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/manager-main">
-                <Nav.Link>Manager Main</Nav.Link>
+            <LinkContainer to="/ShopMenu">
+                <Nav.Link>메뉴 목록</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/manager-approve">
-                <Nav.Link>Manager Approve</Nav.Link>
+                <Nav.Link>댓글 관리</Nav.Link>
             </LinkContainer>
             {/* Add more links as needed */}
         </Nav>

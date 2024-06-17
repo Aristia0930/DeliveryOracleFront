@@ -144,6 +144,7 @@ const ShopJoin = () => {
                     <option value="1">한식</option>
                     <option value="2">치킨</option>
                     <option value="3">중국집</option>
+                    <option value="4">일식</option>
                   </Form.Select>
                 </p>
 
@@ -170,14 +171,13 @@ const ShopJoin = () => {
       </ul>
 
 
+      </div>
 
-</div>
+    </div>
 
-</div>
-
-</div>
+  </div>
             
-        </div>
+</div>
     );
 };
 
