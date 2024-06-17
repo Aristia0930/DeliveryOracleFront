@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import { Container, Row, Col } from 'react-bootstrap';
+import Header from './headside/Header';
+import Sidebar from './headside/Sidebar';
+import ShopJoin from './ShopJoin';
+import ShopMenu from './ShopMenu';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 
@@ -15,6 +21,7 @@ const ShopMain = () => {
     //쿠키에 저장된 jwt를 기반으로 아이디값 받아오기
     useEffect(() => {
         const fetchUserInfo = async () => {
+
             const token = user
             console.log(token)
             console.log("jwt 불러오는ㄴ")
@@ -84,8 +91,25 @@ const shopRS=async(e)=>{
 }
     return (
         <div>
-            <button onClick={shopjoin}>업체등록하기</button>
-            <button onClick={shopRS}>메뉴목록</button>
+                
+            <Header />
+            <Container fluid>
+                <Row>
+                    <Col xs={2} id="sidebar-wrapper">
+                        <Sidebar />
+                    </Col>
+                    <Col xs={10} id="page-content-wrapper">
+                        <div style={{ padding: '20px' }}>
+                            <button onClick={shopjoin} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>업체등록하기</button>
+                            <button onClick={shopRS} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>메뉴목록</button>
+                            <tr/>
+                            // 여기서는 등록이 되는데 사이드바에서는 등록이 안됨
+                        </div>
+
+                    </Col>
+                </Row>
+            </Container>
+    
             <button onClick={shopOrder}>주문</button>
 
         </div>

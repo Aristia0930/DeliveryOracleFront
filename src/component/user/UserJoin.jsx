@@ -10,7 +10,6 @@ const UserJoin = () => {
     const [email,setEmail] = useState("")
     const [password,setPassword]=useState("")
 
-
     
     //회원가입
     const joinClick= (e) => {
