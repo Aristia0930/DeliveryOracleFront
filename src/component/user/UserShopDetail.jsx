@@ -4,6 +4,10 @@ import axios from 'axios';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserShopDetailMenu from './UserShopDetailMenu';
+import { useContext } from "react";
+import { AdminFlagContext } from "../../flag/Flag.jsx";
+import { CompatClient, Stomp } from '@stomp/stompjs';
+import SockJS from 'sockjs-client';
 
 const UserShopDetail = () => {
     const location = useLocation();
@@ -13,12 +17,17 @@ const UserShopDetail = () => {
     const [error, setError] = useState(null);
     const [basket, setBasket] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
+    const { user, setUser } = useContext(AdminFlagContext);
+    const [stompClient, setStompClient] = useState(null);
+    const [mes, setMes] = useState("");
+    const [useid, setUseid] = useState("");
+    const [username, setUserName] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const rs = await axios.get("http://localhost:8080/search/menuList", {
-                    params: { id: datas.store_id } //상점 아이디
+                    params: { id: datas.store_id }
                 });
                 setData(rs.data);
                 console.log(rs.data);
@@ -30,7 +39,45 @@ const UserShopDetail = () => {
             }
         };
 
+        const usedata = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/api/api/userinfo', {
+                    headers: {
+                        Authorization: `Bearer ${user}`
+                    }
+                });
+                console.log(response.data);
+                console.log(response.data.user_id);
+                setUseid(response.data.user_id);
+                setUserName(response.data.email);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
         fetchData();
+        usedata();
+
+        const socket = new SockJS(`http://localhost:8080/ws?token=Bearer ${user}`);
+        const client = Stomp.over(socket);
+
+        client.connect({ Authorization: `Bearer ${user}` }, () => {
+            client.subscribe('/user/topic/sendMessage', (msg) => {
+                console.log("응답 메세지");
+                console.log(msg);
+                const newMessage = JSON.parse(msg.body);
+                setMes(newMessage);
+            });
+            setStompClient(client);
+        });
+
+        return () => {
+            if (client) {
+                client.disconnect(() => {
+                    console.log('Disconnected');
+                });
+            }
+        };
     }, [datas]);
 
     useEffect(() => {
@@ -42,12 +89,42 @@ const UserShopDetail = () => {
         calculateTotalPrice();
     }, [basket]);
 
+    useEffect(() => {
+        const handleMesUpdate = async () => {
+            if (mes.content === "true") {
+                const orderDetails = JSON.stringify(basket);
+                console.log("주문클릭");
+
+                const orderData = {
+                    customerId: useid,
+                    storeId: datas.store_id,
+                    orderDetails: orderDetails,
+                    totalPrice: totalPrice,
+                };
+
+                try {
+                    const response = await axios.post('http://localhost:8080/search/order', orderData);
+                    console.log('Order response:', response.data);
+                    if (response.data == 1) {
+                        alert("주문 성공");
+                    }
+                } catch (error) {
+                    console.error('Order error:', error);
+                }
+            } else {
+                console.log("주문 실패");
+            }
+        };
+
+        if (mes.content) {
+            handleMesUpdate();
+        }
+    }, [mes, basket, datas.store_id, totalPrice, useid]);
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
 
-    // 장바구니에 추가
     const handlePlus = (add) => {
-
         setBasket((prevBasket) => {
             const existingItem = prevBasket.find(menu => menu.menuName === add.menuName);
             if (existingItem) {
@@ -61,9 +138,8 @@ const UserShopDetail = () => {
         });
     };
 
-    // 장바구니에서 수량 증가
     const increaseQuantity = (menuName) => {
-        console.log("증가")
+        console.log("증가");
         setBasket((prevBasket) =>
             prevBasket.map(menu =>
                 menu.menuName === menuName ? { ...menu, quantity: menu.quantity + 1 } : menu
@@ -71,37 +147,20 @@ const UserShopDetail = () => {
         );
     };
 
-    // 장바구니에서 수량 감소
     const decreaseQuantity = (menuName) => {
-        console.log("감소")
+        console.log("감소");
         setBasket((prevBasket) =>
             prevBasket.map(menu =>
                 menu.menuName === menuName ? { ...menu, quantity: menu.quantity - 1 } : menu
-            ).filter(menu => menu.quantity > 0) // 수량이 0인 항목은 제거
+            ).filter(menu => menu.quantity > 0)
         );
     };
 
-       // 주문하기 처리
-       const handleOrder = async () => {
-        const orderDetails = JSON.stringify(basket);
-
-        const orderData = {
-            customerId: 1, // 고객 ID, 실제로는 로그인된 사용자 ID를 사용해야 합니다.
-            storeId: datas.store_id,
-            orderDetails: orderDetails,
-            totalPrice: totalPrice,
-        };
-
-        try {
-            const response = await axios.post('http://localhost:8080/search/order', orderData);
-            console.log('Order response:', response.data);
-            // 주문 성공 처리 (예: 알림, 페이지 리디렉션 등)
-            if(response.data==1){
-                alert("주문성공")
-            }
-        } catch (error) {
-            console.error('Order error:', error);
-            // 주문 실패 처리
+    const handleOrder = async () => {
+        console.log("유저아이디", username);
+        if (stompClient) {
+            //from 에 나중에 이 상점 주인 아이디를 넣어야 하는데 이때 앞에서 상점 주인 아이디까지 받아와야한다.
+            stompClient.send('/app/sendMessage', {}, JSON.stringify({ from: username, content: "message" }));
         }
     };
 
@@ -144,16 +203,16 @@ const UserShopDetail = () => {
                 <div className="section" id="c">
                     <h3 className='basketto'>장바구니</h3>
                     {basket.map((array) => (
-                    <div className='basket' key={array.menuName}>
-                        <div>{array.menuName}</div>
-                        <div className='basket-data'>
-                            <button onClick={() => decreaseQuantity(array.menuName)}>-</button>
-                            {array.quantity}
-                            <button onClick={() => increaseQuantity(array.menuName)}>+</button>
-                            <div>{array.menuPrice * array.quantity} 원</div>
+                        <div className='basket' key={array.menuName}>
+                            <div>{array.menuName}</div>
+                            <div className='basket-data'>
+                                <button onClick={() => decreaseQuantity(array.menuName)}>-</button>
+                                {array.quantity}
+                                <button onClick={() => increaseQuantity(array.menuName)}>+</button>
+                                <div>{array.menuPrice * array.quantity} 원</div>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
                     <p onClick={handleOrder}>총금액 {totalPrice} 원 주문하기</p>
                 </div>
             </div>
@@ -162,6 +221,7 @@ const UserShopDetail = () => {
 };
 
 export default UserShopDetail;
+
 
 
 

@@ -21,12 +21,7 @@ const ManagerMain = () => {
                         <Sidebar />
                     </Col>
                     <Col xs={10} id="page-content-wrapper">
-                        <div style={{ padding: '20px' }}>
-                            <button onClick={approve} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>
-                                업체 승인하기
-                            </button>
-                            <Dashboard />
-                        </div>
+ 
                     </Col>
                 </Row>
             </Container>

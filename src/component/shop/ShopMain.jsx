@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import { useContext } from "react";
+import { AdminFlagContext } from "../../flag/Flag.jsx";
 
 
 const ShopMain = () => {
@@ -9,10 +11,12 @@ const ShopMain = () => {
     //이것또한 나중에 아이디 값으로 조회해서 역할이 상점 주인일경우에만 넘어가도록 요청 api를 추가한다.
     const [cookies] = useCookies(['jwtToken']);
     const [userDate,setUserDate]=useState("")
+    const {user,setUser}=useContext(AdminFlagContext)
     //쿠키에 저장된 jwt를 기반으로 아이디값 받아오기
     useEffect(() => {
         const fetchUserInfo = async () => {
-            const token = cookies.jwtToken;
+            const token = user
+            console.log(token)
             console.log("jwt 불러오는ㄴ")
             try {
                 const response = await axios.get('http://localhost:8080/api/api/userinfo', {
@@ -63,7 +67,17 @@ const shopRS=async(e)=>{
         }
     } catch (e) {
         console.log("연결실패", e);
-    }
+    }}
+
+    const shopOrder=async(e)=>{
+        e.preventDefault()
+        //아이디값을 넘겨서 그 아이디값의 상점 주인이 승인 되었는 확인하는 절차
+    
+        //상점 아이디값이 받아오는
+    
+
+            navigate("/ShopOrder", {state : {id:userDate}})
+
 
 
 
@@ -72,6 +86,7 @@ const shopRS=async(e)=>{
         <div>
             <button onClick={shopjoin}>업체등록하기</button>
             <button onClick={shopRS}>메뉴목록</button>
+            <button onClick={shopOrder}>주문</button>
 
         </div>
     );

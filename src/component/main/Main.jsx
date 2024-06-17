@@ -9,13 +9,14 @@ import { useCookies } from 'react-cookie';
 const Main = () => {
     const navigate = useNavigate();
     const {user,setUser}=useContext(AdminFlagContext)
-    const [cookies] = useCookies(['jwtToken']);
+    // const [cookies] = useCookies(['jwtToken']);
    
     //유저인증테스트
 
     const onButtonClick=async(e) =>{
         e.preventDefault();
-        const token = cookies.jwtToken;
+        // const token = cookies.jwtToken;
+        const token = user;
         try{
             const response = await axios.get('http://localhost:8080/api/api/userinfo', {
                 headers: {

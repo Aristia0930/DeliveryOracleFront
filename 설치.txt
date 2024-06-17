@@ -6,5 +6,7 @@ npm install react-bootstrap bootstrap
 npm install -S react-router-bootstrap
 npm install react-intersection-observer --save
 npm install http-proxy-middleware
+npm i react-cookie
+npm install @stomp/stompjs sockjs-client
 스프링
 
