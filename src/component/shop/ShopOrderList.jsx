@@ -84,11 +84,15 @@ const ShopOrderList = ({ menu }) => {
              */}
             { menu.orderApprovalStatus==0 && <div> 
                 <Button variant="primary" onClick={ondeliver}>
-                    배달</Button>
+                    라이더배정</Button>
                 <Button variant="primary" onClick={refuse}> 거절</Button>
             </div>}
             { menu.orderApprovalStatus==1 && <div> 
                 <Button variant="primary" onClick={ondeliver}>
+                    라이더 배정중</Button>
+            </div>}
+            { menu.orderApprovalStatus==2 && <div> 
+                <Button variant="primary">
                     배달중</Button>
             </div>}
             { menu.orderApprovalStatus==3 && <div> 
