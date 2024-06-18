@@ -5,9 +5,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Search from './Search';
+import UserInfo from './UserInfo';
+import { useNavigate } from 'react-router-dom';
 
 
 const Header = () => {
+
+    const navigate = useNavigate();  
+    
+    const userlogin=(e)=>{
+        e.preventDefault()
+        navigate("/UserLogin")
+
+    }
+
+    const userjoin=(e)=>{
+        e.preventDefault()
+        navigate("/UserJoin")
+
+    }
     return (
         
         <Navbar expand="xl" className="navbar">
@@ -16,7 +32,10 @@ const Header = () => {
 
                 <Search/>
                 <Form className="d-flex">
-                </Form><p>로그인</p>
+                    <Button onClick={userlogin}>로그인</Button>
+                    <Button onClick={userjoin}>회원가입</Button>
+                </Form>
+                <UserInfo />
             </Container>
 
 
