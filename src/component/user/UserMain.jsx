@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../commom/Header';
-
+import { useContext } from "react";
+import { AdminFlagContext } from "../../flag/Flag.jsx";
 const UserMain = () => {
+  const {user_x,setX,user_y,setY}=useContext(AdminFlagContext)
     const [location, setLocation] = useState({ latitude: null, longitude: null });
     const [error, setError] = useState(null);
 
@@ -29,6 +31,8 @@ const UserMain = () => {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude,
               });
+              setX(position.coords.longitude)
+              setY(position.coords.latitude)
               setError(null);
             },
             (error) => {

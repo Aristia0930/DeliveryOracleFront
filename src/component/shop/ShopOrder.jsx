@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { CompatClient, Stomp } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import axios from 'axios';
-import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
+import { Container, Row, Col } from 'react-bootstrap';
+import Header from './headside/Header';
+import Sidebar from './headside/Sidebar';
+import ShopOrderList from './ShopOrderList';
 
 const ShopOrder = () => {
     const [message, setMessage] = useState('');
@@ -11,15 +14,16 @@ const ShopOrder = () => {
     const [name, setName] = useState("");
     const [stompClient, setStompClient] = useState(null);
     const [names, setNames] = useState("user123");
-    const {user,setUser}=useContext(AdminFlagContext)
+    const { user, setUser, userId, setUserId, shopId, setShopid } = useContext(AdminFlagContext);
+    //주문 정보
+    const[order,setOrder]=useState()
 
     useEffect(() => {
-        const token = user.token; // Ensure user.token is correct
+        const token = user.token; // user.token이 올바른지 확인
         const socket = new SockJS(`http://localhost:8080/ws?token=Bearer ${user}`);
         const client = Stomp.over(socket);
-    
-        client.connect({ Authorization: `Bearer ${user}` },  () => {
 
+        client.connect({ Authorization: `Bearer ${user}` }, () => {
             client.subscribe('/user/topic/sendMessage', (msg) => {
                 console.log(msg);
                 const newMessage = JSON.parse(msg.body);
@@ -30,17 +34,34 @@ const ShopOrder = () => {
 
         return () => {
             if (client) {
-              client.disconnect(() => {
-                console.log('Disconnected');
-              });
+                client.disconnect(() => {
+                    console.log('Disconnected');
+                });
             }
-          };
-    }, [user]); // Ensure the effect runs when 'user' changes
-    
+        };
+    }, [user]); // 'user'가 변경될 때마다 이 효과 실행
 
+    useEffect(() => {
+        const fetchData = async () => {
+            console.log("삼정",shopId)
+            try {
+                const rs = await axios.post("http://localhost:8080/store/order", { storeId: shopId });
+                if (rs.status === 200) {
+                    console.log(rs.data);
+                    setOrder(rs.data)
+                    if (rs.data) {
+                        // 응답 데이터 처리
+                    } else {
+                        console.log("없음");
+                    }
+                }
+            } catch (e) {
+                console.log("연결실패", e);
+            }
+        };
 
-
-
+        fetchData();
+    }, [mes]); // 'mes'가 변경될 때마다 이 효과 실행
 
     const sendMessage = () => {
         if (stompClient) {
@@ -51,17 +72,46 @@ const ShopOrder = () => {
 
     return (
         <div>
-            <input type='text' onChange={(e) => setName(e.target.value)} />
-            <input
-                type="text"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-            />
-            <button onClick={sendMessage}>Send</button>
+            <Header />
+            <Container fluid>
+                <Row>
+                    <Col xs={2} id="sidebar-wrapper">
+                        <Sidebar />
+                    </Col>
+                    <Col xs={10} id="page-content-wrapper">
+                        
+                    {order&&order.reduce((acc, menu, index) => {
+                            // Every 4th item or the first item, create a new container
+                            if (index % 4 === 0) {
+                                acc.push([]);
+                            }
+                            // Add the current menu item to the last container
+                            acc[acc.length - 1].push(menu);
+                            return acc;
+                        }, []).map((menuGroup, groupIndex) => (
+                            <div id="main_container" key={groupIndex}>
+                                {menuGroup.map((menu, index) => (
+                  
+                                    <ShopOrderList key={index} menu={menu} />
+                                ))}
+                            </div>
+                        ))}
 
-            {mes.map((list, index) => <p key={index}>{list.content}</p>)}
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 };
 
 export default ShopOrder;
+
+{/* <input type='text' onChange={(e) => setName(e.target.value)} />
+<input
+    type="text"
+    value={message}
+    onChange={(e) => setMessage(e.target.value)}
+/>
+<button onClick={sendMessage}>Send</button>
+
+{mes.map((list, index) => <p key={index}>{list.content}</p>)} */}

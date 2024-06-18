@@ -17,7 +17,7 @@ const UserShopDetail = () => {
     const [error, setError] = useState(null);
     const [basket, setBasket] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
-    const { user, setUser } = useContext(AdminFlagContext);
+    const { user, setUser,user_x,setX,user_y,setY } = useContext(AdminFlagContext);
     const [stompClient, setStompClient] = useState(null);
     const [mes, setMes] = useState("");
     const [useid, setUseid] = useState("");
@@ -119,6 +119,8 @@ const UserShopDetail = () => {
                     storeId: datas.store_id,
                     orderDetails: orderDetails,
                     totalPrice: totalPrice,
+                    user_x:user_x,
+                    user_y:user_y
                 };
 
                 try {

@@ -1,11 +1,37 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useNavigate } from 'react-router-dom';
-const Sidebar = ({id}) => {
+import { useContext } from "react";
+import { AdminFlagContext } from "../../../flag/Flag.jsx"
+const Sidebar = () => {
+    const {user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
 
-    const navigate = useNavigate();    
+    const navigate = useNavigate(); 
+    useEffect(() => {
+        //상점아이디를 플래그 에 저장하는 파트 
+        const fetchData = async () => {
+            try {
+                const rs = await axios.get("http://localhost:8080/store/menuRs", {
+                    params: { id: userId }
+                });
+                if (rs.status === 200) {
+                    console.log(rs.data)
+                    if (rs.data != -1) {
+                        setShopid(rs.data)
+                    } else {
+                        console.log("승인받지 못함");
+                    }
+                }
+            } catch (e) {
+                console.log("연결실패", e);
+            }}
+
+        fetchData();
+    }, [userId]); 
+    
+
     const shoppMenu=async(e)=>{
         e.preventDefault()
         //아이디값을 넘겨서 그 아이디값의 상점 주인이 승인 되었는 확인하는 절차
@@ -13,11 +39,12 @@ const Sidebar = ({id}) => {
         //상점 아이디값이 받아오는
         try {
             const rs = await axios.get("http://localhost:8080/store/menuRs", {
-                params: { id: id }
+                params: { id: userId }
             });
             if (rs.status === 200) {
                 console.log(rs.data)
                 if (rs.data != -1) {
+                    setShopid(rs.data)
                     navigate("/ShopMenu", { state: { approvalStatus: rs.data } });
                 } else {
                     console.log("승인받지 못함");
@@ -37,7 +64,7 @@ const Sidebar = ({id}) => {
             <LinkContainer to="/manager-approve">
                 <Nav.Link>댓글 관리</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/ShopOrder" state={{id:id}}>
+            <LinkContainer to="/ShopOrder">
             {/* <LinkContainer to="/ShopOrder" state={{id:email}}> */}
                 <Nav.Link>주문</Nav.Link>
             </LinkContainer>

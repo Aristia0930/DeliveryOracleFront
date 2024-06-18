@@ -6,10 +6,17 @@ import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { useContext } from "react";
+import { AdminFlagContext } from "../../flag/Flag.jsx";
+import Header from './headside/Header';
+import { Container, Row, Col } from 'react-bootstrap';
+import Sidebar from './headside/Sidebar';
 const ShopJoin = () => {
+  const {user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
   const location = useLocation();
   //넘어온값
-  const id = location.state?.id;
+  // const id = location.state?.id;
+  const id = userId;
     
   const navigate = useNavigate();
 
@@ -110,8 +117,15 @@ const ShopJoin = () => {
     
     return (
         <div>
-
-<div id="main_container">
+        <Header />
+            <Container fluid>
+                <Row>
+                    <Col xs={2} id="sidebar-wrapper">
+                        <Sidebar id={userId}/>
+                    </Col>
+                    <Col xs={10} id="page-content-wrapper">
+      
+                    <div id="main_container">
     
     <div class="shop_container">
 
@@ -176,6 +190,11 @@ const ShopJoin = () => {
     </div>
 
   </div>
+                    </Col>
+                </Row>
+            </Container>
+
+
             
 </div>
     );
