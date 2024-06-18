@@ -16,7 +16,7 @@ const UserMain = () => {
 
     }
 
-    const userjoiin=(e)=>{
+    const userjoin=(e)=>{
         e.preventDefault()
         navigate("/UserJoin")
 
@@ -55,7 +55,7 @@ const UserMain = () => {
         <div>
             <Header></Header>
             <button onClick={userlogin}>로그인</button>
-            <button onClick={userjoiin}>회원가입</button>
+            <button onClick={userjoin}>회원가입</button>
 
             <div id="main_container">
 

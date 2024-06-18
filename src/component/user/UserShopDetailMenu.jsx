@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 //상점 상세페이지에서 메뉴 부분
 const UserShopDetailMenu = ({data,plus}) => {
 

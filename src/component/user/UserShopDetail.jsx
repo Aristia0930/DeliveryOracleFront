@@ -8,6 +8,8 @@ import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { CompatClient, Stomp } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
+import TabMenu from '../commom/TabMenu.jsx';
+import Header from '../commom/Header.jsx';
 
 const UserShopDetail = () => {
     const location = useLocation();
@@ -187,55 +189,67 @@ const UserShopDetail = () => {
     };
 
     return (
-        <div className='mv'>
-            <div className="container">
-                <div className="left-sections">
-                    <div className="section" id="a">
-                        <div className="item-card">
-                            <div className="item-image">
-                                <img src={`/imgs/${datas.store_image}`} width="70" alt="Store" />
-                            </div>
-                            <div className="item-info">
-                                <p>{datas.store_name}</p>
+        <div>
+            <Header />
+            <TabMenu />
+            <div className='mv'>
+                <div className="container">
+                    <div className="left-sections">
+                        <div className="section" id="a">
+                            <div className="item-card">
+                                <div className="item-image">
+                                    <img src={`/imgs/${datas.store_image}`} width="70" alt="Store" />
+                                </div>
+                                <div className="item-info">
+                                    <p>{datas.store_name}</p>
+                                </div>
                             </div>
                         </div>
+                        <div className="section" id="b">
+                            <Nav fill variant="tabs" defaultActiveKey="/home">
+                                <Nav.Item>
+                                    <Nav.Link href="#">Active</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="link-1">Loooonger NavLink</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="link-2">Link</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="disabled" disabled>
+                                        Disabled
+                                    </Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                            {data && data.map(array => (
+                                <UserShopDetailMenu key={array.menuName} data={array} plus={handlePlus} />
+                            ))}
+                        </div>
                     </div>
-                    <div className="section" id="b">
-                        <Nav fill variant="tabs" defaultActiveKey="/home">
-                            <Nav.Item>
-                                <Nav.Link href="#">Active</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link eventKey="link-1">Loooonger NavLink</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link eventKey="link-2">Link</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link eventKey="disabled" disabled>
-                                    Disabled
-                                </Nav.Link>
-                            </Nav.Item>
-                        </Nav>
-                        {data && data.map(array => (
-                            <UserShopDetailMenu key={array.menuName} data={array} plus={handlePlus} />
+                    <div className="section" id="c">
+                        <div className="basket-header"><strong>장바구니</strong></div>
+                        <div className="basket-body">
+                        {basket.map((array) => (
+                            <div className='basket' key={array.menuName}>
+                                <div>{array.menuName}</div>
+                                <div className='basket-data'>
+                                    <button onClick={() => decreaseQuantity(array.menuName)}>-</button>
+                                    {array.quantity}
+                                    <button onClick={() => increaseQuantity(array.menuName)}>+</button>
+                                    <div>{array.menuPrice} 원</div>
+
+                                </div>
+                            </div>
                         ))}
-                    </div>
-                </div>
-                <div className="section" id="c">
-                    <h3 className='basketto'>장바구니</h3>
-                    {basket.map((array) => (
-                        <div className='basket' key={array.menuName}>
-                            <div>{array.menuName}</div>
-                            <div className='basket-data'>
-                                <button onClick={() => decreaseQuantity(array.menuName)}>-</button>
-                                {array.quantity}
-                                <button onClick={() => increaseQuantity(array.menuName)}>+</button>
-                                <div>{array.menuPrice * array.quantity} 원</div>
-                            </div>
                         </div>
-                    ))}
-                    <p onClick={handleOrder}>총금액 {totalPrice} 원 주문하기</p>
+                        <hr/>
+                        <div>총금액 {totalPrice} 원</div>
+                        <hr/>
+                        <div>
+                        <button onClick={handleOrder}>주문하기</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
