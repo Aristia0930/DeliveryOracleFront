@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand><Link to='/'>Admin Dashboard</Link></Navbar.Brand>
+                <Navbar.Brand href="/">Admin Dashboard</Navbar.Brand>
             </Container>
         </Navbar>
     );

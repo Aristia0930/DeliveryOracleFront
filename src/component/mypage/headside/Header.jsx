@@ -3,9 +3,9 @@ import { Navbar, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 const Header = () => {
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="#8ddba0" variant="dark">
             <Container>
-            <Navbar.Brand href="/">Company Dashboard</Navbar.Brand>
+                <Navbar.Brand href="/">User Dashboard</Navbar.Brand>
             </Container>
         </Navbar>
     );
