@@ -50,12 +50,16 @@ const Main = () => {
 
     const managerbutton=(e)=>{
         e.preventDefault()
-       navigate("/RiderMain")
+       navigate("/ManagerMain")
 
     }
 
     //라이더 페이지이동
+    const riderbutton=(e)=>{
+        e.preventDefault()
+       navigate("/RiderMain")
 
+    }
 
     return (
         <div>
@@ -79,7 +83,7 @@ const Main = () => {
             </div>
         </div>
 
-        <div class="item-list" onClick={managerbutton}>
+        <div class="item-list" onClick={riderbutton}>
             <div class="item">
                 <p class="item-maintext">라이더 페이지</p>
             </div>

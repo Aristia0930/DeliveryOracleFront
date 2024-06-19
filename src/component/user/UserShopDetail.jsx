@@ -10,6 +10,7 @@ import { CompatClient, Stomp } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import TabMenu from '../commom/TabMenu.jsx';
 import Header from '../commom/Header.jsx';
+import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
 
 const UserShopDetail = () => {
     const location = useLocation();
@@ -20,11 +21,12 @@ const UserShopDetail = () => {
     const [basket, setBasket] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const { user, setUser,user_x,setX,user_y,setY } = useContext(AdminFlagContext);
-    const [stompClient, setStompClient] = useState(null);
+    // const [stompClient, setStompClient] = useState(null);
     const [mes, setMes] = useState("");
     const [useid, setUseid] = useState("");
     const [username, setUserName] = useState("");
     const[email,setEmail]=useState("")
+    const { stompClient, messages, sendMessage ,setMessages} = useWebSocket();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -79,26 +81,26 @@ const UserShopDetail = () => {
         fetchData();
         usedata();
         emailData();
-        const socket = new SockJS(`http://localhost:8080/ws?token=Bearer ${user}`);
-        const client = Stomp.over(socket);
+        // const socket = new SockJS(`http://localhost:8080/ws?token=Bearer ${user}`);
+        // const client = Stomp.over(socket);
 
-        client.connect({ Authorization: `Bearer ${user}` }, () => {
-            client.subscribe('/user/topic/sendMessage', (msg) => {
-                console.log("응답 메세지");
-                console.log(msg);
-                const newMessage = JSON.parse(msg.body);
-                setMes(newMessage);
-            });
-            setStompClient(client);
-        });
+        // client.connect({ Authorization: `Bearer ${user}` }, () => {
+        //     client.subscribe('/user/topic/sendMessage', (msg) => {
+        //         console.log("응답 메세지");
+        //         console.log(msg);
+        //         const newMessage = JSON.parse(msg.body);
+        //         setMes(newMessage);
+        //     });
+        //     setStompClient(client);
+        // });
 
-        return () => {
-            if (client) {
-                client.disconnect(() => {
-                    console.log('Disconnected');
-                });
-            }
-        };
+        // return () => {
+        //     if (client) {
+        //         client.disconnect(() => {
+        //             console.log('Disconnected');
+        //         });
+        //     }
+        // };
     }, [datas]);
 
     useEffect(() => {
@@ -111,8 +113,10 @@ const UserShopDetail = () => {
     }, [basket]);
 
     useEffect(() => {
+        console.log(messages)
         const handleMesUpdate = async () => {
-            if (mes.content === "true") {
+            if (messages.content === "true") {
+                console.log(messages.content)
                 const orderDetails = JSON.stringify(basket);
                 console.log("주문클릭");
 
@@ -129,6 +133,7 @@ const UserShopDetail = () => {
                     const response = await axios.post('http://localhost:8080/search/order', orderData);
                     console.log('Order response:', response.data);
                     if (response.data == 1) {
+                        setMessages("")
                         alert("주문 성공");
                     }
                 } catch (error) {
@@ -140,10 +145,10 @@ const UserShopDetail = () => {
             }
         };
 
-        if (mes.content) {
+        if (messages.content) {
             handleMesUpdate();
         }
-    }, [mes, basket, datas.store_id, totalPrice, useid]);
+    }, [messages, basket, datas.store_id, totalPrice, useid]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;

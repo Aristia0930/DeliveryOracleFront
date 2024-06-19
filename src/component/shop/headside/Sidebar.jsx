@@ -65,10 +65,15 @@ const Sidebar = () => {
                 <Nav.Link>댓글 관리</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/ShopOrder">
-            {/* <LinkContainer to="/ShopOrder" state={{id:email}}> */}
-                <Nav.Link>주문</Nav.Link>
+                <Nav.Link>현재 주문상태</Nav.Link>
             </LinkContainer>
-            {/* Add more links as needed */}
+            <LinkContainer to="/">
+                <Nav.Link>주문내역</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/">
+                <Nav.Link>매출내역</Nav.Link>
+            </LinkContainer>
+
         </Nav>
     );
 };

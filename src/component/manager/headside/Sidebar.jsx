@@ -15,6 +15,12 @@ const Sidebar = () => {
             <LinkContainer to="/manager-approve">
                 <Nav.Link>Manager Approve</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/">
+                <Nav.Link>주문내역</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/">
+                <Nav.Link>매출내역</Nav.Link>
+            </LinkContainer>
             {/* Add more links as needed */}
         </Nav>
     );

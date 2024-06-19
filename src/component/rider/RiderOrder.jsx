@@ -5,23 +5,22 @@ import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
-import RiderCallList from './RiderCallList.jsx';
+import RiderOrderList from './RiderOrderList.jsx';
 import { CompatClient, Stomp } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
-//샵 메뉴 참조 //주문내역도 그냥 이거 쓰자.
-const RiderCall = () => {
+const RiderOrder = () => {
     const {user,setUser,userId,setUserId,shopId,setShopid,user_x,setX,user_y,setY}=useContext(AdminFlagContext)
     const [orderData,setOrderData]=useState([])
     const [mes, setMes] = useState("");
-
+    // const [stompClient, setStompClient] = useState(null);
     const[data,setData]=useState([])
     const { stompClient, messages, sendMessage,setMessages } = useWebSocket();
     const orderList = async () => {
 
         try {
-            const response = await axios.get('http://localhost:8080/rider/order', {
-                params: { x:user_x,y:user_y}
+            const response = await axios.get('http://localhost:8080/rider/orderCall', {
+                params: {id:userId}
             });
             console.log(response.data)
             setOrderData(response.data)
@@ -32,29 +31,7 @@ const RiderCall = () => {
     useEffect(()=>{
 
         orderList();
-        // console.log("연결")
-        // const socket = new SockJS(`http://localhost:8080/ws?token=Bearer ${user}`);
-        // const client = Stomp.over(socket);
 
-        // client.connect({ Authorization: `Bearer ${user}` }, () => {
-        //     client.subscribe('/user/topic/sendMessage', (msg) => {
-        //         console.log("응답 메세지");
-        //         console.log(msg);
-        //         const newMessage = JSON.parse(msg.body);
-        //         console.log(newMessage)
-        //         setMes(newMessage);
-        //     });
-        //     setStompClient(client);
-        // });
-
-        // return () => {
-        //     if (client) {
-        //         client.disconnect(() => {
-        //             console.log('Disconnected');
-        //         });
-        //     }
-        // };
-        
     },[])
 
     useEffect(() => {
@@ -66,6 +43,7 @@ const RiderCall = () => {
                 //바꿔야할것들
  
                 const orderData = {
+                    deliveryId:data.deliveryId,
                     orderId: data.orderId,
                     storeId: data.storeId,
                     storeName: data.storeName,
@@ -78,16 +56,18 @@ const RiderCall = () => {
                 };
 
                 try {
-                    const response = await axios.post('http://localhost:8080/rider/call', orderData);
+                    const response = await axios.post('http://localhost:8080/rider/order/finish', orderData);
                     console.log('Order response:', response.data);
                     if (response.data == 1) {
                         orderList();
                         setMessages("")
-                        alert("배달 등록");
+                        alert("배달 완료");
                     }
                 } catch (error) {
                     console.error('Order error:', error);
                 }
+            } else {
+                alert("현재 음식점이 열려있지 않습니다")
             }
         };
 
@@ -124,7 +104,7 @@ const RiderCall = () => {
                         }, []).map((orderGroup, groupIndex) => (
                             <div id="main_container" key={groupIndex}>
                                 {orderGroup.map((order, index) => (
-                                    <RiderCallList key={index} order={order} handleOrder={handleOrder}/>
+                                    <RiderOrderList key={index} order={order} handleOrder={handleOrder}/>
                                 ))}
                             </div>
                         ))}
@@ -137,4 +117,4 @@ const RiderCall = () => {
     );
 };
 
-export default RiderCall;
+export default RiderOrder;

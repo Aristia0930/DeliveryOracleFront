@@ -7,41 +7,44 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Header from './headside/Header';
 import Sidebar from './headside/Sidebar';
 import ShopOrderList from './ShopOrderList';
+import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
 
 const ShopOrder = () => {
     const [message, setMessage] = useState('');
     const [mes, setMes] = useState([]);
     const [name, setName] = useState("");
-    const [stompClient, setStompClient] = useState(null);
+    // const [stompClient, setStompClient] = useState(null);
     const [names, setNames] = useState("user123");
     const { user, setUser, userId, setUserId, shopId, setShopid } = useContext(AdminFlagContext);
+    const { stompClient, messages, sendMessage } = useWebSocket();
     //주문 정보
     const[order,setOrder]=useState()
 
+    // useEffect(() => {
+    //     const token = user.token; // user.token이 올바른지 확인
+    //     const socket = new SockJS(`http://localhost:8080/ws?token=Bearer ${user}`);
+    //     const client = Stomp.over(socket);
+
+    //     client.connect({ Authorization: `Bearer ${user}` }, () => {
+    //         client.subscribe('/user/topic/sendMessage', (msg) => {
+    //             console.log(msg);
+    //             const newMessage = JSON.parse(msg.body);
+    //             setMes((prevMessages) => [...prevMessages, newMessage]);
+    //         });
+    //         setStompClient(client);
+    //     });
+
+    //     return () => {
+    //         if (client) {
+    //             client.disconnect(() => {
+    //                 console.log('Disconnected');
+    //             });
+    //         }
+    //     };
+    // }, [user]); // 'user'가 변경될 때마다 이 효과 실행
+
     useEffect(() => {
-        const token = user.token; // user.token이 올바른지 확인
-        const socket = new SockJS(`http://localhost:8080/ws?token=Bearer ${user}`);
-        const client = Stomp.over(socket);
-
-        client.connect({ Authorization: `Bearer ${user}` }, () => {
-            client.subscribe('/user/topic/sendMessage', (msg) => {
-                console.log(msg);
-                const newMessage = JSON.parse(msg.body);
-                setMes((prevMessages) => [...prevMessages, newMessage]);
-            });
-            setStompClient(client);
-        });
-
-        return () => {
-            if (client) {
-                client.disconnect(() => {
-                    console.log('Disconnected');
-                });
-            }
-        };
-    }, [user]); // 'user'가 변경될 때마다 이 효과 실행
-
-    useEffect(() => {
+        console.log("실행")
         const fetchData = async () => {
             console.log("삼정",shopId)
             try {
@@ -61,9 +64,9 @@ const ShopOrder = () => {
         };
 
         fetchData();
-    }, [mes]); // 'mes'가 변경될 때마다 이 효과 실행
+    }, [messages]); // 'mes'가 변경될 때마다 이 효과 실행
 
-    const sendMessage = () => {
+    const hsendMessage = () => {
         if (stompClient) {
             stompClient.send('/app/sendMessage', {}, JSON.stringify({ from: name, content: message }));
             setMessage('');

@@ -16,6 +16,9 @@ import UserMenuCaList from '../component/user/UserMenuCaList';
 import UserShopDetail from '../component/user/UserShopDetail';
 import ShopOrder from '../component/shop/ShopOrder';
 import RiderMain from '../component/rider/RiderMain';
+import RiderCall from '../component/rider/RiderCall';
+import RiderOrder from '../component/rider/RiderOrder';
+import RiderOrderList from '../component/rider/RiderOrderList';
 const Path = () => {
     return (
         <Routes>
@@ -35,7 +38,9 @@ const Path = () => {
             <Route path="/UserShopDetail" element={<UserShopDetail />} />
             <Route path="/ShopOrder" element={<ShopOrder />} />
             <Route path="/RiderMain" element={<RiderMain />} />
-            
+            <Route path="/RiderCall" element={<RiderCall />} />
+            <Route path="/RiderOrder" element={<RiderOrder />} />
+            <Route path="/RiderOrderList" element={<RiderOrderList />} />
         </Routes>
         
             
