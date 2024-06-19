@@ -27,7 +27,7 @@ const MyorderDetails = () => {
         <div >
 
                     {/* <Card.Title>주문 내역</Card.Title> */}
-                    {orderDetails.length > 0 ? (
+                    {orderDetails.length >= 0 ? (
                         orderDetails.map(order => (
                             <Card>
                             <Card.Body>
