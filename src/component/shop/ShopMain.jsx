@@ -26,7 +26,7 @@ const ShopMain = () => {
 
             const token = user
             console.log(token)
-            console.log("jwt 불러오는ㄴ")
+            console.log("jwt 불러오는 중")
             try {
                 const response = await axios.get('http://localhost:8080/api/api/userinfo', {
                     headers: {

@@ -11,6 +11,7 @@ import { AdminFlagContext } from "../../flag/Flag.jsx";
 import Header from './headside/Header';
 import { Container, Row, Col } from 'react-bootstrap';
 import Sidebar from './headside/Sidebar';
+
 const ShopJoin = () => {
   const {user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
   const location = useLocation();
@@ -113,7 +114,6 @@ const ShopJoin = () => {
       }
     };
   
-
     
     return (
         <div>
@@ -162,8 +162,6 @@ const ShopJoin = () => {
                   </Form.Select>
                 </p>
 
-
-
                 <p class="shop_img">
                     <label for="shop_img">업체이미지</label>
                     <input type="file" required="required/" accept="image/*" onChange={(e)=>setImg(e.target.files[0])}/>
@@ -172,8 +170,6 @@ const ShopJoin = () => {
                 <Button variant="primary" type="submit" id="submit_btn" class="submit_btn" onClick={shopjoin}>등록하기</Button>
                 </div>
             </form>
-
-
 
             <ul>
         {coordinates.map((coord, index) => (
@@ -185,18 +181,16 @@ const ShopJoin = () => {
       </ul>
 
 
+          </div>
+
+        </div>
+
       </div>
-
-    </div>
-
-  </div>
                     </Col>
                 </Row>
             </Container>
 
-
-            
-</div>
+    </div>
     );
 };
 

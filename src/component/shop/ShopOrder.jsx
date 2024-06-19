@@ -46,7 +46,7 @@ const ShopOrder = () => {
     useEffect(() => {
         console.log("실행")
         const fetchData = async () => {
-            console.log("삼정",shopId)
+            console.log("상점",shopId)
             try {
                 const rs = await axios.post("http://localhost:8080/store/order", { storeId: shopId });
                 if (rs.status === 200) {

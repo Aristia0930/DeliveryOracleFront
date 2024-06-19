@@ -10,10 +10,10 @@ const Sidebar = () => {
                 <Nav.Link>업체승인하기</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/manager-main">
-                <Nav.Link>Manager Main</Nav.Link>
+                <Nav.Link>악덕 업체 퇴출</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/manager-approve">
-                <Nav.Link>Manager Approve</Nav.Link>
+                <Nav.Link>악성 이용자 차단</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/">
                 <Nav.Link>주문내역</Nav.Link>
