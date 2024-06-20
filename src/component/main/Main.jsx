@@ -6,12 +6,16 @@ import Card from 'react-bootstrap/Card';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { useCookies } from 'react-cookie';
+import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
+
 const Main = () => {
     const navigate = useNavigate();
     const {user,setUser}=useContext(AdminFlagContext)
     // const [cookies] = useCookies(['jwtToken']);
-   
+    const { stompClient, messages, sendMessage ,setMessages} = useWebSocket();
+   setMessages("")
     //유저인증테스트
+    
 
     const onButtonClick=async(e) =>{
         e.preventDefault();

@@ -62,8 +62,13 @@ const ShopOrder = () => {
                 console.log("연결실패", e);
             }
         };
+        const timer = setTimeout(() => {
+            fetchData();
+          }, 200);
+      
+          // 컴포넌트가 언마운트될 때 타이머를 정리
+          return () => clearTimeout(timer);
 
-        fetchData();
     }, [messages]); // 'mes'가 변경될 때마다 이 효과 실행
 
     const hsendMessage = () => {

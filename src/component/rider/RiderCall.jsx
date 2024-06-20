@@ -9,12 +9,13 @@ import RiderCallList from './RiderCallList.jsx';
 import { CompatClient, Stomp } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
+import { Link, useNavigate } from 'react-router-dom';
 //샵 메뉴 참조 //주문내역도 그냥 이거 쓰자.
 const RiderCall = () => {
+
     const {user,setUser,userId,setUserId,shopId,setShopid,user_x,setX,user_y,setY}=useContext(AdminFlagContext)
     const [orderData,setOrderData]=useState([])
-    const [mes, setMes] = useState("");
-
+    const navigate = useNavigate();    
     const[data,setData]=useState([])
     const { stompClient, messages, sendMessage,setMessages } = useWebSocket();
     const orderList = async () => {
@@ -30,6 +31,10 @@ const RiderCall = () => {
         }
     };
     useEffect(()=>{
+        if (!user_x){
+            alert("로그인해주세요")
+            navigate("/")
+        }
 
         orderList();
         // console.log("연결")

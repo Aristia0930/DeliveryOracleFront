@@ -84,7 +84,7 @@ import TabMenu from '../commom/TabMenu';
 
 const UserMenuCaList = () => {
     const location = useLocation();
-    const caInfo = location.state?.ca;
+    const caInfo = location.state?.ca || -1;//카테고리 정보
     const y = location.state?.y;
     const x = location.state?.x;
     const [data, setData] = useState([]);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,8 +13,9 @@ import Header from '../commom/Header.jsx';
 import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
 
 const UserShopDetail = () => {
+    const navigate = useNavigate();
     const location = useLocation();
-    const datas = location.state.data;
+    let datas = location.state.data || -1;
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -31,6 +32,7 @@ const UserShopDetail = () => {
     useEffect(() => {
         const fetchData = async () => {
             console.log(datas.store_id)
+            //메뉴정보 불러옴
             try {
                 const rs = await axios.get("http://localhost:8080/search/menuList", {
                     params: { id: datas.store_id }
@@ -135,6 +137,7 @@ const UserShopDetail = () => {
                     if (response.data == 1) {
                         setMessages("")
                         alert("주문 성공");
+                        navigate('/');
                     }
                 } catch (error) {
                     console.error('Order error:', error);
@@ -187,6 +190,9 @@ const UserShopDetail = () => {
 
     const handleOrder = async () => {
         console.log("유저아이디", username);
+        if(!user){
+            alert("로그인해주세요")
+        }
         if (stompClient) {
             //from 에 나중에 이 상점 주인 아이디를 넣어야 하는데 이때 앞에서 상점 주인 아이디(이메일을)까지 받아와야한다.
             stompClient.send('/app/sendMessage', {}, JSON.stringify({ from: email, content: "message" }));
@@ -213,19 +219,15 @@ const UserShopDetail = () => {
                         <div className="section" id="b">
                             <Nav fill variant="tabs" defaultActiveKey="/home">
                                 <Nav.Item>
-                                    <Nav.Link href="#">Active</Nav.Link>
+                                    <Nav.Link href="#"><Link to={`/UserShopDetail`} state={{ data: datas }}>메뉴</Link></Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link eventKey="link-1">Loooonger NavLink</Nav.Link>
+                                    <Nav.Link eventKey="link-1">댓글</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link eventKey="link-2">Link</Nav.Link>
+                                    <Nav.Link eventKey="link-2"><Link to={`/UserShopIntroduce`} state={{ data: datas }}>매장소개</Link></Nav.Link>
                                 </Nav.Item>
-                                <Nav.Item>
-                                    <Nav.Link eventKey="disabled" disabled>
-                                        Disabled
-                                    </Nav.Link>
-                                </Nav.Item>
+
                             </Nav>
                             {data && data.map(array => (
                                 <UserShopDetailMenu key={array.menuName} data={array} plus={handlePlus} />

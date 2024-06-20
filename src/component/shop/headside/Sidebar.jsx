@@ -26,9 +26,11 @@ const Sidebar = () => {
                 }
             } catch (e) {
                 console.log("연결실패", e);
-            }}
+            }} 
+        
+        if(userId){
 
-        fetchData();
+        fetchData();}
     }, [userId]); 
     
 

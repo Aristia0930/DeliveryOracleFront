@@ -24,11 +24,19 @@ const Header = () => {
         navigate("/UserJoin")
 
     }
+
+    const main=(e)=>{
+        e.preventDefault()
+        navigate("/")
+
+    }
+
+
     return (
         
         <Navbar expand="xl" className="navbar">
             <Container>
-                <p>배달</p>
+                <p onClick={main}>배달</p>
 
                 <Search/>
                 <Form className="d-flex">

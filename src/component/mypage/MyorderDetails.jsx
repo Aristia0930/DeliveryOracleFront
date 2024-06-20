@@ -2,10 +2,17 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { Card } from 'react-bootstrap';
+import Header from '../commom/Header.jsx';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MypageDetailsList from './MypageDetailsList.jsx';
 
+//주문내역
 const MyorderDetails = () => {
     const {user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
     const [orderDetails, setOrderDetails] = useState([]);
+
+    
 
     useEffect(() => {
         const fetchOrderDetails = async () => {
@@ -24,29 +31,19 @@ const MyorderDetails = () => {
     }, [user]);
 
     return (
-        <div >
+        <div>
+            <Header />
+        <div id="main_container2" className="text-center">
 
                     {/* <Card.Title>주문 내역</Card.Title> */}
-                    {orderDetails.length >= 0 ? (
-                        orderDetails.map(order => (
-                            <Card>
-                            <Card.Body>
-                            <div key={order.orderId}>
-                                <p><strong>Order ID:</strong> {order.orderId}</p>
-                                <p><strong>Store ID:</strong> {order.storeId}</p>
-                                <p><strong>Order Details:</strong> {order.orderDetails}</p>
-                                <p><strong>Total Price:</strong> {order.totalPrice}</p>
-                                <p><strong>Order Date:</strong> {order.orderDate}</p>
-                                <hr />
-                            </div>
-                            </Card.Body>
-                            </Card>
+                    {
+                        orderDetails.map(order => (<MypageDetailsList order={order} />
+            
                             
                         ))
-                    ) : (
-                        <p>Loading order details...</p>
-                    )}
+                   }
   
+        </div>
         </div>
     );
 };

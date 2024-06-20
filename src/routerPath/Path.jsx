@@ -21,6 +21,8 @@ import RiderOrder from '../component/rider/RiderOrder';
 import RiderOrderList from '../component/rider/RiderOrderList';
 import MypageMain from '../component/mypage/MypageMain';
 import MyorderDetails from '../component/mypage/MyorderDetails';
+import MypageComments from '../component/mypage/MypageComments';
+import UserShopIntroduce from '../component/user/UserShopIntroduce';
 
 const Path = () => {
     return (
@@ -47,6 +49,8 @@ const Path = () => {
             <Route path="/RiderCall" element={<RiderCall />} />
             <Route path="/RiderOrder" element={<RiderOrder />} />
             <Route path="/RiderOrderList" element={<RiderOrderList />} />
+            <Route path="/MypageComments" element={<MypageComments />} />
+            <Route path="/UserShopIntroduce" element={<UserShopIntroduce />} />
         </Routes>
         
             
