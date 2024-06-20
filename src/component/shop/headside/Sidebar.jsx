@@ -67,10 +67,10 @@ const Sidebar = () => {
             <LinkContainer to="/ShopOrder">
                 <Nav.Link>현재 주문상태</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/">
+            <LinkContainer to="/ShopOrderReceipt">
                 <Nav.Link>주문내역</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/">
+            <LinkContainer to="/ShopRevenue">
                 <Nav.Link>매출내역</Nav.Link>
             </LinkContainer>
 

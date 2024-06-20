@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Search from './Search';
 import UserInfo from './UserInfo';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Header = () => {
@@ -28,7 +28,7 @@ const Header = () => {
         
         <Navbar expand="xl" className="navbar">
             <Container>
-                <p>배달</p>
+                <Link to="/"><h2>Delivery.Oracle</h2></Link>
 
                 <Search/>
                 <Form className="d-flex">
