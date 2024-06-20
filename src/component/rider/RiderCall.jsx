@@ -78,7 +78,11 @@ const RiderCall = () => {
                     riderId:userId, // 내꺼
                     distanceToStore:data.distanceToStore,
                     distanceToUser:data.distanceToUser,
-                    deliveryPrice:data.deliveryPrice
+                    deliveryPrice:data.deliveryPrice,
+                    user_x:data.user_x,
+                    user_y:data.user_y,
+                    store_x:data.store_x,
+                    store_y:data.store_y
 
                 };
 

@@ -145,6 +145,7 @@ const UserShopDetail = () => {
             } else {
                 alert("현재 음식점이 열려있지 않습니다")
                 console.log("주문 실패");
+                setMessages("")
             }
         };
 
