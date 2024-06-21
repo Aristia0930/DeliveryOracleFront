@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,11 +7,35 @@ import Button from 'react-bootstrap/Button';
 import Search from './Search';
 import UserInfo from './UserInfo';
 import { Link, useNavigate } from 'react-router-dom';
+import { AdminFlagContext } from "../../flag/Flag.jsx";
+import axios from 'axios';
 
 
 const Header = () => {
 
+
+    const { user, setUser,user_x,setX,user_y,setY,userId,setUserId } = useContext(AdminFlagContext);
     const navigate = useNavigate();  
+
+    
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/api/api/userinfo', {
+                    headers: {
+                        Authorization: `Bearer ${user}`
+                    }
+                });
+                console.log(response.data);
+                setUserId(response.data.user_id)
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        if(user!=null){
+
+        fetchUserInfo();}
+    }, [user]);
     
     const userlogin=(e)=>{
         e.preventDefault()
@@ -25,8 +49,9 @@ const Header = () => {
 
     }
 
-    const main=(e)=>{
+    const userlogout=(e)=>{
         e.preventDefault()
+        setUser(null)
         navigate("/")
 
     }
@@ -40,10 +65,14 @@ const Header = () => {
 
                 <Search/>
                 <Form className="d-flex">
+                    {user==null&&
+                    <div>
                     <Button onClick={userlogin}>로그인</Button>
-                    <Button onClick={userjoin}>회원가입</Button>
+                    <Button onClick={userjoin}>회원가입</Button></div>}
+                    {user&& <Button onClick={userlogout}>로그아웃</Button>}
                 </Form>
-                <UserInfo />
+                {user&&
+                <UserInfo />}
             </Container>
 
 

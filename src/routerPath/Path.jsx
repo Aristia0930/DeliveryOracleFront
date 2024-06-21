@@ -23,7 +23,7 @@ import MypageMain from '../component/mypage/MypageMain';
 import MyorderDetails from '../component/mypage/MyorderDetails';
 import ShopOrderReceipt from '../component/shop/ShopOrderReceipt';
 import ShopRevenue from '../component/shop/ShopRevenue';
-
+import UserSearchList from '../component/user/UserSearchList';
 import MypageComments from '../component/mypage/MypageComments';
 import UserShopIntroduce from '../component/user/UserShopIntroduce';
 
@@ -59,6 +59,8 @@ const Path = () => {
             <Route path="/RiderOrderList" element={<RiderOrderList />} />
             <Route path="/MypageComments" element={<MypageComments />} />
             <Route path="/UserShopIntroduce" element={<UserShopIntroduce />} />
+
+            <Route path="/UserSearchList" element={<UserSearchList />} />
         </Routes>
         
             
