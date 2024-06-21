@@ -21,6 +21,9 @@ import RiderOrder from '../component/rider/RiderOrder';
 import RiderOrderList from '../component/rider/RiderOrderList';
 import MypageMain from '../component/mypage/MypageMain';
 import MyorderDetails from '../component/mypage/MyorderDetails';
+import ShopOrderReceipt from '../component/shop/ShopOrderReceipt';
+import ShopRevenue from '../component/shop/ShopRevenue';
+
 import MypageComments from '../component/mypage/MypageComments';
 import UserShopIntroduce from '../component/user/UserShopIntroduce';
 
@@ -29,19 +32,24 @@ const Path = () => {
         <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/UserMain" element={<UserMain />} />
-            <Route path="/ShopMain" element={<ShopMain />} />
             <Route path="/UserLogin" element={<UserLogin />} />
             <Route path="/UserJoin" element={<UserJoin />} />
-            <Route path="/ShopJoin" element={<ShopJoin />} />
+            <Route path="/UserMenuCaList" element={<UserMenuCaList />} />
+            <Route path="/UserShopDetail" element={<UserShopDetail />} />
+
             <Route path="/ManagerMain" element={<ManagerMain />} />
             <Route path="/ManagerApprove" element={<ManagerApprove />} />
+
+            <Route path="/ShopJoin" element={<ShopJoin />} />
+            <Route path="/ShopMain" element={<ShopMain />} />
             <Route path="/ShopMenu" element={<ShopMenu />} />
             <Route path="/ShopMenuRs" element={<ShopMenuRs />} />
             <Route path="/ShopMenuList" element={<ShopMenuList />} />
             <Route path="/ShopMenuedit" element={<ShopMenuedit />} />
-            <Route path="/UserMenuCaList" element={<UserMenuCaList />} />
-            <Route path="/UserShopDetail" element={<UserShopDetail />} />
             <Route path="/ShopOrder" element={<ShopOrder />} />
+            <Route path="/ShopOrderReceipt" element={<ShopOrderReceipt/>} />
+            <Route path="/ShopRevenue" element={<ShopRevenue/>} />
+
             <Route path="/MypageMain" element={<MypageMain />} />
             <Route path="/MyorderDetails" element={<MyorderDetails/>} />
         

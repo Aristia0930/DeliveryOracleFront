@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Card from 'react-bootstrap/Card';
+import { Card, Container, Row, Col } from 'react-bootstrap';
 import { AdminFlagContext } from '../../flag/Flag.jsx';
 import { useCookies } from 'react-cookie';
-import Header from './headside/Header.jsx';
+import Header from '../commom/Header';
+import './Mypage.css';
 
 const MypageMain = () => {
     const navigate = useNavigate();
@@ -62,10 +63,58 @@ const MypageMain = () => {
         }
     };
 
+
     return (
         <div>
             <Header />
-            <div className="container mt-5">
+            <Container className="mt-5">
+            <Card>
+                <Card.Body>
+                    <Card.Title>유저인포</Card.Title>
+                    <div className="user-profile d-flex align-items-center mb-4">
+                        {userInfo ? (
+                            <div className="d-flex align-items-center">
+                                <img src={userInfo.profilePicture} alt="Profile" className="profile-img mr-3" />
+                                <div>
+                                    <p className="mb-0"><strong>이메일(id): {userInfo.email}</strong></p>
+                                    <p className="mb-0"><strong>Username: {userInfo.name}</strong></p>
+                                    <p className="mb-0">
+                                        <Link to="/familyAccount">계정관리</Link> | <Link to="/addressManagement">주소관리</Link>
+                                    </p>
+                                </div>
+                            </div>
+                        ) : (
+                            <p>Loading user info...</p>
+                        )}
+                    </div>
+
+                    <div className="navigation-boxes">
+                        <Row className="text-center">
+                            <Col xs={12} md={6} className="mb-3">
+                                <div className="nav-box">
+                                    <Link to="/MyorderDetails" className="nav-link">주문내역</Link>
+                                </div>
+                            </Col>
+                            <Col xs={12} md={6} className="mb-3">
+                                <div className="nav-box">
+                                    <Link to="/MypageComments" className="nav-link">리뷰관리</Link>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </Card.Body>
+            </Card>
+        </Container>
+        <hr />
+        <Container className="mt-5">
+            <Card>
+                <Card.Body>
+                    <Card.Title>추가해서 넣을 거 있으면 넣기</Card.Title>
+                    {/* Add company name details here */}
+                </Card.Body>
+            </Card>
+        </Container>
+            {/* <div className="container mt-5">
                 <Card>
                     <Card.Body>
                         <Card.Title>사용자 정보</Card.Title>
@@ -82,29 +131,29 @@ const MypageMain = () => {
                 </Card>
             </div>
             <div id="main_container">
-            <div className="container mt-5">
-                    <Link class="item-list " to={'/MyorderDetails'}>
-                        <div class="item ">
-                            <p class="item-maintext">주문내역</p>
+                <div className="container mt-5">
+                    <Link className="item-list" to="/MyorderDetails">
+                        <div className="item">
+                            <p className="item-maintext">주문내역</p>
                         </div>
                     </Link>
-            </div>
-            <div className="container mt-5">
-                    <Link class="item-list " to={'/MypageComments'}>
-                        <div class="item ">
-                            <p class="item-maintext">리뷰관리</p>
+                </div>
+                <div className="container mt-5">
+                    <Link className="item-list" to="/MypageComments">
+                        <div className="item">
+                            <p className="item-maintext">리뷰관리</p>
                         </div>
                     </Link>
-            </div>
+                </div>
             </div>
             <div className="container mt-5">
                 <Card>
                     <Card.Body>
                         <Card.Title>업체이름</Card.Title>
-                        {/* Add company name details here */}
+                        // Add company name details here 
                     </Card.Body>
                 </Card>
-            </div>
+            </div> */}
             <div className="container mt-5">
                 <Card>
                     <Card.Body>
@@ -141,7 +190,7 @@ const MypageMain = () => {
         </div>
     );
 };
- 
+
 export default MypageMain;
 
 // const {user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
@@ -167,4 +216,4 @@ export default MypageMain;
 //         }}
 
 //     fetchData();
-// }, [userId]); 
+// }, [userId]);
