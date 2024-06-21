@@ -1,20 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
 import Header from './headside/Header';
 import Sidebar from './headside/Sidebar';
-import ShopOrderReceiptList from './ShopOrderReceiptList'; // ShopOrderReceiptList를 불러옵니다.
-import { AdminFlagContext } from "../../flag/Flag.jsx"; // AdminFlagContext를 불러옵니다.
+import ManagerOrderReceiptList from './ManagerOrderReceiptList';
 
-const ShopOrderReceipt = () => {
-    const { shopId } = useContext(AdminFlagContext);
-    const [order, setOrder] = useState(); // 주문 정보 상태를 설정합니다.
+const ManagerOrderReceipt = () => {
+    const [order, setOrder] = useState([]); // 주문 정보 상태를 설정합니다.
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/store/orderReceipt", {
-                    params: { store_id: shopId }
+                const token = localStorage.getItem('token'); // 로컬 스토리지에서 JWT 토큰 가져오기
+                const response = await axios.get("http://localhost:8080/admin/OrderReceipt", {
+                    headers: {
+                        Authorization: `Bearer ${token}` // 요청 헤더에 JWT 토큰 포함
+                    }
                 });
 
                 if (response.status === 200) {
@@ -30,7 +31,7 @@ const ShopOrderReceipt = () => {
             }
         };
         fetchData();
-    }, [shopId]);
+    }, []); // 빈 배열을 종속성 배열로 추가
 
     return (
         <div>
@@ -42,7 +43,7 @@ const ShopOrderReceipt = () => {
                     </Col>
                     <Col xs={10} id="page-content-wrapper">
                         <h1>주문내역 확인</h1>
-                        <ShopOrderReceiptList orders={order} />
+                        <ManagerOrderReceiptList orders={order} />
                     </Col>
                 </Row>
             </Container>
@@ -50,4 +51,4 @@ const ShopOrderReceipt = () => {
     );
 };
 
-export default ShopOrderReceipt;
+export default ManagerOrderReceipt;

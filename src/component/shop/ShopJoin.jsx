@@ -128,10 +128,7 @@ const ShopJoin = () => {
                     <div id="main_container">
     
     <div class="shop_container">
-
         <div class="form">
-
-
             <form action="#">
                 <p class="shop_name">
                     <label for="shop_name">업체이름</label>
@@ -144,7 +141,6 @@ const ShopJoin = () => {
                 {popup && <AddressP company={address} setcompany={setAddress}></AddressP>}
              
                 </p>
-
 
                 <p class="shop_text">
                     <label for="shop_text">업체설명</label>
@@ -178,13 +174,9 @@ const ShopJoin = () => {
           </li>
 
         ))}
-      </ul>
-
-
+            </ul> 
           </div>
-
         </div>
-
       </div>
                     </Col>
                 </Row>

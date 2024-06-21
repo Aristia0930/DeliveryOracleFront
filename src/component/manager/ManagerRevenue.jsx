@@ -1,7 +1,7 @@
 // 리엑트 차트 그래프 예제 코드 
 import Rechart from "./Rechart";
 
-function App() {
+function ManagerRevenue() {
     return (
         <div style={{ width: 1000, height: 800 }}>
             <Rechart />
@@ -9,4 +9,4 @@ function App() {
     );
 }
 
-export default App;
+export default ManagerRevenue;
