@@ -15,10 +15,10 @@ const Sidebar = () => {
             <LinkContainer to="/ManagerUserblock">
                 <Nav.Link>악성 이용자 차단</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/">
+            <LinkContainer to="/ManagerOrderReceipt">
                 <Nav.Link>주문내역</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/">
+            <LinkContainer to="/ManagerRevenue">
                 <Nav.Link>매출내역</Nav.Link>
             </LinkContainer>
             {/* Add more links as needed */}

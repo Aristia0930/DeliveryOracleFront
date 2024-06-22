@@ -8,6 +8,8 @@ import UserJoin from '../component/user/UserJoin';
 import ShopJoin from '../component/shop/ShopJoin';
 import ManagerMain from '../component/manager/ManagerMain';
 import ManagerApprove from '../component/manager/ManagerApprove';
+import ManagerOrderReceipt from '../component/manager/ManagerOrderReceipt';
+import ManagerRevenue from '../component/manager/ManagerRevenue';
 import ShopMenu from '../component/shop/ShopMenu';
 import ShopMenuRs from '../component/shop/ShopMenuRs';
 import ShopMenuList from '../component/shop/ShopMenuList';
@@ -23,6 +25,7 @@ import MypageMain from '../component/mypage/MypageMain';
 import MyorderDetails from '../component/mypage/MyorderDetails';
 import ShopOrderReceipt from '../component/shop/ShopOrderReceipt';
 import ShopRevenue from '../component/shop/ShopRevenue';
+import MypageUserEdit from '../component/mypage/MypageUserEdit';
 import UserSearchList from '../component/user/UserSearchList';
 import MypageComments from '../component/mypage/MypageComments';
 import UserShopIntroduce from '../component/user/UserShopIntroduce';
@@ -39,6 +42,8 @@ const Path = () => {
 
             <Route path="/ManagerMain" element={<ManagerMain />} />
             <Route path="/ManagerApprove" element={<ManagerApprove />} />
+            <Route path="/ManagerOrderReceipt" element={<ManagerOrderReceipt />} />
+            <Route path="/ManagerRevenue" element={<ManagerRevenue />} />
 
             <Route path="/ShopJoin" element={<ShopJoin />} />
             <Route path="/ShopMain" element={<ShopMain />} />
@@ -52,6 +57,7 @@ const Path = () => {
 
             <Route path="/MypageMain" element={<MypageMain />} />
             <Route path="/MyorderDetails" element={<MyorderDetails/>} />
+            <Route path="/MypageUserEdit" element={<MypageUserEdit/>} />
         
             <Route path="/RiderMain" element={<RiderMain />} />
             <Route path="/RiderCall" element={<RiderCall />} />

@@ -11,12 +11,9 @@ const MypageMain = () => {
     const navigate = useNavigate();
     const { user,setUser,userId,setUserId,shopId,setShopid } = useContext(AdminFlagContext); //현재 로그인된 사용자 정보 얻기 user 정보는 서버 요청 시 인증 토큰으로 사용됨.
     const [cookies] = useCookies(['jwtToken']);
-    const [newPassword, setNewPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [message, setMessage] = useState('');
     const [userInfo, setUserInfo] = useState(null);
 
-    // useEffect는 컴포넌트가 처음 렌더링될 때, 그리고 user가 변경될 때마다 서버에서 사용자 정보를 가져와 userInfo를 업데이트해요.
+    // useEffect는 컴포넌트가 처음 렌더링될 때, 그리고 user가 변경될 때마다 서버에서 사용자 정보를 가져와 userInfo를 업데이트 한다.
     // fetchUserInfo 함수는 axios.get을 사용하여 서버에 요청을 보내고
     // 서버에서 받은 응답 데이터를 setUserInfo(response.data)를 사용해 userInfo 상태로 저장해요.
     // userInfo가 업데이트되면 컴포넌트는 다시 렌더링되고, userInfo의 값이 화면에 표시돼요.
@@ -40,30 +37,6 @@ const MypageMain = () => {
         fetchUserInfo();
     }, [user]);
 
-    const handlePasswordChange = async (e) => {
-        e.preventDefault();
-        if (newPassword !== confirmPassword) {
-            setMessage('Passwords do not match');
-            return;
-        }
-
-        const token = cookies.jwtToken;
-        try {
-            await axios.post('http://localhost:8080/api/api/change-password', {
-                password: newPassword,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-            setMessage('Password changed successfully');
-        } catch (error) {
-            console.log(error);
-            setMessage('Error changing password');
-        }
-    };
-
-
     return (
         <div>
             <Header />
@@ -74,13 +47,11 @@ const MypageMain = () => {
                     <div className="user-profile d-flex align-items-center mb-4">
                         {userInfo ? (
                             <div className="d-flex align-items-center">
-                                <img src={userInfo.profilePicture} alt="Profile" className="profile-img mr-3" />
+                                <img src="/imgs/profile.jpg" alt="Profile" className="profile-img mr-3" />
                                 <div>
                                     <p className="mb-0"><strong>이메일(id): {userInfo.email}</strong></p>
                                     <p className="mb-0"><strong>Username: {userInfo.name}</strong></p>
-                                    <p className="mb-0">
-                                        <Link to="/familyAccount">계정관리</Link> | <Link to="/addressManagement">주소관리</Link>
-                                    </p>
+                                    <p className="mb-0"><Link to="/MypageUserEdit">계정관리/수정</Link> </p>
                                 </div>
                             </div>
                         ) : (
@@ -154,39 +125,6 @@ const MypageMain = () => {
                     </Card.Body>
                 </Card>
             </div> */}
-            <div className="container mt-5">
-                <Card>
-                    <Card.Body>
-                        <Card.Title>비밀번호 변경</Card.Title>
-                        <form onSubmit={handlePasswordChange}>
-                            <div className="mb-3">
-                                <label htmlFor="newPassword" className="form-label">New Password</label>
-                                <input 
-                                    type="password" 
-                                    className="form-control" 
-                                    id="newPassword" 
-                                    value={newPassword} 
-                                    onChange={(e) => setNewPassword(e.target.value)} 
-                                    required 
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="confirmPassword" className="form-label">Confirm New Password</label>
-                                <input 
-                                    type="password" 
-                                    className="form-control" 
-                                    id="confirmPassword" 
-                                    value={confirmPassword} 
-                                    onChange={(e) => setConfirmPassword(e.target.value)} 
-                                    required 
-                                />
-                            </div>
-                            <button type="submit" className="btn btn-primary">Change Password</button>
-                        </form>
-                        {message && <p className="mt-3">{message}</p>}
-                    </Card.Body>
-                </Card>
-            </div>
         </div>
     );
 };
