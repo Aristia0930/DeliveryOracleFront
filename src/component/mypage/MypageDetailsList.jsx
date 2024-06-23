@@ -36,6 +36,10 @@ const MypageDetailsList = ({ order }) => {
         navigate("/MypageComments", { state: { cleanOrderDetails: JSON.stringify(cleanOrderDetails) } });
     }
 
+    const but=(e)=>{
+        e.preventDefault();
+    }
+
     return (
         <div>
             <Card key={order.orderId} style={{ width: '40rem', margin: 'auto', marginBottom: '20px' }}>
@@ -53,7 +57,16 @@ const MypageDetailsList = ({ order }) => {
                         <p><strong>가격:</strong> {order.totalPrice}</p>
                         <p><strong>주문날짜:</strong> {order.orderDate}</p>
                         <hr />
-                        <Button onClick={comment}>리뷰쓰기</Button>
+                        {order.orderApprovalStatus==4&&
+                        <Button onClick={comment}>리뷰쓰기</Button>}
+                        {order.orderApprovalStatus==3&&
+                        <Button onClick={but}>주문이 거절 되었습니다.</Button>}
+                        {order.orderApprovalStatus==2&&
+                        <Button onClick={but}>배달중입니다.</Button>}
+                        {order.orderApprovalStatus==1&&
+                        <Button onClick={but}>라이더 배정중입니다.</Button>}
+                        {order.orderApprovalStatus==0&&
+                        <Button onClick={but}>음식점에서 주문확인중</Button>}
                     </div>
                 </Card.Body>
             </Card>
