@@ -7,6 +7,7 @@ const ManagerRechart = () => {
 
   const [data, setData] = useState([]);
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,7 +33,10 @@ const ManagerRechart = () => {
 
   const processSalesData = (salesData) => {
     const salesByDate = salesData.reduce((acc, sale) => {
-      const date = sale.order_date.split('T')[0]; // 날짜만 추출
+      
+      const koreanDate = new Date(new Date(sale.order_date).getTime() + (9 * 60 * 60 * 1000));
+      console.log(koreanDate.toISOString())
+      const date = koreanDate.toISOString().split('T')[0]; // 날짜만 추출
       if (!acc[date]) {
         acc[date] = 0;
       }
