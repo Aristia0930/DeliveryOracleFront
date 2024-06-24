@@ -64,7 +64,7 @@ const ShopOrder = () => {
         };
         const timer = setTimeout(() => {
             fetchData();
-          }, 700);
+          }, 450);
       
           // 컴포넌트가 언마운트될 때 타이머를 정리
           return () => clearTimeout(timer);

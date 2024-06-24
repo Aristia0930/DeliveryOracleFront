@@ -59,12 +59,14 @@ const MypageDetailsList = ({ order }) => {
                         <hr />
                         {order.orderApprovalStatus==4&&
                         <Button onClick={comment}>리뷰쓰기</Button>}
-                        {order.orderApprovalStatus==3&&
+                        {order.orderApprovalStatus==5&&
                         <Button onClick={but}>주문이 거절 되었습니다.</Button>}
-                        {order.orderApprovalStatus==2&&
+                        {order.orderApprovalStatus==3&&
                         <Button onClick={but}>배달중입니다.</Button>}
-                        {order.orderApprovalStatus==1&&
+                        {order.orderApprovalStatus==2&&
                         <Button onClick={but}>라이더 배정중입니다.</Button>}
+                          {order.orderApprovalStatus==1&&
+                        <Button onClick={but}>조리중</Button>}
                         {order.orderApprovalStatus==0&&
                         <Button onClick={but}>음식점에서 주문확인중</Button>}
                     </div>

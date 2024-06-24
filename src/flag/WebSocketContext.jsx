@@ -8,6 +8,7 @@ const WebSocketContext = createContext(null);
 export const WebSocketProvider = ({ children }) => {
     const [stompClient, setStompClient] = useState(null);
     const [messages, setMessages] = useState([]);
+    const [messages2, setMessages2] = useState([]);
     const [connected, setConnected] = useState(false); // 연결 상태를 나타내는 변수 추가
     const { user } = useContext(AdminFlagContext);
 
@@ -19,8 +20,46 @@ export const WebSocketProvider = ({ children }) => {
             client.connect({ Authorization: `Bearer ${user}` }, () => {
                 client.subscribe('/user/topic/sendMessage', (msg) => {
                     const newMessage = JSON.parse(msg.body);
-                    console.log(newMessage);
+                    console.log('Message from sendMessage:', newMessage);
                     setMessages(newMessage);
+                });
+
+                client.subscribe('/user/topic/sendMessage2', (msg) => {
+                    const newMessage = JSON.parse(msg.body);
+                    console.log('Message from sendMessage2:', newMessage);
+                    setMessages2(newMessage);
+                });
+                setStompClient(client);
+                setConnected(true); // 연결 상태 업데이트
+            }, (error) => {
+                console.error('Connection error:', error);
+                setConnected(false); // 연결 실패 시 상태 업데이트
+            });
+
+            return () => {
+                if (client) {
+                    client.disconnect(() => {
+                        console.log('Disconnected');
+                        setConnected(false); // 연결 해제 시 상태 업데이트
+                    });
+                }
+            };
+        }
+        else {
+            const socket = new SockJS(`http://localhost:8080/ws`);
+            const client = Stomp.over(socket);
+
+            client.connect({}, () => {
+                client.subscribe('/user/topic/sendMessage', (msg) => {
+                    const newMessage = JSON.parse(msg.body);
+                    console.log('Message from sendMessage:', newMessage);
+                    setMessages(newMessage);
+                });
+
+                client.subscribe('/user/topic/sendMessage2', (msg) => {
+                    const newMessage = JSON.parse(msg.body);
+                    console.log('Message from sendMessage2:', newMessage);
+                    setMessages2(newMessage);
                 });
                 setStompClient(client);
                 setConnected(true); // 연결 상태 업데이트
@@ -49,7 +88,7 @@ export const WebSocketProvider = ({ children }) => {
     };
 
     return (
-        <WebSocketContext.Provider value={{ stompClient, messages, sendMessage, setMessages, connected }}>
+        <WebSocketContext.Provider value={{ stompClient, messages, sendMessage, setMessages, connected ,messages2, setMessages2}}>
             {children}
         </WebSocketContext.Provider>
     );

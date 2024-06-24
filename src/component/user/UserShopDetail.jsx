@@ -92,7 +92,7 @@ const UserShopDetail = () => {
 
     useEffect(() => {
         const handleMesUpdate = async () => {
-            if (messages.content === "true") {
+            if (messages.content === "true" && totalPrice>0) {
                 console.log(messages.content);
                 const orderDetails = JSON.stringify(basket);
                 console.log("주문클릭");
@@ -118,7 +118,7 @@ const UserShopDetail = () => {
                     console.error('Order error:', error);
                 }
             } else {
-                alert("현재 음식점이 열려있지 않습니다");
+                // alert("현재 음식점이 열려있지 않습니다");
                 console.log("주문 실패");
                 setMessages("");
             }
@@ -173,7 +173,8 @@ const UserShopDetail = () => {
         if (connected) {
             stompClient.send('/app/sendMessage', {}, JSON.stringify({ from: email, content: "message" }));
         } else {
-            alert("STOMP 클라이언트가 연결되지 않았습니다.");
+            alert("잘못된접근입니다.");
+            navigate('/');
         }
     };
 

@@ -30,16 +30,17 @@ const ShopOrderList = ({ menu }) => {
         }
     }).join(", ");
 
-    //배달기사 배정하기 1부여
+    //배달기사 배정하기 2부여
     const ondeliver= async(e)=>{
         e.preventDefault();
-        //주문상태가 0 일경우에만
-        if(menu.orderApprovalStatus==0){
+
+        if(menu.orderApprovalStatus==1){
             try{
                 const rs=await axios.get("http://localhost:8080/store/rider",{params:{orderId:menu.orderId}})
                 if(rs.data!=-1){
-                    menu.orderApprovalStatus=1;
-                    setSt(true)
+                    console.log("라이더배정중")
+                    menu.orderApprovalStatus=2;
+                    setSt(false)
                 }
                 
             }
@@ -59,7 +60,27 @@ const ShopOrderList = ({ menu }) => {
                 const rs=await axios.get("http://localhost:8080/store/refuse",{params:{orderId:menu.orderId}})
                 if(rs.data!=-1){
                     setrefuse(true)
-                    menu.orderApprovalStatus=3
+                    menu.orderApprovalStatus=5
+                }
+                
+            }
+             catch (e) {
+                    console.log("연결실패", e);
+            }
+            }
+
+    }
+    //조리중
+    const cook= async(e)=>{
+        e.preventDefault();
+        //주문상태가 0 일경우에만
+        if(menu.orderApprovalStatus==0){
+            try{
+                const rs=await axios.get("http://localhost:8080/store/cook",{params:{orderId:menu.orderId}})
+                if(rs.data!=-1){
+                    console.log("조리하기")
+                    menu.orderApprovalStatus=1;
+                    setSt(true)
                 }
                 
             }
@@ -84,19 +105,23 @@ const ShopOrderList = ({ menu }) => {
                 <Button variant="primary" onClick={refuse}> {(menu.orderApprovalStatus !== 0 )? '불가' : '거절'}</Button>
              */}
             { menu.orderApprovalStatus==0 && <div> 
-                <Button variant="primary" onClick={ondeliver}>
-                    라이더배정</Button>
+                <Button variant="primary" onClick={cook}>
+                    조리하기</Button>
                 <Button variant="primary" onClick={refuse}> 거절</Button>
             </div>}
             { menu.orderApprovalStatus==1 && <div> 
                 <Button variant="primary" onClick={ondeliver}>
-                    라이더 배정중</Button>
+                    라이더배정하기</Button>
             </div>}
             { menu.orderApprovalStatus==2 && <div> 
                 <Button variant="primary">
-                    배달중</Button>
+                    라이더 배정중</Button>
             </div>}
             { menu.orderApprovalStatus==3 && <div> 
+                <Button variant="primary">
+                    배달중</Button>
+            </div>}
+            { menu.orderApprovalStatus==5 && <div> 
                 <Button variant="primary" onClick={refuse}> 거절됨</Button>
             </div>}
             </Card.Body>
