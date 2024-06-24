@@ -14,7 +14,8 @@ export const Flag =(props) => {
     const[shopId,setShopid]=useState(null) //업체아이디
     const[user_x,setX]=useState(null) // 유저x좌표
     const[user_y,setY]=useState(null)//유저y좌표
-    const [userInfo, setUserInfo] = useState(null); // 유저 정보 
+    const [userInfo, setUserInfo] = useState(null); // 유저 정보
+     
 
     //AdminFlagContext 안에 provider 이 있으으로 감싸면 된다
     return (

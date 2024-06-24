@@ -5,11 +5,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import { useLocation, useNavigate } from 'react-router-dom';
 import StarRating from './StarRating .jsx'; 
+import axios from 'axios';
+import { useContext } from "react";
+import { AdminFlagContext } from "../../flag/Flag.jsx";
 
 const MypageComments = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const cleanOrderDetailsString = location.state?.cleanOrderDetails || "[]";
+    const order = location.state?.order || "[]";
+    console.log("주문정보",order)
+    const {user,setUser,userInfo, setUserInfo,userId}=useContext(AdminFlagContext)
+    console.log("내정보",userInfo)
 
     const [comments,setComments]=useState("")
     
@@ -42,18 +49,26 @@ const MypageComments = () => {
     };
 
     // 실제 서버로 별점을 전송하는 함수 (예시)
-    const sendRatingToServer = (e) => {
+    const sendRatingToServer = async(e) => {
         e.preventDefault();
         // 여기서 서버로 rating 변수를 전송하는 로직을 추가할 수 있음
         console.log(`별점 ${rating}을 서버에 전송합니다.`);
-        // 예를 들어 axios를 사용하여 서버로 전송하는 코드
-        // axios.post('/api/rating', { rating })
-        //     .then(response => {
-        //         console.log('서버 응답:', response.data);
-        //     })
-        //     .catch(error => {
-        //         console.error('서버 전송 실패:', error);
-        //     });
+        try {
+            const rs = await axios.post("http://localhost:8080/comments", {storeId:order.storeId,authorId:userId,authorName:userInfo.name,content:comments,rating:rating});
+            if (rs.status === 201) {
+                console.log(rs.data);
+
+
+                if (rs.data) {
+                  navigate("/");
+                } else {
+                    console.log("없음");
+                }
+            }
+        } catch (e) {
+            console.log("연결실패", e);
+        }
+
     };
 
 

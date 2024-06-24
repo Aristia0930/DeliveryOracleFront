@@ -1,66 +1,57 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UserShopDetailMenu from './UserShopDetailMenu';
+import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
+import { CompatClient, Stomp } from '@stomp/stompjs';
+import SockJS from 'sockjs-client';
 import TabMenu from '../commom/TabMenu.jsx';
 import Header from '../commom/Header.jsx';
+import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
 
-const UserShopIntroduce = () => {
+const UserShopComment = () => {
+    const navigate = useNavigate();
     const location = useLocation();
-    const datas = location.state.data || -1;
-    const { user } = useContext(AdminFlagContext);
-    const apiKey = "d75de8ff5686d9730ec2b1a409f5b7a6";
-
-    // 카카오 API 호출
-    useEffect(() => {
-      const script = document.createElement("script");
-      script.async = true;
-      script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&autoload=false`;
-      document.head.appendChild(script);
-
-      script.addEventListener("load", () => {
-        window.kakao.maps.load(() => {
-          const container = document.getElementById("map");
-          const options = {
-            center: new window.kakao.maps.LatLng(datas.store_y, datas.store_x), // 초기 중심 좌표 (위도, 경도)
-            level: 3, // 지도 확대 레벨
-          };
-          const map = new window.kakao.maps.Map(container, options);
-
-          // 마커가 표시될 위치입니다 
-          const markerPosition = new window.kakao.maps.LatLng(datas.store_y, datas.store_x);
-
-          // 마커를 생성합니다
-          const marker = new window.kakao.maps.Marker({
-            position: markerPosition
-          });
-
-          // 마커가 지도 위에 표시되도록 설정합니다
-          marker.setMap(map);
-        });
-      });
-    }, [datas]);
+    let datas = location.state.data || -1;
+    const [comment, setComment] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [basket, setBasket] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const { user, setUser, user_x, setX, user_y, setY } = useContext(AdminFlagContext);
+    const [mes, setMes] = useState("");
+    const [useid, setUseid] = useState("");
+    const [username, setUserName] = useState("");
+    const [email, setEmail] = useState("");
+    const { stompClient, messages, sendMessage, setMessages, connected } = useWebSocket();
 
     useEffect(() => {
         const fetchData = async () => {
+            console.log(datas.store_id);
             try {
-                const response = await axios.get('http://localhost:8080/api/api/userinfo', {
-                    headers: {
-                        Authorization: `Bearer ${user}`
-                    }
+                const rs = await axios.get("http://localhost:8080/comments/list", {
+                    params: { store_id: datas.store_id }
                 });
-                console.log(response.data);
-                console.log(response.data.user_id);
-
-            } catch (error) {
-                console.log(error);
+                setComment(rs.data);
+                console.log(rs.data);
+            } catch (e) {
+                setError("연결실패");
+                console.log("연결실패", e);
+            } finally {
+                setLoading(false);
             }
         };
 
-        fetchData();
-    }, [user]);
+        fetchData()
+
+    }, [datas]);
+
+
+  
+
 
     return (
         <div>
@@ -90,11 +81,17 @@ const UserShopIntroduce = () => {
                                 <Nav.Item>
                                     <Nav.Link eventKey="link-2"><Link to={`/UserShopIntroduce`} state={{ data: datas }}>매장소개</Link></Nav.Link>
                                 </Nav.Item>
+
                             </Nav>
                             <div>
-                                <p><strong>설명:</strong> {datas.store_description}</p>
-                                <p><strong>주소:</strong> {datas.store_address}</p>
-                                <div id="map" style={{ width: "100%", height: "400px" }}></div>
+                                {comment.map((array,index)=>(
+                                    <div>
+                                        <p>1</p>
+                                        <p>{array.content}</p>
+                                        </div>
+                                ))}
+                                
+            
                             </div>
                         </div>
                     </div>
@@ -104,4 +101,4 @@ const UserShopIntroduce = () => {
     );
 };
 
-export default UserShopIntroduce;
+export default UserShopComment;

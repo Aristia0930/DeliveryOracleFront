@@ -33,7 +33,7 @@ const MypageDetailsList = ({ order }) => {
     // 리뷰 페이지 이동
     const comment = (e) => {
         e.preventDefault();
-        navigate("/MypageComments", { state: { cleanOrderDetails: JSON.stringify(cleanOrderDetails) } });
+        navigate("/MypageComments", { state: { cleanOrderDetails: JSON.stringify(cleanOrderDetails) ,order:order} });
     }
 
     const but=(e)=>{

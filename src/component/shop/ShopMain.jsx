@@ -103,18 +103,12 @@ const shoppMenu=async(e)=>{
                         <Sidebar id={userId}/>
                     </Col>
                     <Col xs={10} id="page-content-wrapper">
-                        {/* <div style={{ padding: '20px' }}>
-                            <button onClick={shopjoin} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>업체등록하기</button>
-                            <button onClick={shoppMenu} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>메뉴목록</button>
-                            <tr/>
-                            // 여기서는 등록이 되는데 사이드바에서는 등록이 안됨
-                        </div> */}
+                  
 
                     </Col>
                 </Row>
             </Container>
-{/*     
-            <button onClick={shopOrder}>주문</button> */}
+
 
         </div>
     );

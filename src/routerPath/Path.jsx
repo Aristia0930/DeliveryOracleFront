@@ -30,7 +30,7 @@ import UserSearchList from '../component/user/UserSearchList';
 import MypageComments from '../component/mypage/MypageComments';
 import UserShopIntroduce from '../component/user/UserShopIntroduce';
 import ShopEdit from '../component/shop/ShopEdit';
-
+import UserShopComment from '../component/user/UserShopComment';
 const Path = () => {
     return (
         <Routes>
@@ -69,6 +69,7 @@ const Path = () => {
 
             <Route path="/UserSearchList" element={<UserSearchList />} />
             <Route path="/ShopEdit" element={<ShopEdit />} />
+            <Route path="/UserShopComment" element={<UserShopComment />} />
         </Routes>
         
             

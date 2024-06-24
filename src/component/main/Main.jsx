@@ -10,7 +10,7 @@ import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
 
 const Main = () => {
     const navigate = useNavigate();
-    const {user,setUser}=useContext(AdminFlagContext)
+    const {user,setUser,userInfo, setUserInfo}=useContext(AdminFlagContext)
     // const [cookies] = useCookies(['jwtToken']);
     const { stompClient, messages, sendMessage ,setMessages} = useWebSocket();
    setMessages("")

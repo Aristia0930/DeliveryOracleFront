@@ -73,6 +73,7 @@ const ShopOrderList = ({ menu }) => {
     return (
         <Card style={{ width: '18rem' }}>
             <Card.Body>
+            <Card.Title>고객 아이디:{menu.customerId}</Card.Title>
                 <Card.Title>{cleanOrderDetails}</Card.Title>
                 <Card.Text>
                     Price: {menu.totalPrice}

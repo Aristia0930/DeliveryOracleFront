@@ -147,6 +147,7 @@ const ShopEdit = () => {
       //업체삭제 넘겨야하는값은 상점아이디
       const shopdelete=async(e)=>{
         e.preventDefault()
+        console.log(shopData.store_id)
         try{
             const rs=await axios.post("http://localhost:8080/store/delete", {store_id:shopData.store_id})
             if(rs.status==200){

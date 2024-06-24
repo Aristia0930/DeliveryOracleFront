@@ -28,6 +28,7 @@ const Header = () => {
                 });
                 console.log(response.data);
                 setUserId(response.data.user_id)
+                setUserInfo(response.data)
             } catch (error) {
                 console.log(error);
             }

@@ -21,18 +21,16 @@ const UserShopDetail = () => {
     const [error, setError] = useState(null);
     const [basket, setBasket] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
-    const { user, setUser,user_x,setX,user_y,setY } = useContext(AdminFlagContext);
-    // const [stompClient, setStompClient] = useState(null);
+    const { user, setUser, user_x, setX, user_y, setY } = useContext(AdminFlagContext);
     const [mes, setMes] = useState("");
     const [useid, setUseid] = useState("");
     const [username, setUserName] = useState("");
-    const[email,setEmail]=useState("")
-    const { stompClient, messages, sendMessage ,setMessages} = useWebSocket();
+    const [email, setEmail] = useState("");
+    const { stompClient, messages, sendMessage, setMessages, connected } = useWebSocket();
 
     useEffect(() => {
         const fetchData = async () => {
-            console.log(datas.store_id)
-            //메뉴정보 불러옴
+            console.log(datas.store_id);
             try {
                 const rs = await axios.get("http://localhost:8080/search/menuList", {
                     params: { id: datas.store_id }
@@ -47,15 +45,13 @@ const UserShopDetail = () => {
             }
         };
 
-        //이메일 탐색
         const emailData = async () => {
             try {
                 const rs = await axios.get("http://localhost:8080/search/email_shop", {
-                    params: { id: datas.owner_id}
+                    params: { id: datas.owner_id }
                 });
-                setEmail(rs.data)
-                console.log("이메일탐색",rs.data)
-
+                setEmail(rs.data);
+                console.log("이메일탐색", rs.data);
             } catch (e) {
                 setError("연결실패");
                 console.log("연결실패", e);
@@ -83,26 +79,6 @@ const UserShopDetail = () => {
         fetchData();
         usedata();
         emailData();
-        // const socket = new SockJS(`http://localhost:8080/ws?token=Bearer ${user}`);
-        // const client = Stomp.over(socket);
-
-        // client.connect({ Authorization: `Bearer ${user}` }, () => {
-        //     client.subscribe('/user/topic/sendMessage', (msg) => {
-        //         console.log("응답 메세지");
-        //         console.log(msg);
-        //         const newMessage = JSON.parse(msg.body);
-        //         setMes(newMessage);
-        //     });
-        //     setStompClient(client);
-        // });
-
-        // return () => {
-        //     if (client) {
-        //         client.disconnect(() => {
-        //             console.log('Disconnected');
-        //         });
-        //     }
-        // };
     }, [datas]);
 
     useEffect(() => {
@@ -115,10 +91,9 @@ const UserShopDetail = () => {
     }, [basket]);
 
     useEffect(() => {
-        console.log(messages)
         const handleMesUpdate = async () => {
             if (messages.content === "true") {
-                console.log(messages.content)
+                console.log(messages.content);
                 const orderDetails = JSON.stringify(basket);
                 console.log("주문클릭");
 
@@ -127,15 +102,15 @@ const UserShopDetail = () => {
                     storeId: datas.store_id,
                     orderDetails: orderDetails,
                     totalPrice: totalPrice,
-                    user_x:user_x,
-                    user_y:user_y
+                    user_x: user_x,
+                    user_y: user_y
                 };
 
                 try {
                     const response = await axios.post('http://localhost:8080/search/order', orderData);
                     console.log('Order response:', response.data);
                     if (response.data == 1) {
-                        setMessages("")
+                        setMessages("");
                         alert("주문 성공");
                         navigate('/');
                     }
@@ -143,9 +118,9 @@ const UserShopDetail = () => {
                     console.error('Order error:', error);
                 }
             } else {
-                alert("현재 음식점이 열려있지 않습니다")
+                alert("현재 음식점이 열려있지 않습니다");
                 console.log("주문 실패");
-                setMessages("")
+                setMessages("");
             }
         };
 
@@ -191,14 +166,17 @@ const UserShopDetail = () => {
 
     const handleOrder = async () => {
         console.log("유저아이디", username);
-        if(!user){
-            alert("로그인해주세요")
+        if (!user) {
+            alert("로그인해주세요");
+            return;
         }
-        if (stompClient) {
-            //from 에 나중에 이 상점 주인 아이디를 넣어야 하는데 이때 앞에서 상점 주인 아이디(이메일을)까지 받아와야한다.
+        if (connected) {
             stompClient.send('/app/sendMessage', {}, JSON.stringify({ from: email, content: "message" }));
+        } else {
+            alert("STOMP 클라이언트가 연결되지 않았습니다.");
         }
     };
+
 
     return (
         <div>
@@ -223,7 +201,7 @@ const UserShopDetail = () => {
                                     <Nav.Link href="#"><Link to={`/UserShopDetail`} state={{ data: datas }}>메뉴</Link></Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link eventKey="link-1">댓글</Nav.Link>
+                                    <Nav.Link eventKey="link-1"><Link to={`/UserShopComment`} state={{ data: datas }}>댓글</Link></Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
                                     <Nav.Link eventKey="link-2"><Link to={`/UserShopIntroduce`} state={{ data: datas }}>매장소개</Link></Nav.Link>
