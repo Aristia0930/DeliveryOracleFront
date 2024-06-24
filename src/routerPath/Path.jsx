@@ -29,6 +29,7 @@ import MypageUserEdit from '../component/mypage/MypageUserEdit';
 import UserSearchList from '../component/user/UserSearchList';
 import MypageComments from '../component/mypage/MypageComments';
 import UserShopIntroduce from '../component/user/UserShopIntroduce';
+import ShopEdit from '../component/shop/ShopEdit';
 
 const Path = () => {
     return (
@@ -67,6 +68,7 @@ const Path = () => {
             <Route path="/UserShopIntroduce" element={<UserShopIntroduce />} />
 
             <Route path="/UserSearchList" element={<UserSearchList />} />
+            <Route path="/ShopEdit" element={<ShopEdit />} />
         </Routes>
         
             
