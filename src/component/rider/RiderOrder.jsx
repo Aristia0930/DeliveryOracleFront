@@ -13,24 +13,69 @@ const RiderOrder = () => {
     const { user, userId } = useContext(AdminFlagContext);
     const [orderData, setOrderData] = useState([]);
     const { stompClient, messages, setMessages } = useWebSocket();
+    const[data,setData]=useState([])
+    const orderList = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/rider/orderCall', {
+                params: { id: userId }
+            });
+            console.log(response.data);
+            setOrderData(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     useEffect(() => {
-        const orderList = async () => {
-            try {
-                const response = await axios.get('http://localhost:8080/rider/orderCall', {
-                    params: { id: userId }
-                });
-                console.log(response.data);
-                setOrderData(response.data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
+
         orderList();
     }, [userId]);
 
+    useEffect(() => {
+        const handleMesUpdate = async () => {
+            console.log("클릭")
+            if (messages.content === "true") {
+                console.log(messages.content)
+
+                //바꿔야할것들
+
+                const orderData = {
+                    deliveryId:data.deliveryId,
+                    orderId: data.orderId,
+                    storeId: data.storeId,
+                    storeName: data.storeName,
+                    storeOwnerEmail: data.storeOwnerEmail,
+                    riderId:userId, // 내꺼
+                    distanceToStore:data.distanceToStore,
+                    distanceToUser:data.distanceToUser,
+                    deliveryPrice:data.deliveryPrice
+
+                };
+
+                try {
+                    const response = await axios.post('http://localhost:8080/rider/order/finish', orderData);
+                    console.log('Order response:', response.data);
+                    if (response.data == 1) {
+                        orderList();
+                        setMessages("")
+                        alert("배달 완료");
+                    }
+                } catch (error) {
+                    console.error('Order error:', error);
+                }
+            } else {
+                alert("현재 음식점이 열려있지 않습니다")
+            }
+        };
+
+        if (messages.content) {
+            handleMesUpdate();
+        }
+    }, [messages]);
+
     const handleOrder = async (s) => {
         if (stompClient) {
+            setData(s)
             stompClient.send('/app/sendMessage', {}, JSON.stringify({ from: s.storeOwnerEmail, content: "message" }));
         }
     };

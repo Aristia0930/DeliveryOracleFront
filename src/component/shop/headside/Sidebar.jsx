@@ -75,6 +75,9 @@ const Sidebar = () => {
             <LinkContainer to="/ShopRevenue">
                 <Nav.Link>매출내역</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/ShopEdit">
+                <Nav.Link>업체관리</Nav.Link>
+            </LinkContainer>
 
         </Nav>
     );
