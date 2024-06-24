@@ -14,7 +14,7 @@ import axios from 'axios';
 const Header = () => {
 
 
-    const { user, setUser,user_x,setX,user_y,setY,userId,setUserId } = useContext(AdminFlagContext);
+    const { user,setUser,userDate,setUserDate,userId,setUserId,shopId,setShopid,user_x,setX,user_y,setY,userInfo,setUserInfo} = useContext(AdminFlagContext);
     const navigate = useNavigate();  
 
     
@@ -52,7 +52,8 @@ const Header = () => {
     const userlogout=(e)=>{
         e.preventDefault()
         setUser(null)
-        navigate("/")
+
+        window.location.href = "/";
 
     }
 

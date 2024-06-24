@@ -44,7 +44,7 @@ const ShopMain = () => {
         };
 
         fetchUserInfo();
-    }, [cookies]);
+    }, [user]);
     
     const shopjoin=(e)=>{
     e.preventDefault()

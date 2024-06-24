@@ -77,7 +77,7 @@ const ShopMenuedit = () => {
                         onChange={(e)=>setPrice(e.target.value)}
                         onKeyDown={(e) => {
                             // 허용되는 키 코드: 0~9, 백스페이스(8), 화살표(37~40), 탭(9)
-                            const allowedKeys = /[0-9\b]/;
+                            const allowedKeys = /[0-9,"Backspace"\b]/;
                             if (!allowedKeys.test(e.key)) {
                                 e.preventDefault();
                             }
