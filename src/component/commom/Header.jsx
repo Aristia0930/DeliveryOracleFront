@@ -52,7 +52,7 @@ const Header = () => {
     const userlogout=(e)=>{
         e.preventDefault()
         setUser(null)
-        navigate("/")
+        window.location.href = "/";
 
     }
 
