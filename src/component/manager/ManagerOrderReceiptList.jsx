@@ -19,7 +19,6 @@ const ManagerOrderReceiptList = ({ orders }) => {
                             <p><strong>가게 번호:</strong> {order.store_id}</p>
                             <p><strong>주문내용:</strong> {order.order_details}</p>
                             <p><strong>가격:</strong> {order.total_price}</p>
-                            <p><strong>주문날짜:</strong> {order.order_date}</p>
                         </div>
                     </Card.Body>
                 </Card>

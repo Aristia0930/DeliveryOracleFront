@@ -1,5 +1,5 @@
 // 리엑트 차트 그래프 예제 코드 
-import Rechart from "./Rechart";
+import Rechart from "./ManagerRechart";
 
 function ManagerRevenue() {
     return (

@@ -53,7 +53,10 @@ const Header = () => {
     const userlogout=(e)=>{
         e.preventDefault()
         setUser(null)
+<<<<<<< HEAD
 
+=======
+>>>>>>> temp
         window.location.href = "/";
 
     }
