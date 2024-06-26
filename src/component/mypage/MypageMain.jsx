@@ -43,7 +43,7 @@ const MypageMain = () => {
             <Container className="mt-5">
             <Card>
                 <Card.Body>
-                    <Card.Title>유저인포</Card.Title>
+                    <Card.Title>User Information</Card.Title>
                     <div className="user-profile d-flex align-items-center mb-4">
                         {userInfo ? (
                             <div className="d-flex align-items-center">
@@ -130,28 +130,3 @@ const MypageMain = () => {
 };
 
 export default MypageMain;
-
-// const {user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
-
-// const navigate = useNavigate(); 
-// useEffect(() => {
-//     //상점아이디를 플래그 에 저장하는 파트 
-//     const fetchData = async () => {
-//         try {
-//             const rs = await axios.get("http://localhost:8080/store/menuRs", {
-//                 params: { id: userId }
-//             });
-//             if (rs.status === 200) {
-//                 console.log(rs.data)
-//                 if (rs.data != -1) {
-//                     setShopid(rs.data)
-//                 } else {
-//                     console.log("승인받지 못함");
-//                 }
-//             }
-//         } catch (e) {
-//             console.log("연결실패", e);
-//         }}
-
-//     fetchData();
-// }, [userId]);

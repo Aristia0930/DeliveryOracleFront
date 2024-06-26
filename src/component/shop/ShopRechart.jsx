@@ -55,7 +55,7 @@ const ShopRechart = () => {
 
   return (
     <div style={{ width: '100%' }}>
-      <h4>일 단위 매출내역 그래프</h4>
+      <h4>매장 일 단위 매출내역 그래프</h4>
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart
           width={500}

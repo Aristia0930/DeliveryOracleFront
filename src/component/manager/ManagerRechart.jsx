@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { AdminFlagContext } from '../../flag/Flag';
+
 
 const ManagerRechart = () => {
 
   const [data, setData] = useState([]);
 
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,7 +55,7 @@ const ManagerRechart = () => {
 
   return (
     <div style={{ width: '100%' }}>
-      <h4>일 단위 매출내역 그래프</h4>
+      <h4>관리자 일 단위 매출내역 그래프</h4>
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart
           width={500}

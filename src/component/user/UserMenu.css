@@ -6,7 +6,9 @@ a:hover {
   text-decoration: none;
 }
 .navbar {
-  background-color: #8ddba0;
+  background-color: #F2E9D0;
+  /* background-color: #C9C9C9; */
+  /* background-color: #A3A096; */
 }
 
 .container-custom {
@@ -47,6 +49,6 @@ a:hover {
 /* 장바구니 */
 
 .basket-header {
-  background-color: #8ddba0;
+  background-color: #F2E9D0;
 }
 

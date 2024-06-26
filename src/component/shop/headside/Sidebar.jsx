@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../../flag/Flag.jsx"
 const Sidebar = () => {
-    const {user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
+    const {user,setUser,userId,setUserId,shopId,setShopId}=useContext(AdminFlagContext)
 
     const navigate = useNavigate(); 
     useEffect(() => {
@@ -19,7 +19,7 @@ const Sidebar = () => {
                 if (rs.status === 200) {
                     console.log(rs.data)
                     if (rs.data != -1) {
-                        setShopid(rs.data)
+                        setShopId(rs.data)
                     } else {
                         console.log("승인받지 못함");
                     }
@@ -46,7 +46,7 @@ const Sidebar = () => {
             if (rs.status === 200) {
                 console.log(rs.data)
                 if (rs.data != -1) {
-                    setShopid(rs.data)
+                    setShopId(rs.data)
                     navigate("/ShopMenu", { state: { approvalStatus: rs.data } });
                 } else {
                     console.log("승인받지 못함");

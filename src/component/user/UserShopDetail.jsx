@@ -244,34 +244,3 @@ const UserShopDetail = () => {
 };
 
 export default UserShopDetail;
-
-
-
-
-// return (
-//     <div>
-//     <div id='detail_container'>
-//         <div class="item-card">
-//         <div class="item-image">
-//             <img  src={`/imgs/${datas.store_image}`} width="70"/>
-//         </div>
-//         <div class="item-info">
-//             <p>{datas.store_name}</p></div>
-//         </div>
-//         <div>장바구니</div>
-
-
-//     </div>
-//     <div id='detail_container'>
-
-//     </div>
-
-//     {data.map(array=>(
-//         <div>
-//             <p>{array.menuName}</p>
-//             <img  src={`/imgs/${array.menuImage}`} width="70"/>
-//             </div>
-
-//         ))}
-//     </div>
-// );

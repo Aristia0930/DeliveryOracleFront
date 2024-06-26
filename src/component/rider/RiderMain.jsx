@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import axios from 'axios';
 const RiderMain = () => {
-    const {user,setUser,userId,setUserId,shopId,setShopid,user_x,setX,user_y,setY}=useContext(AdminFlagContext)
+    const {user,setUser,userId,setUserId,shopId,setShopId,user_x,setX,user_y,setY}=useContext(AdminFlagContext)
     //jwt 아이디 저장한다.
     const navigate = useNavigate();    
     const [error, setError] = useState(null);
@@ -21,7 +21,7 @@ const RiderMain = () => {
 
             const token = user
             console.log(token)
-            console.log("jwt 불러오는ㄴ")
+            console.log("jwt 불러오는ㅈ")
             try {
                 const response = await axios.get('http://localhost:8080/api/api/userinfo', {
                     headers: {
