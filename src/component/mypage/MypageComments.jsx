@@ -54,7 +54,9 @@ const MypageComments = () => {
         // 여기서 서버로 rating 변수를 전송하는 로직을 추가할 수 있음
         console.log(`별점 ${rating}을 서버에 전송합니다.`);
         try {
-            const rs = await axios.post("http://localhost:8080/comments", {storeId:order.storeId,authorId:userId,authorName:userInfo.name,content:comments,rating:rating});
+            const rs = await axios.post("http://localhost:8080/comments", {storeId:order.storeId,authorId:userId,authorName:userInfo.name,content:comments,rating:rating},{ params: {
+               orderid: order.orderId
+              }});
             if (rs.status === 201) {
                 console.log(rs.data);
 
@@ -64,6 +66,10 @@ const MypageComments = () => {
                 } else {
                     console.log("없음");
                 }
+            }
+            else{
+                alert("오류발생")
+                navigate("/");
             }
         } catch (e) {
             console.log("연결실패", e);
