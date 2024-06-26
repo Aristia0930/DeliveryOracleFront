@@ -14,7 +14,7 @@ import Sidebar from './headside/Sidebar';
 
 
 const ShopEdit = () => {
-    const {user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
+    const {user,setUser,userId,setUserId,shopId,setShopId}=useContext(AdminFlagContext)
 
     const id = userId;
 
@@ -48,7 +48,7 @@ const ShopEdit = () => {
         const edit=async()=>{
             try{
             const rs=await axios.post("http://localhost:8080/store/store_edit_info",{id:id})
-            console.log(rs.data)
+            console.log("상점정보",rs.data)
             setShopData(rs.data)
             }catch(e){
                 console.log("에러",e)
@@ -147,7 +147,7 @@ const ShopEdit = () => {
       //업체삭제 넘겨야하는값은 상점아이디
       const shopdelete=async(e)=>{
         e.preventDefault()
-        console.log(shopData.store_id)
+        console.log("삭제실행",shopData.store_id)
         try{
             const rs=await axios.post("http://localhost:8080/store/delete", {store_id:shopData.store_id})
             if(rs.status==200){

@@ -21,6 +21,10 @@ import RiderMain from '../component/rider/RiderMain';
 import RiderCall from '../component/rider/RiderCall';
 import RiderOrder from '../component/rider/RiderOrder';
 import RiderOrderList from '../component/rider/RiderOrderList';
+import RiderOrderReceipt from '../component/rider/RiderOrderReceipt';
+import RiderOrderReceiptList from '../component/rider/RiderOrderReceiptList';
+import RiderRechart from '../component/rider/RiderRechart';
+import RiderRevenue from '../component/rider/RiderRevenue';
 import MypageMain from '../component/mypage/MypageMain';
 import MyorderDetails from '../component/mypage/MyorderDetails';
 import ShopOrderReceipt from '../component/shop/ShopOrderReceipt';
@@ -32,6 +36,8 @@ import UserShopIntroduce from '../component/user/UserShopIntroduce';
 import ShopEdit from '../component/shop/ShopEdit';
 import UserShopComment from '../component/user/UserShopComment';
 import ShopComment from '../component/shop/ShopComment';
+
+
 const Path = () => {
     return (
         <Routes>
@@ -65,6 +71,12 @@ const Path = () => {
             <Route path="/RiderCall" element={<RiderCall />} />
             <Route path="/RiderOrder" element={<RiderOrder />} />
             <Route path="/RiderOrderList" element={<RiderOrderList />} />
+            <Route path="/RiderOrderReceipt" element={<RiderOrderReceipt />} />
+            <Route path="/RiderOrderReceiptList" element={<RiderOrderReceiptList />} />
+            <Route path="/RiderRechart" element={<RiderRechart />} />
+            <Route path="/RiderRevenue" element={<RiderRevenue />} />
+
+
             <Route path="/MypageComments" element={<MypageComments />} />
             <Route path="/UserShopIntroduce" element={<UserShopIntroduce />} />
 

@@ -13,7 +13,7 @@ import { Link, useNavigate } from 'react-router-dom';
 //샵 메뉴 참조 //주문내역도 그냥 이거 쓰자.
 const RiderCall = () => {
 
-    const {user,setUser,userId,setUserId,shopId,setShopid,user_x,setX,user_y,setY}=useContext(AdminFlagContext)
+    const {user,setUser,userId,setUserId,shopId,setShopId,user_x,setX,user_y,setY}=useContext(AdminFlagContext)
     const [orderData,setOrderData]=useState([])
     const navigate = useNavigate();    
     const[data,setData]=useState([])

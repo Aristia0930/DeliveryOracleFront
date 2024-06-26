@@ -12,10 +12,10 @@ const Sidebar = () => {
             <LinkContainer to="/RiderOrder">
                 <Nav.Link>진행중인 배달</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/manager-approve">
+            <LinkContainer to="/RiderOrderReceipt">
                 <Nav.Link>완료내역</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/">
+            <LinkContainer to="/RiderRevenue">
                 <Nav.Link>총수익</Nav.Link>
             </LinkContainer>
             {/* Add more links as needed */}
