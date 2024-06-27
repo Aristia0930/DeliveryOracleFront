@@ -35,8 +35,12 @@ import MypageComments from '../component/mypage/MypageComments';
 import UserShopIntroduce from '../component/user/UserShopIntroduce';
 import ShopEdit from '../component/shop/ShopEdit';
 import UserShopComment from '../component/user/UserShopComment';
+<<<<<<< HEAD
 
 
+=======
+import ShopComment from '../component/shop/ShopComment';
+>>>>>>> 36c297c (댓글 보여주고 신고하기 까지 완료)
 const Path = () => {
     return (
         <Routes>
@@ -82,6 +86,8 @@ const Path = () => {
             <Route path="/UserSearchList" element={<UserSearchList />} />
             <Route path="/ShopEdit" element={<ShopEdit />} />
             <Route path="/UserShopComment" element={<UserShopComment />} />
+            <Route path="/ShopComment" element={<ShopComment />} />
+
         </Routes>
         
             

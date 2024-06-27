@@ -63,7 +63,7 @@ const Sidebar = () => {
             <div onClick={shoppMenu}>
                 <Nav.Link>메뉴 목록</Nav.Link>
             </div>
-            <LinkContainer to="/manager-approve">
+            <LinkContainer to="/ShopComment">
                 <Nav.Link>댓글 관리</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/ShopOrder">

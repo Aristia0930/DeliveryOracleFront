@@ -3,14 +3,14 @@ import { Link, useLocation,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import UserShopDetailMenu from './UserShopDetailMenu';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
-import { CompatClient, Stomp } from '@stomp/stompjs';
-import SockJS from 'sockjs-client';
 import TabMenu from '../commom/TabMenu.jsx';
 import Header from '../commom/Header.jsx';
 import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card'
+import StarRating from './StartRating.jsx';
 
 const UserShopComment = () => {
     const navigate = useNavigate();
@@ -29,6 +29,7 @@ const UserShopComment = () => {
     const { stompClient, messages, sendMessage, setMessages, connected } = useWebSocket();
 
     useEffect(() => {
+
         const fetchData = async () => {
             console.log(datas.store_id);
             try {
@@ -84,12 +85,49 @@ const UserShopComment = () => {
 
                             </Nav>
                             <div>
+
                                 {comment.map((array,index)=>(
-                                    <div>
-                                        <p>1</p>
-                                        <p>{array.content}</p>
-                                        </div>
-                                ))}
+                            <div>
+                                        {array.depth==1 && <div>
+                                            <Card style={{ width: '100%', margin: '10px' }}>
+                                                <Card.Body>
+                                                    <Card.Title>작성자:{array.authorName} <StarRating initialRating={array.rating}></StarRating></Card.Title>
+
+                                                    <Card.Text>
+                                                        {array.content}
+                                                    </Card.Text>
+                                    
+                                                </Card.Body>
+                                            </Card>
+                                        </div>}
+                                        {array.depth==2 && 
+                                        <div  style={{ position: 'relative' }}>
+                                                    <div
+                                                        style={{
+                                                            position: 'absolute',
+                                                            top: '-10px',
+                                                            left: '80px',
+                                                            width: '0',
+                                                            height: '0',
+                                                            borderLeft: '10px solid transparent',
+                                                            borderRight: '10px solid transparent',
+                                                            borderBottom: '10px solid #ccc', // 화살표 색상
+                                                        }}
+                                                    ></div>
+                                          <Card style={{ width: '90%', margin: '15px 0', marginLeft: '80px' }}>
+                                                <Card.Body>
+                                                    <Card.Title>작성자:{array.authorName} </Card.Title>
+
+                                                    <Card.Text>
+                                                        {array.content}
+                                                    </Card.Text>
+                                    
+                                                </Card.Body>
+                                            </Card>
+                                        </div>}
+
+                                
+                            </div>))}
                                 
             
                             </div>
