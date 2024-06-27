@@ -36,6 +36,7 @@ import UserShopIntroduce from '../component/user/UserShopIntroduce';
 import ShopEdit from '../component/shop/ShopEdit';
 import UserShopComment from '../component/user/UserShopComment';
 import ShopComment from '../component/shop/ShopComment';
+import ManagerUserblock from '../component/manager/ManagerUserblock';
 
 
 const Path = () => {
@@ -84,6 +85,8 @@ const Path = () => {
             <Route path="/ShopEdit" element={<ShopEdit />} />
             <Route path="/UserShopComment" element={<UserShopComment />} />
             <Route path="/ShopComment" element={<ShopComment />} />
+
+            <Route path="/ManagerUserblock" element={<ManagerUserblock />} />
 
         </Routes>
         
