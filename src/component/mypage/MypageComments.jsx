@@ -9,6 +9,7 @@ import axios from 'axios';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 
+//댓글 작성 
 const MypageComments = () => {
     const location = useLocation();
     const navigate = useNavigate();

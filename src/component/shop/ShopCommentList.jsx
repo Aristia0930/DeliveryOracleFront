@@ -108,7 +108,7 @@ const ShopCommentList = ({array}) => {
             )}
         </div>
 
-         {/* 팝업 모달 */}
+         {/* 팝업 */}
          <Modal show={showModal} onHide={handleCloseModal}>
          <Modal.Header closeButton>
              <Modal.Title>신고 내용 입력</Modal.Title>

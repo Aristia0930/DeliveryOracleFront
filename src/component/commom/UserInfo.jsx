@@ -13,7 +13,7 @@ const UserInfo = () => {
       <Dropdown.Menu>
         <Dropdown.Item as={Link} to="/MypageMain">내 정보</Dropdown.Item>
         <Dropdown.Item as={Link} to="/MyorderDetails">주문내역</Dropdown.Item>
-        <Dropdown.Item as={Link} to="/MypageMain">리뷰관리</Dropdown.Item>
+        <Dropdown.Item as={Link} to="/MypageReview">리뷰관리</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

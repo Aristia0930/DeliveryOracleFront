@@ -68,7 +68,7 @@ const MypageMain = () => {
                             </Col>
                             <Col xs={12} md={6} className="mb-3">
                                 <div className="nav-box">
-                                    <Link to="/MypageComments" className="nav-link">리뷰관리</Link>
+                                    <Link to="/MypageReview" className="nav-link">리뷰관리</Link>
                                 </div>
                             </Col>
                         </Row>
