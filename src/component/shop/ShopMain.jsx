@@ -16,10 +16,9 @@ const ShopMain = () => {
     const navigate = useNavigate();    
     //이것또한 나중에 아이디 값으로 조회해서 역할이 상점 주인일경우에만 넘어가도록 요청 api를 추가한다.
     const [cookies] = useCookies(['jwtToken']);
-    //현재로그인한 아이디
-    const [userDate,setUserDate]=useState("")
+
     //상점아이디
-    const {user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
+    const {user,setUser,userId,setUserId,shopId,setShopid,userDate, setUserDate}=useContext(AdminFlagContext)
     //쿠키에 저장된 jwt를 기반으로 아이디값 받아오기
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -35,6 +34,7 @@ const ShopMain = () => {
                 });
                 console.log(response.data);
                 console.log(response.data.user_id);
+                setUserDate(response.data)
                 // setUserDate(response.data.user_id)
                 //유저아이디를 플래그에 저장
                 setUserId(response.data.user_id)
@@ -46,18 +46,11 @@ const ShopMain = () => {
         fetchUserInfo();
     }, [user]);
     
-    const shopjoin=(e)=>{
-    e.preventDefault()
-    if(userDate){
-        navigate("/ShopJoin",{state : {id:userId}})
-    }
-    else{
-        alert("로그인해주세요")
-    }
+
 
     
 
-    }
+    
 
 const shoppMenu=async(e)=>{
     e.preventDefault()
