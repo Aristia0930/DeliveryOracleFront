@@ -8,7 +8,6 @@ const UserMain = () => {
     const [location, setLocation] = useState({ latitude: null, longitude: null });
     const [error, setError] = useState(null);
 
-    
     const navigate = useNavigate();    
     const userlogin=(e)=>{
         e.preventDefault()
@@ -49,14 +48,9 @@ const UserMain = () => {
       }
       }, []);
     
-
-
     return (
         <div>
-            <Header></Header>
-            <button onClick={userlogin}>로그인</button>
-            <button onClick={userjoin}>회원가입</button>
-
+            <Header/>
             <div id="main_container">
 
             <Link class="item-list " to={'/UserMenuCaList'}  state={{ca:1,y:location.latitude,x:location.longitude}}>
