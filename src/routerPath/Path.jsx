@@ -39,7 +39,7 @@ import ShopComment from '../component/shop/ShopComment';
 import ManagerUserblock from '../component/manager/ManagerUserblock';
 import MypageReview from '../component/mypage/MypageReview';
 import ShopCommentText from '../component/shop/ShopCommentText';
-
+import ManagerShopleave from '../component/manager/ManagerShopleave';
 
 const Path = () => {
     return (
@@ -92,6 +92,7 @@ const Path = () => {
 
             <Route path="/MypageReview" element={<MypageReview />} />
             <Route path="/ShopCommentText" element={<ShopCommentText />} />
+            <Route path="/ManagerShopleave" element={<ManagerShopleave />} />
         </Routes>
         
             

@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation,useNavigate } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import TabMenu from '../commom/TabMenu.jsx';
 import Header from '../commom/Header.jsx';
-import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
+import { useWebSocket } from "../../flag/WebSocketContext.jsx";
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card';
 import StarRating from './StartRating.jsx';
 
 const UserShopComment = () => {
@@ -29,7 +28,6 @@ const UserShopComment = () => {
     const { stompClient, messages, sendMessage, setMessages, connected } = useWebSocket();
 
     useEffect(() => {
-
         const fetchData = async () => {
             console.log(datas.store_id);
             try {
@@ -47,12 +45,7 @@ const UserShopComment = () => {
         };
 
         fetchData()
-
     }, [datas]);
-
-
-  
-
 
     return (
         <div>
@@ -82,54 +75,49 @@ const UserShopComment = () => {
                                 <Nav.Item>
                                     <Nav.Link eventKey="link-2"><Link to={`/UserShopIntroduce`} state={{ data: datas }}>매장소개</Link></Nav.Link>
                                 </Nav.Item>
-
                             </Nav>
                             <div>
-
-                                {comment.map((array,index)=>(
-                            <div>
-                                        {array.depth==1 && <div>
-                                            <Card style={{ width: '100%', margin: '10px' }}>
+                                {comment.map((array, index) => (
+                                    <div key={index}>
+                                        {array.depth == 1 &&
+                                            <Card style={{ width: '80%', margin: '20px', backgroundColor: '#f9f9f9', borderRadius: '10px' }}>
                                                 <Card.Body>
-                                                    <Card.Title>작성자:{array.authorName} <StarRating initialRating={array.rating}></StarRating></Card.Title>
-
-                                                    <Card.Text>
+                                                    <Card.Title style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                                        작성자: {array.authorName}
+                                                        <StarRating initialRating={array.rating} />
+                                                    </Card.Title>
+                                                    <Card.Text style={{ marginTop: '10px' }}>
                                                         {array.content}
                                                     </Card.Text>
-                                    
                                                 </Card.Body>
                                             </Card>
-                                        </div>}
-                                        {array.depth==2 && 
-                                        <div  style={{ position: 'relative' }}>
-                                                    <div
-                                                        style={{
-                                                            position: 'absolute',
-                                                            top: '-10px',
-                                                            left: '80px',
-                                                            width: '0',
-                                                            height: '0',
-                                                            borderLeft: '10px solid transparent',
-                                                            borderRight: '10px solid transparent',
-                                                            borderBottom: '10px solid #ccc', // 화살표 색상
-                                                        }}
-                                                    ></div>
-                                          <Card style={{ width: '90%', margin: '15px 0', marginLeft: '80px' }}>
-                                                <Card.Body>
-                                                    <Card.Title>작성자:{array.authorName} </Card.Title>
-
-                                                    <Card.Text>
-                                                        {array.content}
-                                                    </Card.Text>
-                                    
-                                                </Card.Body>
-                                            </Card>
-                                        </div>}
-
-                                
-                            </div>))}
-                                
-            
+                                        }
+                                        {array.depth == 2 &&
+                                            <div style={{ position: 'relative', marginLeft: '40px' }}>
+                                                <div
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: '10px',
+                                                        left: '-20px',
+                                                        width: '0',
+                                                        height: '0',
+                                                        borderLeft: '10px solid transparent',
+                                                        borderRight: '10px solid transparent',
+                                                        borderBottom: '10px solid #f99999',
+                                                    }}
+                                                ></div>
+                                                <Card style={{ width: '70%', margin: '15px 0', backgroundColor: '#f1f1f1', borderRadius: '10px' }}>
+                                                    <Card.Body>
+                                                        <Card.Title>작성자: {array.authorName}</Card.Title>
+                                                        <Card.Text style={{ marginTop: '10px' }}>
+                                                            {array.content}
+                                                        </Card.Text>
+                                                    </Card.Body>
+                                                </Card>
+                                            </div>
+                                        }
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>

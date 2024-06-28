@@ -493,10 +493,10 @@ const UserMenuCaList = () => {
             <Header />
             <TabMenu />
 
-            <div className="container-custom">
+            <div className="container-custom"  style={{ margin: '20px' }}>
                 <p className="store-count">음식점 <span className="pd3">{data.length}곳</span>을 찾았습니다.</p>
-                <p className="superlist"><a href="#" className="badge badge-danger">SuperList</a></p>
-                <div className="big-column row">
+
+                <div className="big-column row"  >
                     {data.reduce((acc, da, index) => {
                         if (index % 2 === 0) {
                             acc.push([]);

@@ -18,10 +18,16 @@ const Sidebar = () => {
                 });
                 if (rs.status === 200) {
                     console.log(rs.data)
-                    if (rs.data != -1) {
-                        setShopId(rs.data)
-                    } else {
+                    if (rs.data == -1) {
+                        // setShopId(rs.data)
                         console.log("승인받지 못함");
+                    } else if(rs.data==-2) {
+                        console.log("이거 -2");
+                        alert("업체 정지 관리자에게 문의 하세요 ")
+         
+                    }
+                    else {
+                        setShopId(rs.data)
                     }
                 }
             } catch (e) {
