@@ -49,8 +49,8 @@ const MypageMain = () => {
                             <div className="d-flex align-items-center">
                                 <img src="/imgs/profile.jpg" alt="Profile" className="profile-img mr-3" />
                                 <div>
-                                    <p className="mb-0"><strong>이메일(id): {userInfo.email}</strong></p>
-                                    <p className="mb-0"><strong>Username: {userInfo.name}</strong></p>
+                                    <p className="mb-0"><strong>이메일(Id): {userInfo.email}</strong></p>
+                                    <p className="mb-0"><strong>닉네임: {userInfo.name}</strong></p>
                                     <p className="mb-0"><Link to="/MypageUserEdit">계정관리/수정</Link> </p>
                                 </div>
                             </div>
@@ -76,15 +76,7 @@ const MypageMain = () => {
                 </Card.Body>
             </Card>
         </Container>
-        <hr />
-        <Container className="mt-5">
-            <Card>
-                <Card.Body>
-                    <Card.Title>추가해서 넣을 거 있으면 넣기</Card.Title>
-                    {/* Add company name details here */}
-                </Card.Body>
-            </Card>
-        </Container>
+
             {/* <div className="container mt-5">
                 <Card>
                     <Card.Body>
