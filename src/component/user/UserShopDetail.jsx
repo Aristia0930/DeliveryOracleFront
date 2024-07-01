@@ -8,9 +8,10 @@ import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { CompatClient, Stomp } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
-import TabMenu from '../commom/TabMenu.jsx';
-import Header from '../commom/Header.jsx';
+import TabMenu from '../common/TabMenu.jsx';
+import Header from '../common/Header.jsx';
 import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
+import './UserShopDetail.css'
 
 const UserShopDetail = () => {
     const navigate = useNavigate();
@@ -215,26 +216,25 @@ const UserShopDetail = () => {
                         </div>
                     </div>
                     <div className="section" id="c">
-                        <div className="basket-header"><strong>장바구니</strong></div>
-                        <div className="basket-body">
-                        {basket.map((array) => (
-                            <div className='basket' key={array.menuName}>
-                                <div>{array.menuName}</div>
-                                <div className='basket-data'>
-                                    <button onClick={() => decreaseQuantity(array.menuName)}>-</button>
-                                    {array.quantity}
-                                    <button onClick={() => increaseQuantity(array.menuName)}>+</button>
-                                    <div>{array.menuPrice} 원</div>
-
+                    <div className="basket-header bg-primary text-white p-2"><strong>장바구니</strong></div>
+                        <div className="basket-body p-3">
+                            {basket.map((array) => (
+                                <div className="basket-item mb-3" key={array.menuName}>
+                                    <div className="item-name">{array.menuName}</div>
+                                    <div className="item-actions d-flex justify-content-between align-items-center mt-2">
+                                        <button className="btn btn-sm btn-outline-secondary" onClick={() => decreaseQuantity(array.menuName)}>-</button>
+                                        <span className="quantity mx-2">{array.quantity}</span>
+                                        <button className="btn btn-sm btn-outline-secondary" onClick={() => increaseQuantity(array.menuName)}>+</button>
+                                        <div className="item-price ml-auto">{array.menuPrice} 원</div>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
                         </div>
-                        <hr/>
-                        <div>총금액 {totalPrice} 원</div>
-                        <hr/>
-                        <div>
-                        <button onClick={handleOrder}>주문하기</button>
+                        <hr className="my-4" />
+                        <div className="total-price text-right"><strong>총금액</strong> {totalPrice} 원</div>
+                        <hr className="my-4" />
+                        <div className="order-button text-center">
+                            <button className="btn btn-primary btn-lg" onClick={handleOrder}>주문하기</button>
                         </div>
                     </div>
                 </div>

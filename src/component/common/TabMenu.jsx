@@ -7,10 +7,10 @@ const TabMenu = () => {
         <a className="nav-link active" href="#">한식</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">분식</a>
+        <a className="nav-link" href="#">중식</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">돈가스</a>
+        <a className="nav-link" href="#">일식</a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#">치킨</a>
@@ -19,19 +19,7 @@ const TabMenu = () => {
         <a className="nav-link" href="#">피자</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">중국집</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">족발</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">야식</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">찜, 탕</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">도시락</a>
+        <a className="nav-link" href="#">분식</a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#">디저트</a>

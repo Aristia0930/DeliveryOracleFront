@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { Card } from 'react-bootstrap';
-import Header from '../commom/Header.jsx';
+import Header from '../common/Header.jsx';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MypageDetailsList from './MypageDetailsList.jsx';

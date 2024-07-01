@@ -1,0 +1,17 @@
+
+/* 장바구니 */
+
+.basket-header {
+    background-color: #F2E9D0;
+    margin-bottom: 0; /* 이전에 있던 여백을 제거 */
+  }
+/*  */
+.section#c {
+    background-color: white; /* 원하는 배경색으로 변경 가능 */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.w-100 {
+    width: 100%;
+}
