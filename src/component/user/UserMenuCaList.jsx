@@ -409,6 +409,7 @@ const UserMenuCaList = () => {
 
     // Load initial data and initialize shop states
     useEffect(() => {
+        console.log("x",x)
         const fetchData = async () => {
             try {
                 const rs = await axios.get("http://localhost:8080/search/CaList", {

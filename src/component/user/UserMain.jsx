@@ -23,6 +23,7 @@ const UserMain = () => {
                     setX(position.coords.longitude);
                     setY(position.coords.latitude);
                     setError(null);
+                    console.log("위치",position.coords.longitude)
                 },
                 (error) => {
                     setError(error.message);
@@ -79,7 +80,7 @@ const UserMain = () => {
             <div id="main_container" className="container-fluid">
                 <div className="row justify-content-center">
                     <div className="col-md-4">
-                        <Link className="item-link" to={{ pathname: '/UserMenuCaList', state: { ca: 1, y: location.latitude, x: location.longitude } }}>
+                        <Link className="item-link" to={'/UserMenuCaList'}  state={{ca:1,y:location.latitude,x:location.longitude}}>
                             <div className="item">
                                 <p className="item-maintext">한식</p>
                             </div>
