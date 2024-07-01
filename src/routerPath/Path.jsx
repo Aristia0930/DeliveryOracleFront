@@ -40,7 +40,12 @@ import ManagerUserblock from '../component/manager/ManagerUserblock';
 import MypageReview from '../component/mypage/MypageReview';
 import ShopCommentText from '../component/shop/ShopCommentText';
 import ManagerShopleave from '../component/manager/ManagerShopleave';
-
+import ShopUserJoin from '../component/shop/ShopUserJoin';
+import ShopUserLogin from '../component/shop/ShopUserLogin';
+import ManagerUserJoin from '../component/manager/ManagerUserJoin';
+import ManagerUserLogin from '../component/manager/ManagerUserLogin';
+import RiderUserJoin from '../component/rider/RiderUserJoin';
+import RiderUserLogin from '../component/rider/RiderUserLogin';
 const Path = () => {
     return (
         <Routes>
@@ -93,6 +98,15 @@ const Path = () => {
             <Route path="/MypageReview" element={<MypageReview />} />
             <Route path="/ShopCommentText" element={<ShopCommentText />} />
             <Route path="/ManagerShopleave" element={<ManagerShopleave />} />
+
+            <Route path="/ShopUserJoin" element={<ShopUserJoin />} />
+            <Route path="/ShopUserLogin" element={<ShopUserLogin />} />
+
+            <Route path="/ManagerUserJoin" element={<ManagerUserJoin />} />
+            <Route path="/ManagerUserLogin" element={<ManagerUserLogin />} />
+
+            <Route path="/RiderUserJoin" element={<RiderUserJoin />} />
+            <Route path="/RiderUserLogin" element={<RiderUserLogin />} />
         </Routes>
         
             

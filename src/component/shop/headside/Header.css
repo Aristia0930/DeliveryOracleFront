@@ -1,0 +1,31 @@
+.header-navbar {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-navbar .brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.header-navbar .nav-link {
+    color: #fff;
+    margin-left: 10px;
+}
+
+.header-navbar .btn {
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.header-navbar .btn:hover {
+    background-color: #0056b3;
+}
+
+.header-navbar .dropdown-menu {
+    right: 0;
+    left: auto;
+}

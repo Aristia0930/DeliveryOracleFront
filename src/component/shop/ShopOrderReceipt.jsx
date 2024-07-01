@@ -41,7 +41,7 @@ const ShopOrderReceipt = () => {
                         <Sidebar />
                     </Col>
                     <Col xs={10} id="page-content-wrapper">
-                        <h1>주문내역 확인</h1>
+                        <h1 style={{ margin: '25px'}}>주문내역 확인</h1>
                         <ShopOrderReceiptList orders={order} />
                     </Col>
                 </Row>

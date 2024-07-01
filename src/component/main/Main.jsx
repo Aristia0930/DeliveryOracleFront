@@ -29,6 +29,7 @@ const Main = () => {
             })
             console.log(response.data)
             console.log(response.data.user_id)
+            console.log("유저권한",response.data.authList[0].auth)
         
         }catch(error){
             console.log(error)

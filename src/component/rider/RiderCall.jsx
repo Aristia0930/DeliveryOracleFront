@@ -122,6 +122,7 @@ const RiderCall = () => {
                         <Sidebar/>
                     </Col>
                     <Col xs={10} id="page-content-wrapper">
+                    <h1>CALL</h1>
                     {orderData.reduce((acc, order, index) => {
                             // Every 4th item or the first item, create a new container
                             if (index % 4 === 0) {

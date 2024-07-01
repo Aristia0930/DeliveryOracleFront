@@ -68,7 +68,7 @@ const Header = () => {
                 <Form className="d-flex">
                     {user==null&&
                     <div>
-                    <Button onClick={userlogin}>로그인</Button>
+                    <Button onClick={userlogin} className="me-2">로그인</Button>
                     <Button onClick={userjoin}>회원가입</Button></div>}
                     {user&& <Button onClick={userlogout}>로그아웃</Button>}
                 </Form>

@@ -7,15 +7,15 @@ import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import axios from 'axios';
 const RiderMain = () => {
-    const {user,setUser,userId,setUserId,shopId,setShopId,user_x,setX,user_y,setY}=useContext(AdminFlagContext)
+    const {setRole,user,setUser,userId,setUserId,shopId,setShopId,user_x,setX,user_y,setY}=useContext(AdminFlagContext)
     //jwt 아이디 저장한다.
     const navigate = useNavigate();    
     const [error, setError] = useState(null);
     useEffect(() => {
-        if (!user){
-            alert("로그인해주세요")
-            navigate("/")
-        }
+        // if (!user){
+        //     alert("로그인해주세요")
+        //     navigate("/")
+        // }
         const fetchUserInfo = async () => {
 
 
@@ -33,6 +33,7 @@ const RiderMain = () => {
                 // setUserDate(response.data.user_id)
                 //유저아이디를 플래그에 저장
                 setUserId(response.data.user_id)
+                setRole(response.data.authList[0].auth)
             } catch (error) {
                 console.log(error);
             }
@@ -81,6 +82,7 @@ const RiderMain = () => {
                         <Sidebar/>
                     </Col>
                     <Col xs={10} id="page-content-wrapper">
+                    <h1>메인</h1>
  
 
                     </Col>
