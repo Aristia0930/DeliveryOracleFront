@@ -15,7 +15,7 @@ const UserMenuCa = ({ data, shop }) => {
                     <Card.Title>
                         <strong>{data.store_name}</strong>
                         <span className="special-tags ml-2">
-                        {shop ? <Badge pill variant="primary" className="mr-1"> 우수 </Badge> : <Badge pill variant="primary" bg="danger" className="mr-1">운영종료</Badge>}
+                        {shop ? <Badge pill variant="primary" className="mr-1"> 운영중 </Badge> : <Badge pill variant="primary" bg="danger" className="mr-1">운영종료</Badge>}
                         </span>
                     </Card.Title>
                     <Card.Text>

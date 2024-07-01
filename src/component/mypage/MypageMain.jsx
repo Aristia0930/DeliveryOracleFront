@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import { AdminFlagContext } from '../../flag/Flag.jsx';
 import { useCookies } from 'react-cookie';
-import Header from '../commom/Header';
+import Header from '../common/Header';
 import './Mypage.css';
 
 const MypageMain = () => {

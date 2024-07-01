@@ -2,9 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation,useNavigate } from 'react-router-dom';
 import UserMenuCa from './UserMenuCa';
-import Header from '../commom/Header';
+import Header from '../common/Header';
 import './UserMenu.css'
-import TabMenu from '../commom/TabMenu';
+import TabMenu from '../common/TabMenu';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { useWebSocket } from "../../flag/WebSocketContext.jsx";

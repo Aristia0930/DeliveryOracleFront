@@ -58,15 +58,15 @@ const UserJoin = () => {
     
     
                     <form action="#">
+                        <p class="user_email">
+                            <label for="user_email">이메일(Id)</label>
+                            <input type="email" id="user_email"  onChange={(e)=>setEmail(e.target.value)}/>
+                        </p>
                         <p class="user_name">
-                            <label for="user_name">사용자명</label>
+                            <label for="user_name">사용자명(닉네임)</label>
                             <input type="text" id="user_name" onChange={(e)=>setName(e.target.value)}/>
                         </p>
 
-                        <p class="user_email">
-                            <label for="user_email">이메일(id)</label>
-                            <input type="email" id="user_email"  onChange={(e)=>setEmail(e.target.value)}/>
-                        </p>
 
                     {/* <button  class="submit_btn">이메일 인증하기</button>
                     {emailPass==true && <p class="login_user_password"> <label for="user_password">인증번호 확인:

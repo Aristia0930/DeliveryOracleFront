@@ -55,7 +55,7 @@ const UserLogin = () => {
 
                     <div className="bottom_box">
                         <div>
-                            <span>아이디가 없으신가요?</span><a href="#">회원가입</a>
+                            <span>아이디가 없으신가요?</span><a href="/UserJoin">회원가입</a>
                         </div>
                     </div>
                 </div>

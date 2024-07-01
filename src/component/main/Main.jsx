@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
-import Header from '../commom/Header';
+import Header from '../common/Header';
 import Card from 'react-bootstrap/Card';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";

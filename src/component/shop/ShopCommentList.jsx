@@ -6,8 +6,8 @@ import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
-import TabMenu from '../commom/TabMenu.jsx';
-import Header from '../commom/Header.jsx';
+import TabMenu from '../common/TabMenu.jsx';
+import Header from '../common/Header.jsx';
 import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'

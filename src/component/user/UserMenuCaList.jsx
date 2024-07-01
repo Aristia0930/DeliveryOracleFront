@@ -388,9 +388,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import UserMenuCa from './UserMenuCa';
-import Header from '../commom/Header';
+import Header from '../common/Header';
 import './UserMenu.css';
-import TabMenu from '../commom/TabMenu';
+import TabMenu from '../common/TabMenu';
 import { useWebSocket } from "../../flag/WebSocketContext.jsx";
 
 const UserMenuCaList = () => {
@@ -492,11 +492,10 @@ const UserMenuCaList = () => {
         <div>
             <Header />
             <TabMenu />
-
             <div className="container-custom"  style={{ margin: '20px' }}>
                 <p className="store-count">음식점 <span className="pd3">{data.length}곳</span>을 찾았습니다.</p>
-
-                <div className="big-column row"  >
+                <p className="superlist"><a href="#" className="badge badge-danger">SuperList</a></p>
+                <div className="big-column row">
                     {data.reduce((acc, da, index) => {
                         if (index % 2 === 0) {
                             acc.push([]);

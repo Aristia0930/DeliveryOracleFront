@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Header from '../commom/Header.jsx';
+import Header from '../common/Header.jsx';
 import axios from 'axios';
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import Button from 'react-bootstrap/Button';

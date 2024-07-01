@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../commom/Header.jsx';
+import Header from '../common/Header.jsx';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';

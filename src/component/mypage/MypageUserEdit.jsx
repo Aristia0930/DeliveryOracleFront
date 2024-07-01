@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Card } from 'react-bootstrap';
 import axios from 'axios';
 import { AdminFlagContext } from '../../flag/Flag.jsx';
-import Header from '../commom/Header';
+import Header from '../common/Header';
 
 const MypageUserEdit = () => {
     const { userId, user, setUserId } = useContext(AdminFlagContext);
