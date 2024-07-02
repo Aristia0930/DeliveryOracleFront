@@ -219,7 +219,6 @@ const UserShopDetail = () => {
         }
     };
 
-
     return (
         <div>
             <Header />

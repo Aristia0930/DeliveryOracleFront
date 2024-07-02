@@ -21,15 +21,6 @@ const TabMenu = () => {
       <li className="nav-item">
         <a className="nav-link" href="#">분식</a>
       </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">디저트</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">패스트푸드</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">프렌차이즈</a>
-      </li>
     </ul>
   );
 };

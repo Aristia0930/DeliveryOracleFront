@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Header from '../common/Header';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
-import './UserMain.css'; // 스타일링을 위한 CSS 파일 import
+import { Container, Row, Col, Button, Card, Carousel } from 'react-bootstrap';
+import './UserMain.css';
 import axios from 'axios';
 
 const UserMain = () => {
@@ -79,46 +80,81 @@ const UserMain = () => {
     return (
         <div>
             <Header />
-            <div className="image-slide">
-                <div id="carouselExampleFade" className="carousel slide carousel-fade" data-ride="carousel">
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <img className="d-block w-100" src="asset/img/slide-image.png" alt="First slide" />
-                        </div>
-                        <div className="carousel-item">
-                            <img className="d-block w-100" src="asset/img/slide-image.png" alt="Second slide" />
-                        </div>
-                        <div className="carousel-item">
-                            <img className="d-block w-100" src="asset/img/slide-image.png" alt="Third slide" />
-                        </div>
+            <div className="d-flex flex-column align-items-center" style={{ paddingTop: '35px' }}>
+                        <Carousel style={{ width: '50%' }}>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="https://via.placeholder.com/800x400"
+                                    alt="First slide"
+                                />
+                                <Carousel.Caption>
+                                    <h3>First slide label</h3>
+                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="https://via.placeholder.com/800x400"
+                                    alt="Second slide"
+                                />
+                                <Carousel.Caption>
+                                    <h3>Second slide label</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="https://via.placeholder.com/800x400"
+                                    alt="Third slide"
+                                />
+                                <Carousel.Caption>
+                                    <h3>Third slide label</h3>
+                                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        </Carousel>
                     </div>
-                    <a className="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span className="sr-only">Previous</span>
-                    </a>
-                    <a className="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span className="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
             <div id="main_container" className="container-fluid">
                 <div className="row justify-content-center">
                     <div className="col-md-4">
-                        <Link className="item-link" to={'/UserMenuCaList'}  state={{ca:1,y:location.latitude,x:location.longitude}}>
-                            <div className="item">
+                        <Link className="item-link" to={'/UserMenuCaList'} state={{ ca: 1, y: location.latitude, x: location.longitude }}>
+                            <div className="menuitem">
+                                <img src="/imgs/item01.png" alt="Korean Food" />
                                 <p className="item-maintext">한식</p>
                             </div>
                         </Link>
                     </div>
                     <div className="col-md-4">
-                        <div className="item">
+                        <div className="menuitem">
+                            <img src="/imgs/item02.png" alt="Chinese Food" />
                             <p className="item-maintext">중식</p>
                         </div>
                     </div>
                     <div className="col-md-4">
-                        <div className="item">
+                        <div className="menuitem">
+                            <img src="/imgs/item03.png" alt="Japan Food" />
                             <p className="item-maintext">일식</p>
+                        </div>
+                    </div>
+                    <div className="col-md-4">
+                        <div className="menuitem">
+                            <img src="/imgs/item05.png" alt="Chicken" />
+                            <p className="item-maintext">치킨</p>
+                        </div>
+                    </div>
+                    <div className="col-md-4">
+                        <div className="menuitem">
+                            <img src="/imgs/item06.png" alt="Pizza" />
+                            <p className="item-maintext">피자</p>
+                        </div>
+                    </div>
+                    <div className="col-md-4">
+                        <div className="menuitem">
+                            <img src="/imgs/item07.png" alt="Bunsik" />
+                            <p className="item-maintext">분식</p>
                         </div>
                     </div>
                 </div>
@@ -128,28 +164,27 @@ const UserMain = () => {
                 <div className="crossline"></div>
                 <h1>오늘은 이거 어때요?</h1>
                 <div className="item item01">
-                    <h1>맛있는 것만 <span className="highlight-style01"><strong>#덮고<span className="highlight-style02">♬</span>비벼요!</strong></span></h1>
                     <div className="codepen-carousel">
                         <div className="hideLeft">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                         <div className="prevLeftSecond">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                         <div className="prev">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                         <div className="selected">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                         <div className="next">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                         <div className="nextRightSecond">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                         <div className="hideRight">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                     </div>
                 </div>
@@ -157,29 +192,30 @@ const UserMain = () => {
                     <h1><strong><span className="highlight-style01">#인기메뉴★들</span></strong> 만 모았어요!</h1>
                     <div className="codepen-carousel">
                         <div className="hideLeft">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                         <div className="prevLeftSecond">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                         <div className="prev">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                         <div className="selected">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                         <div className="next">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                         <div className="nextRightSecond">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                         <div className="hideRight">
-                            <img src="asset/img/item-recommend.png" alt="item-recommend" />
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
                         </div>
                     </div>
                 </div>
-              </div>
+            </div>
+
             {/* 사용자 위치 정보 섹션 */}
             <div className="user-location">
                 <h1>User Location</h1>

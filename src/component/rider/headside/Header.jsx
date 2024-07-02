@@ -36,8 +36,8 @@ const Header = () => {
                     <Nav>
                         {user ? (
                             <NavDropdown title="User Menu" id="user-menu-dropdown" alignRight>
-                                <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/settings">Settings</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/RiderMyPage">Profile</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/RiderMyPagemodify">Settings</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item onClick={userlogout}>Logout</NavDropdown.Item>
                             </NavDropdown>

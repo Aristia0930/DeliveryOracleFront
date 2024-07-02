@@ -46,6 +46,13 @@ import ManagerUserJoin from '../component/manager/ManagerUserJoin';
 import ManagerUserLogin from '../component/manager/ManagerUserLogin';
 import RiderUserJoin from '../component/rider/RiderUserJoin';
 import RiderUserLogin from '../component/rider/RiderUserLogin';
+import ShopMyPage from '../component/shop/ShopMyPage';
+import ShopMyPagemodify from '../component/shop/ShopMyPagemodify';
+import RiderMyPage from '../component/rider/RiderMyPage';
+import RiderMyPagemodify from '../component/rider/RiderMyPagemodify';
+import ManagerMyPagemodify from '../component/manager/ManagerMyPagemodify';
+import MypageReviewEdit from '../component/mypage/MypageReviewEdit';
+
 const Path = () => {
     return (
         <Routes>
@@ -60,6 +67,7 @@ const Path = () => {
             <Route path="/ManagerApprove" element={<ManagerApprove />} />
             <Route path="/ManagerOrderReceipt" element={<ManagerOrderReceipt />} />
             <Route path="/ManagerRevenue" element={<ManagerRevenue />} />
+            <Route path="/ManagerMyPagemodify" element={<ManagerMyPagemodify />} />
 
             <Route path="/ShopJoin" element={<ShopJoin />} />
             <Route path="/ShopMain" element={<ShopMain />} />
@@ -70,11 +78,14 @@ const Path = () => {
             <Route path="/ShopOrder" element={<ShopOrder />} />
             <Route path="/ShopOrderReceipt" element={<ShopOrderReceipt/>} />
             <Route path="/ShopRevenue" element={<ShopRevenue/>} />
+            <Route path="/ShopMyPage" element={<ShopMyPage/>} />
+            <Route path="/ShopMyPagemodify" element={<ShopMyPagemodify/>} />
 
             <Route path="/MypageMain" element={<MypageMain />} />
             <Route path="/MyorderDetails" element={<MyorderDetails/>} />
             <Route path="/MypageUserEdit" element={<MypageUserEdit/>} />
-        
+            <Route path="/MypageReviewEdit" element={<MypageReviewEdit/>} />
+            
             <Route path="/RiderMain" element={<RiderMain />} />
             <Route path="/RiderCall" element={<RiderCall />} />
             <Route path="/RiderOrder" element={<RiderOrder />} />
@@ -83,6 +94,9 @@ const Path = () => {
             <Route path="/RiderOrderReceiptList" element={<RiderOrderReceiptList />} />
             <Route path="/RiderRechart" element={<RiderRechart />} />
             <Route path="/RiderRevenue" element={<RiderRevenue />} />
+            <Route path="/RiderMyPage" element={<RiderMyPage />} />
+            <Route path="/RiderMyPagemodify" element={<RiderMyPagemodify />} />
+            
 
 
             <Route path="/MypageComments" element={<MypageComments />} />
