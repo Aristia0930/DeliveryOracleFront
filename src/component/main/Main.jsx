@@ -68,36 +68,29 @@ const Main = () => {
 
     return (
         <div>
-
-        <Header></Header>
-        <div id="main_container">
-
-        <div class="item-list " onClick={userbutton}>
-            <div class="item ">
-                <p class="item-maintext">유저 페이지</p>
+        <Header/>
+            <div id="main_container">
+                <div class="item-list " onClick={userbutton}>
+                    <div class="item ">
+                        <p class="item-maintext">유저 페이지</p>
+                    </div>
+                </div>
+                <div class="item-list" onClick={shopbutton}>
+                    <div class="item">
+                        <p class="item-maintext">업체 페이지</p>
+                    </div>
+                </div>
+                <div class="item-list" onClick={managerbutton}>
+                    <div class="item">
+                        <p class="item-maintext">관리자 페이지</p>
+                    </div>
+                </div>
+                <div class="item-list" onClick={riderbutton}>
+                    <div class="item">
+                        <p class="item-maintext">라이더 페이지</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="item-list" onClick={shopbutton}>
-            <div class="item">
-                <p class="item-maintext">업체 페이지</p>
-            </div>
-        </div>
-        <div class="item-list" onClick={managerbutton}>
-            <div class="item">
-                <p class="item-maintext">관리자 페이지</p>
-            </div>
-        </div>
-
-        <div class="item-list" onClick={riderbutton}>
-            <div class="item">
-                <p class="item-maintext">라이더 페이지</p>
-            </div>
-        </div>
-
-
-            <button onClick={onButtonClick}>유저인증테스트</button>
-            
-        </div>
         </div>
     );
 };

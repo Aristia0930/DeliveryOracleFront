@@ -19,9 +19,9 @@ const ManagerMain = () => {
             console.log("jwt 불러오는 중")
             try {
                 const response = await axios.get('http://localhost:8080/api/api/userinfo', {
-                    headers: {
+                    headers: { 
                         Authorization: `Bearer ${token}`
-                    }
+                   }
                 });
                 console.log(response.data);
                 console.log(response.data.user_id);

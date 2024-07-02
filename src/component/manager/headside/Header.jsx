@@ -30,16 +30,13 @@ const Header = () => {
         // </Navbar>
         <Navbar bg="dark" variant="dark" expand="lg" className="header-navbar">
         <Container>
-            <Navbar.Brand as={Link} to="/ManagerMain" className="brand">
-            Admin Dashboard
-            </Navbar.Brand>
+            <Navbar.Brand as={Link} to="/ManagerMain" className="brand">Admin Dashboard</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                 <Nav>
                     {user ? (
                         <NavDropdown title="User Menu" id="user-menu-dropdown" alignRight>
-                            <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to="/settings">Settings</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/ManagerMyPagemodify">Settings</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={userlogout}>Logout</NavDropdown.Item>
                         </NavDropdown>
