@@ -99,9 +99,9 @@ return (
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="https://via.placeholder.com/800x400"
+                                    src="asset/Default_Vibrant_food_illustrations_in_digital_painting_showcas_2.jpg"
                                     alt="First slide"
-                                />
+                                    style={{ width:"800px",height:"600px" }}/>
                                 <Carousel.Caption>
                                     <h3>First slide label</h3>
                                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -110,8 +110,9 @@ return (
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="https://via.placeholder.com/800x400"
+                                    src="asset/Default_Vibrant_stilllife_photographs_of_savory_meals_and_swee_1.jpg"
                                     alt="Second slide"
+                                    style={{ width:"800px",height:"600px" }}
                                 />
                                 <Carousel.Caption>
                                     <h3>Second slide label</h3>

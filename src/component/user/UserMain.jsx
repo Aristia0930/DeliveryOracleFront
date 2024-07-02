@@ -85,8 +85,9 @@ const UserMain = () => {
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="https://via.placeholder.com/800x400"
+                                    src="asset/Default_Vibrant_food_illustrations_in_digital_painting_showcas_2.jpg"
                                     alt="First slide"
+                                    style={{ width:"800px",height:"600px" }}
                                 />
                                 <Carousel.Caption>
                                     <h3>First slide label</h3>
@@ -96,8 +97,9 @@ const UserMain = () => {
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="https://via.placeholder.com/800x400"
+                                    src="asset/Default_Vibrant_stilllife_photographs_of_savory_meals_and_swee_1.jpg"
                                     alt="Second slide"
+                                    style={{ width:"800px",height:"600px" }}
                                 />
                                 <Carousel.Caption>
                                     <h3>Second slide label</h3>
@@ -107,8 +109,9 @@ const UserMain = () => {
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="https://via.placeholder.com/800x400"
+                                    src="asset/Default_Vibrant_food_illustrations_in_digital_painting_showcas_1.jpg"
                                     alt="Third slide"
+                                    style={{ width:"800px",height:"600px" }}
                                 />
                                 <Carousel.Caption>
                                     <h3>Third slide label</h3>
@@ -122,7 +125,7 @@ const UserMain = () => {
                     <div className="col-md-4">
                         <Link className="item-link" to={'/UserMenuCaList'} state={{ ca: 1, y: location.latitude, x: location.longitude }}>
                             <div className="menuitem">
-                                <img src="/imgs/item01.png" alt="Korean Food" />
+                                <img src="/asset/Default_Vibrant_Koreaninspired_artwork_oil_on_canvas_depicting_2.jpg" alt="Korean Food" style={{ width:"200px",height:"200px" }}/>
                                 <p className="item-maintext">한식</p>
                             </div>
                         </Link>
