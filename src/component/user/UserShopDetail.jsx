@@ -101,6 +101,8 @@ const UserShopDetail = () => {
                 console.log("주문클릭");
 
                 const orderData = {
+                    id:userId,
+                    price:-totalPrice,
                     customerId: useid,
                     storeId: datas.store_id,
                     orderDetails: orderDetails,
@@ -110,13 +112,20 @@ const UserShopDetail = () => {
                 };
 
                 try {
-                    const response = await axios.post('http://localhost:8080/search/order', orderData);
+                    const response = await axios.post('http://localhost:8080/account/pay', orderData);
                     console.log('Order response:', response.data);
-                    if (response.data == 1) {
-                        setMessages("");
-                        setCheck(true)
-                        // alert("주문 성공");
-                        // navigate('/');
+                    if (response.data == "SUCCESS") {
+                        setCheck(false)
+                        alert("주문 성공");
+                        navigate('/');
+                    }
+                    else if(response.data=="Insufficient balance"){
+                        alert("잔액이 부족합니다")
+                        navigate('/');
+                    }
+                    else if(response.data=="Order failed"){
+                        alert("주문에 실패함")
+                        navigate('/');
                     }
                 } catch (error) {
                     console.error('Order error:', error);
@@ -275,3 +284,46 @@ const UserShopDetail = () => {
 };
 
 export default UserShopDetail;
+
+
+// useEffect(() => {
+//     const handleMesUpdate = async () => {
+//         if (messages.content === "true" && totalPrice>0) {
+//             console.log(messages.content);
+//             const orderDetails = JSON.stringify(basket);
+//             console.log("주문클릭");
+
+//             const orderData = {
+//                 id:userId,
+//                 price:-totalPrice,
+//                 customerId: useid,
+//                 storeId: datas.store_id,
+//                 orderDetails: orderDetails,
+//                 totalPrice: totalPrice,
+//                 user_x: user_x,
+//                 user_y: user_y
+//             };
+
+//             try {
+//                 const response = await axios.post('http://localhost:8080/search/order', orderData);
+//                 console.log('Order response:', response.data);
+//                 if (response.data == 1) {
+//                     setMessages("");
+//                     setCheck(true)
+//                     // alert("주문 성공");
+//                     // navigate('/');
+//                 }
+//             } catch (error) {
+//                 console.error('Order error:', error);
+//             }
+//         } else {
+//             // alert("현재 음식점이 열려있지 않습니다");
+//             console.log("주문 실패");
+//             setMessages("");
+//         }
+//     };
+
+//     if (messages.content) {
+//         handleMesUpdate();
+//     }
+// }, [messages, basket, datas.store_id, totalPrice, useid]);
