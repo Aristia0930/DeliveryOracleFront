@@ -38,7 +38,7 @@ const ShopComment = () => {
                     
                 }
             }catch(e){
-                console.log("댓글불로오기 실패",e)
+                console.log("댓글 불러오기 실패",e)
             }
 
 

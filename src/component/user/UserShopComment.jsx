@@ -51,8 +51,6 @@ const UserShopComment = () => {
     }, [datas]);
 
 
-  
-
 
     return (
         <div>
