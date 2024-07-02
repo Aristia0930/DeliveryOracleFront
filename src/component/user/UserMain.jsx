@@ -4,13 +4,38 @@ import Header from '../common/Header';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import './UserMain.css'; // 스타일링을 위한 CSS 파일 import
+import axios from 'axios';
 
 const UserMain = () => {
-    const { user_x, setX, user_y, setY } = useContext(AdminFlagContext);
+    const { user_x, setRole,setX, user_y, setY ,userId,setUserId,user,setUser,setUserDate} = useContext(AdminFlagContext);
     const [location, setLocation] = useState({ latitude: null, longitude: null });
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+
+            const token = user
+            console.log(token)
+            console.log("jwt 불러오는 중")
+            try {
+                const response = await axios.get('http://localhost:8080/api/api/userinfo', {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                console.log(response.data);
+                console.log(response.data.user_id);
+                setUserDate(response.data)
+                setRole(response.data.authList[0].auth)
+                setUserId(response.data.user_id)
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchUserInfo();
+    }, [user]);
     // 사용자 위치 정보 가져오기
     useEffect(() => {
         if (navigator.geolocation) {
