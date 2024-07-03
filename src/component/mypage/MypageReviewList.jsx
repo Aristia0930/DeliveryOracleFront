@@ -3,18 +3,38 @@ import { Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 import StarRating from '../user/StartRating.jsx';
+import axios from 'axios';
 
-const MypageReviewList = ({ review }) => {
+const MypageReviewList = ({ review,setCheck }) => {
     const navigate = useNavigate();
+    console.log('리뷰:', review);
 
-    const handleDelete = () => {
+    const handleDelete = async() => {
         // 삭제 기능 구현
-        console.log('리뷰 삭제:', review.comment_id);
+        try{
+            const rs= await axios.delete(`http://localhost:8080/comments/ucv/${review.commentId}`)
+
+            if (rs.status==200){
+                alert("댓글 삭제 완료")
+                setCheck(review.commentId)
+            }
+            else{
+                alert("댓글삭제 실패")
+                navigate("/MypageMain");
+            }
+
+        }catch(e){
+            console.log("연결실패",e)
+        }
+        
+
+        
     };
 
     const handleEdit = () => {
         // 수정 기능 구현
         console.log('리뷰 수정:', review.comment_id);
+        navigate(`/MypageReviewEdit`, { state: { review: review } }) //수정 페이지로 이동하기
     };
 
     return (

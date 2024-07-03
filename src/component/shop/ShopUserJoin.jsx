@@ -34,7 +34,11 @@ const ShopUserJoin = () => {
             // 회원가입 성공 여부 확인
             if (response == "SUCCESS") {
                 navigate('/ShopMain');
-            } else {
+            } else if(response=="emailFAIL"){
+                alert("이메일이 중복입니다")
+            }
+            
+            else {
                 alert("가입 실패");
             }
         }).catch(error => {

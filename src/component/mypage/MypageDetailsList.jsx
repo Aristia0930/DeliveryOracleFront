@@ -13,6 +13,24 @@ const MypageDetailsList = ({ order }) => {
     const {user,setUser,userId,setUserId,shopId,setShopid,userDate, setUserDate}=useContext(AdminFlagContext)
 
     const navigate = useNavigate();
+    const [value,setValue]=useState(0)
+
+    useEffect(()=>{
+        const check=async ()=>{
+            try{
+                const rs=await axios.post("http://localhost:8080/userReport/check", {orderId: order.orderId})
+
+                if(rs.data>0){
+                    setValue(1)
+
+                }
+            }catch(e){
+                console.log("신고실패",e)
+            }
+        }
+        
+        check()
+    },[value])
     let orderDetailsArray = [];
     try {
         orderDetailsArray = JSON.parse(order.orderDetails);
@@ -70,18 +88,15 @@ const MypageDetailsList = ({ order }) => {
         try{
             const rs=await axios.post("http://localhost:8080/userReport/store", reportData)
             if(rs.status==200){
-                console.log(rs.data)
-                if(rs.data=="checkFail"){
-                    alert("이미 신고했습니다.")
-                    handleCloseModal();
-                }
-                else{
+
                 alert("신고하기성공")
                 handleCloseModal();
-                navigate("/")}
+                setValue(1)
+            }
+
                 
 
-            }
+            
         }catch(e){
             console.log("신고실패",e)
         }
@@ -123,7 +138,7 @@ const MypageDetailsList = ({ order }) => {
                         <Button onClick={but}>조리중</Button>}
                         {order.orderApprovalStatus==0&&
                         <Button onClick={but}>음식점에서 주문확인중</Button>} 
-                         <Button variant="danger"  style={{ marginLeft: '20px' }} onClick={handleOpenModal}>신고하기</Button>
+                        { value==0&&<Button variant="danger"  style={{ marginLeft: '20px' }} onClick={handleOpenModal}>신고하기</Button>}
                     </div>
                 </Card.Body>
             </Card>

@@ -8,6 +8,7 @@ import MypageReviewList from './MypageReviewList.jsx';
 const MypageReview = () => {
     const {user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
     const [review, setReview] = useState([]);
+    const [check,setCheck]=useState('')
 
     
 
@@ -25,7 +26,7 @@ const MypageReview = () => {
         };
 
         fetchOrderDetails();
-    }, [user]);
+    }, [user,check]);
     return (
         <div>
             <Header />
@@ -33,7 +34,7 @@ const MypageReview = () => {
 
                     {/* <Card.Title>주문 내역</Card.Title> */}
                     {
-                        review.map(reviews => (<MypageReviewList review={reviews} />
+                        review.map(reviews => (<MypageReviewList review={reviews} setCheck={setCheck} />
             
                             
                         ))

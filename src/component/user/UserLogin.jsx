@@ -15,7 +15,7 @@ const UserLogin = () => {
     const loginClick = async(e) => {
         e.preventDefault();
 
-
+        try{
         const rs=await auth.login(email,password)
         const data=rs.data
         const headers=rs.headers
@@ -28,6 +28,18 @@ const UserLogin = () => {
             setUser(headers.authorization.replace("Bearer ",""))
 
             navigate("/")
+        }
+        
+        
+    }
+        catch(e){
+            console.log("로그인오류",e)
+            if(e.response.status==401){
+                alert("id,pw 일치 하지 않음")
+            }
+            else if(e.response.status==402){
+                alert('id가 존재하지 않습니다')
+            }
         }
 
 

@@ -79,7 +79,7 @@ const UserShopComment = () => {
                             <div>
                                 {comment.map((array, index) => (
                                     <div key={index}>
-                                        {array.depth == 1 &&
+                                        {(array.depth == 1 && array.visibilityStatus!=0)&&
                                             <Card style={{ width: '80%', margin: '20px', backgroundColor: '#f9f9f9', borderRadius: '10px' }}>
                                                 <Card.Body>
                                                     <Card.Title style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -92,7 +92,16 @@ const UserShopComment = () => {
                                                 </Card.Body>
                                             </Card>
                                         }
-                                        {array.depth == 2 &&
+                                    {(array.depth == 1 && array.visibilityStatus==0)&&
+                                            <Card style={{ width: '80%', margin: '20px', backgroundColor: '#f9f9f9', borderRadius: '10px' }}>
+                                                <Card.Body>
+                                                    <Card.Text style={{ marginTop: '10px' }}>
+                                                        <h2>삭제된 댓글 입니다</h2>
+                                                    </Card.Text>
+                                                </Card.Body>
+                                            </Card>
+                                        }
+                                        {array.depth == 2 &&array.visibilityStatus!=0 &&
                                             <div style={{ position: 'relative', marginLeft: '40px' }}>
                                                 <div
                                                     style={{

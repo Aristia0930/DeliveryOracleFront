@@ -46,6 +46,19 @@
     color: #007bff;
 }
 
+.charge-button{
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    color: #333;
+}
+.sidebar-icon2 {
+    
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
 
-
+.rank-padding{
+    padding: 15px;
+    
+}
 

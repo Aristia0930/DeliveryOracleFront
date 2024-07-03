@@ -14,6 +14,7 @@ const ManagerUserblock = () => {
     const [showModal, setShowModal] = useState(false); // 팝업 창 열고 닫기 상태
     const [comment,setcomment]=useState([])
     const navigate = useNavigate();
+    const [check,setCheck]=useState("")
 
     // 팝업 열기 함수
     const handleOpenModal = (id) => {
@@ -55,7 +56,7 @@ const ManagerUserblock = () => {
 
         fetchData();
 
-    },[])
+    },[check])
     
 
     const userblock = async (id) => {
@@ -69,7 +70,8 @@ const ManagerUserblock = () => {
             if (response.status === 200) {
                 console.log(response.data)
                 alert("유저 블락 성공")
-                navigate("/ManagerMain")
+                // navigate("/ManagerMain")
+                setCheck(id)
                 
 
 

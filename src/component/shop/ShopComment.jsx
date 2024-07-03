@@ -17,6 +17,7 @@ import ShopCommentList from './ShopCommentList.jsx';
 const ShopComment = () => {
     const navigate = useNavigate();    
     const [comments,setComments]=useState([])
+    const [check,setCheck]=useState(false)
 
 
 
@@ -44,7 +45,7 @@ const ShopComment = () => {
 
         }
         commentList();
-    },[])
+    },[check])
 
 
 
@@ -60,7 +61,7 @@ const ShopComment = () => {
                     <Col xs={10} id="page-content-wrapper">
                         <div style={{ margin: '20px' }}>
                     {comments.map((array,index)=>(
-                        <ShopCommentList array={array}/>
+                        <ShopCommentList array={array} setCheck={setCheck} index={index}/>
                     ))}</div>
 
                     </Col>

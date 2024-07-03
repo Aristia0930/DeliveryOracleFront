@@ -8,6 +8,9 @@ import Header from '../common/Header';
 import './Mypage.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { MdOutlineMonetizationOn } from 'react-icons/md';
+import { FaRankingStar } from "react-icons/fa6";
+
 const MypageMain = () => {
     const navigate = useNavigate();
     const { user,setUser,userId,setUserId,shopId,setShopid } = useContext(AdminFlagContext); //현재 로그인된 사용자 정보 얻기 user 정보는 서버 요청 시 인증 토큰으로 사용됨.
@@ -15,6 +18,7 @@ const MypageMain = () => {
     const [userInfo, setUserInfo] = useState(null);
     const [account,setAccount]=useState(0)
     const [amount,setamount]=useState()
+    const [rankName,setRankName]=useState("")
 
     // useEffect는 컴포넌트가 처음 렌더링될 때, 그리고 user가 변경될 때마다 서버에서 사용자 정보를 가져와 userInfo를 업데이트 한다.
     // fetchUserInfo 함수는 axios.get을 사용하여 서버에 요청을 보내고
@@ -37,6 +41,7 @@ const MypageMain = () => {
             }
         };
 
+
         fetchUserInfo();
     }, [user]);
 
@@ -52,8 +57,24 @@ const MypageMain = () => {
                 console.log(error);
             }
         };
+        const rank = async () => {
+            try {
+                const response = await axios.post('http://localhost:8080/account/rank', {id:userId}
+                );
+                console.log(response.data);
+                if(response.status==200){
+                    setRankName(response.data)
+                }
+
+   
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
         if(userId){
             fetchUserInfo()
+            rank()
         }
 
     },[userId])
@@ -100,20 +121,30 @@ const MypageMain = () => {
                 <Card.Body>
                     <Card.Title>User Information</Card.Title>
                     <div className="user-profile d-flex align-items-center mb-4">
-                        {userInfo ? (
+                       
+                       {userInfo ? (
+                            
+                            <div><h4 className='rank-padding'><FaRankingStar className='sidebar-icon2'/>등급 : {rankName}</h4>
                             <div className="d-flex align-items-center">
+                                
                                 <img src="/imgs/profile.jpg" alt="Profile" className="profile-img mr-3" />
                                 <div>
                                     <p className="mb-0"><strong>이메일(Id): {userInfo.email}</strong></p>
                                     <p className="mb-0"><strong>닉네임: {userInfo.name}</strong></p>
                                     <p className="mb-0"><Link to="/MypageUserEdit">계정관리/수정</Link> </p>
-                                    <p className="mb-0">잔액: {account} 원 / <button onClick={handleOpenModal}>충전하기</button></p>
+                                    <p className="mb-0"><MdOutlineMonetizationOn className='sidebar-icon'/>잔액: {account} 원 / <Button className='charge-button' onClick={handleOpenModal}>충전하기</Button></p>
                                 </div>
+                               
                             </div>
+                            
+                            </div>
+                            
                         ) : (
                             <p>Loading user info...</p>
                         )}
-                    </div>
+                        
+                    </div> 
+                    
 
                     <div className="navigation-boxes">
                         <Row className="text-center">

@@ -202,7 +202,7 @@ import StarRating from '../user/StartRating.jsx';
 import {  BsFillFlagFill, BsChatFill, BsPencilFill, BsTrashFill } from 'react-icons/bs'; // react-icons에서 사용할 아이콘을 가져옵니다
 import Modal from 'react-bootstrap/Modal'; // Bootstrap의 Modal 컴포넌트 import
 
-const ShopCommentList = ({ array }) => {
+const ShopCommentList = ({ array ,setCheck,index}) => {
     const navigate = useNavigate();
     const { user,setUser,userId,setUserId,shopId,setShopid,userDate, setUserDate } = useContext(AdminFlagContext);
 
@@ -210,6 +210,7 @@ const ShopCommentList = ({ array }) => {
     const [showModal2, setShowModal2] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
     const [reportText, setReportText] = useState('');
+    const[content,setContent]=useState("")
     const [editText, setEditText] = useState('');
 
     const handleOpenModal = () => setShowModal(true);
@@ -234,7 +235,7 @@ const ShopCommentList = ({ array }) => {
             if (rs.status === 200) {
                 alert("신고하기 성공");
                 handleCloseModal();
-                navigate("/ShopMain");
+                setCheck(index+"re")
             }
         } catch (e) {
             console.log("신고 실패", e);
@@ -248,13 +249,13 @@ const ShopCommentList = ({ array }) => {
                 storeId: array.storeId,
                 authorId: userId,
                 authorName: userDate.name,
-                content: reportText,
+                content: content,
                 replyId: array.commentId
             });
             if (rs.status === 201) {
                 alert("답글쓰기 성공");
                 handleCloseModal2();
-                navigate("/ShopMain");
+                setCheck(index)
             }
         } catch (e) {
             console.log("답글 작성 실패", e);
@@ -267,13 +268,14 @@ const ShopCommentList = ({ array }) => {
         e.preventDefault();
         //put라 해서 상관없이 스프링에 맞게 수정
         try {
-            const rs = await axios.put(`http://localhost:8080/comments/reply/${array.commentId}`, {
+            const rs = await axios.put(`http://localhost:8080/comments/reply`, {
+                commentId:array.commentId,
                 content: editText
             });
             if (rs.status === 200) {
                 alert("답글 수정 성공");
                 handleCloseEditModal();
-                navigate("/ShopMain");
+                setCheck(index+"ed")
             }
         } catch (e) {
             console.log("답글 수정 실패", e);
@@ -281,11 +283,12 @@ const ShopCommentList = ({ array }) => {
     };
 
     const handleDeleteReply = async () => {
+        
         try {
-            const rs = await axios.delete(`http://localhost:8080/comments/reply/${array.commentId}`);
+            const rs = await axios.delete(`http://localhost:8080/comments/replyUrv/${array.commentId}`);
             if (rs.status === 200) {
                 alert("답글 삭제 성공");
-                navigate("/ShopMain");
+                setCheck(index+"de")
             }
         } catch (e) {
             console.log("답글 삭제 실패", e);
@@ -295,7 +298,7 @@ const ShopCommentList = ({ array }) => {
     return (
         <div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                {array.depth === 1 && (
+                {array.depth === 1 &&array.visibilityStatus!=0&& (
                     <div style={{ marginBottom: '20px', width: '100%' }}>
                         <Card style={{ width: '100%', maxWidth: '600px', margin: '0 auto', border: '1px solid #007bff', borderRadius: '10px' }}>
                             <Card.Body>
@@ -316,7 +319,7 @@ const ShopCommentList = ({ array }) => {
                         </Card>
                     </div>
                 )}
-                {array.depth === 2 && (
+                {array.depth === 2 &&array.visibilityStatus!=0&& (
                     <div style={{ position: 'relative', marginLeft: '40px', marginBottom: '20px', width: '100%' }}>
                         <Card style={{ width: '100%', maxWidth: '560px', margin: '0 auto', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: '#f9f9f9' }}>
                             <Card.Body>
@@ -334,6 +337,19 @@ const ShopCommentList = ({ array }) => {
                                 <Card.Text style={{ fontSize: '0.9rem' }}>
                                     {array.content}
                                 </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </div>
+                )}
+
+{array.depth === 1 &&array.visibilityStatus==0&& (
+                    <div style={{ marginBottom: '20px', width: '100%' }}>
+                        <Card style={{ width: '100%', maxWidth: '600px', margin: '0 auto', border: '1px solid #007bff', borderRadius: '10px' }}>
+                            <Card.Body>
+                                <Card.Title style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <h3>삭제된 댓글 입니다</h3>
+                                </Card.Title>
+              
                             </Card.Body>
                         </Card>
                     </div>
@@ -372,8 +388,8 @@ const ShopCommentList = ({ array }) => {
                 <Modal.Body>
                     <input
                         type="text"
-                        value={reportText}
-                        onChange={(e) => setReportText(e.target.value)}
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
                         placeholder="답글을 입력하세요"
                         style={{ width: '100%', padding: '10px' }}
                     />
