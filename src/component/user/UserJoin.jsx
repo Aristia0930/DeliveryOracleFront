@@ -56,14 +56,13 @@ const UserJoin = () => {
     
                 <div class="form">
     
-    
                     <form action="#">
                         <p class="user_email">
-                            <label for="user_email">이메일(Id)</label>
+                            <label for="user_email">아이디:이메일</label>
                             <input type="email" id="user_email"  onChange={(e)=>setEmail(e.target.value)}/>
                         </p>
                         <p class="user_name">
-                            <label for="user_name">사용자명(닉네임)</label>
+                            <label for="user_name">닉네임:사용자명</label>
                             <input type="text" id="user_name" onChange={(e)=>setName(e.target.value)}/>
                         </p>
 
@@ -71,7 +70,7 @@ const UserJoin = () => {
                     {/* <button  class="submit_btn">이메일 인증하기</button>
                     {emailPass==true && <p class="login_user_password"> <label for="user_password">인증번호 확인:
                     </label><input type="text"  class="emailpass" /> <button  class="btn_con">확인</button></p>}
-     */}
+                    */}
                         <p class="user_password">
                             <label for="user_password">비밀번호</label>
                             <input type="password" id="user_password" onChange={(e)=>setPassword(e.target.value)}/>
@@ -81,15 +80,13 @@ const UserJoin = () => {
                         <input type="submit" id="submit_btn" value="회원가입" class="submit_btn" onClick={joinClick}/>
                     </form>
     
+                </div>
     
-    
-        </div>
- 
-    </div>
-    
-    </div>
-                
             </div>
+        
+        </div>
+                
+    </div>
     );
 };
 

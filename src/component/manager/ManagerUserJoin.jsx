@@ -55,14 +55,13 @@ const ManagerUserJoin = () => {
     
     
                     <form action="#">
-                        <p class="user_name">
-                            <label for="user_name">사용자명</label>
-                            <input type="text" id="user_name" onChange={(e)=>setName(e.target.value)}/>
-                        </p>
-
                         <p class="user_email">
-                            <label for="user_email">이메일(id)</label>
+                            <label for="user_email">아이디:이메일</label>
                             <input type="email" id="user_email"  onChange={(e)=>setEmail(e.target.value)}/>
+                        </p>
+                        <p class="user_name">
+                            <label for="user_name">닉네임:사용자명</label>
+                            <input type="text" id="user_name" onChange={(e)=>setName(e.target.value)}/>
                         </p>
 
                     {/* <button  class="submit_btn">이메일 인증하기</button>

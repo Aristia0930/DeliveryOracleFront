@@ -7,15 +7,16 @@ import StarRating from '../user/StartRating.jsx';
 const MypageReviewList = ({ review }) => {
     const navigate = useNavigate();
 
+    const handleEdit = () => {
+        // 수정 기능 구현
+        console.log('리뷰 수정:', review.comment_id);
+    };
+
     const handleDelete = () => {
         // 삭제 기능 구현
         console.log('리뷰 삭제:', review.comment_id);
     };
 
-    const handleEdit = () => {
-        // 수정 기능 구현
-        console.log('리뷰 수정:', review.comment_id);
-    };
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
