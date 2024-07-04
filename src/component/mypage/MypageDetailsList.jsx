@@ -1,14 +1,36 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { Card } from 'react-bootstrap';
-import Header from '../commom/Header.jsx';
+import Header from '../common/Header.jsx';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
-
+import Modal from 'react-bootstrap/Modal'; 
+import { AdminFlagContext } from "../../flag/Flag.jsx";
 const MypageDetailsList = ({ order }) => {
+    const [showModal, setShowModal] = useState(false); // 팝업 창 열고 닫기 상태
+    const [reportText, setReportText] = useState(''); // 신고 내용을 저장할 상태 변수
+    const {user,setUser,userId,setUserId,shopId,setShopid,userDate, setUserDate}=useContext(AdminFlagContext)
+
     const navigate = useNavigate();
+    const [value,setValue]=useState(0)
+
+    useEffect(()=>{
+        const check=async ()=>{
+            try{
+                const rs=await axios.post("http://localhost:8080/userReport/check", {orderId: order.orderId})
+
+                if(rs.data>0){
+                    setValue(1)
+
+                }
+            }catch(e){
+                console.log("신고실패",e)
+            }
+        }
+        
+        check()
+    },[value])
     let orderDetailsArray = [];
     try {
         orderDetailsArray = JSON.parse(order.orderDetails);
@@ -40,22 +62,69 @@ const MypageDetailsList = ({ order }) => {
         e.preventDefault();
     }
 
+    // 팝업 열기 함수
+        const handleOpenModal = () => {
+            setShowModal(true);
+        }
+    
+    // 팝업 닫기 함수
+        const handleCloseModal = () => {
+            setShowModal(false);
+        }
+    //신고하기
+    
+    //신고하기 버튼
+    const handleReport =async(e)=>{
+        e.preventDefault();
+
+        const reportData = {
+            orderId: order.orderId,
+            storeId: order.storeId,
+            reportText: reportText,
+            reporterId: userId
+        };
+
+        
+        try{
+            const rs=await axios.post("http://localhost:8080/userReport/store", reportData)
+            if(rs.status==200){
+
+                alert("신고하기성공")
+                handleCloseModal();
+                setValue(1)
+            }
+
+                
+
+            
+        }catch(e){
+            console.log("신고실패",e)
+        }
+
+    }
+
+
     return (
-        <div>
-            <Card key={order.orderId} style={{ width: '40rem', margin: 'auto', marginBottom: '20px' }}>
-                <Card.Img variant="top" src={`/imgs/${order.storeImage}`} style={{ width: '5rem', aspectRatio: '1/1', margin: 'auto' }} />
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
+            <Card style={{ width: '40rem', boxShadow: '0 4px 8px rgba(0,0,0,0.1)', borderRadius: '10px' }}>
+                <Card.Img 
+                    variant="top" 
+                    src={`/imgs/${order.storeImage}`} 
+                    style={{ width: '8rem', height: '8rem', objectFit: 'cover', borderRadius: '50%', margin: '20px auto' }} 
+                />
                 <Card.Body>
-                    <div key={order.orderId}>
-                        <p><strong>가게이름:</strong> {order.storeName}</p>
+                    <div style={{ textAlign: 'center' }}>
+                        <h5 style={{ fontWeight: 'bold', marginBottom: '15px' }}>{order.storeName}</h5>
                         <p style={{
-                            margin: 'auto',
-                            width: '20rem',
+                            width: '100%',
                             whiteSpace: 'nowrap',
                             overflow: 'hidden',
-                            textOverflow: 'ellipsis'
+                            textOverflow: 'ellipsis',
+                            marginBottom: '15px'
                         }}><strong>주문내용:</strong> {cleanOrderDetails.join(", ")}</p>
-                        <p><strong>가격:</strong> {order.totalPrice}</p>
+                        <p><strong>가격:</strong> {order.totalPrice} 원</p>
                         <p><strong>주문날짜:</strong> {order.orderDate}</p>
+     
                         <hr />
                         {order.orderApprovalStatus==4&&
                         <Button onClick={comment}>리뷰쓰기</Button>}
@@ -68,10 +137,36 @@ const MypageDetailsList = ({ order }) => {
                           {order.orderApprovalStatus==1&&
                         <Button onClick={but}>조리중</Button>}
                         {order.orderApprovalStatus==0&&
-                        <Button onClick={but}>음식점에서 주문확인중</Button>}
+                        <Button onClick={but}>음식점에서 주문확인중</Button>} 
+                        { value==0&&<Button variant="danger"  style={{ marginLeft: '20px' }} onClick={handleOpenModal}>신고하기</Button>}
                     </div>
                 </Card.Body>
             </Card>
+
+            <>
+         {/* 팝업 */}
+         <Modal show={showModal} onHide={handleCloseModal}>
+         <Modal.Header closeButton>
+             <Modal.Title>신고 내용 입력</Modal.Title>
+         </Modal.Header>
+         <Modal.Body>
+             <input
+                 type="text"
+                 value={reportText}
+                 onChange={(e) => setReportText(e.target.value)}
+                 placeholder="신고 내용을 입력하세요"
+                 style={{ width: '100%', padding: '10px' }}
+             />
+         </Modal.Body>
+         <Modal.Footer>
+             <Button variant="secondary" onClick={handleCloseModal}>
+                 닫기
+             </Button>
+             <Button variant="primary" onClick={handleReport}>
+                 신고하기
+             </Button>
+         </Modal.Footer>
+     </Modal></>
         </div>
     );
 };

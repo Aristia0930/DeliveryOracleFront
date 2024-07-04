@@ -4,8 +4,8 @@ import axios from 'axios';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AdminFlagContext } from "../../flag/Flag.jsx";
-import TabMenu from '../commom/TabMenu.jsx';
-import Header from '../commom/Header.jsx';
+import TabMenu from '../common/TabMenu.jsx';
+import Header from '../common/Header.jsx';
 
 const UserShopIntroduce = () => {
     const location = useLocation();

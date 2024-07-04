@@ -8,9 +8,10 @@ import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { CompatClient, Stomp } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
-import TabMenu from '../commom/TabMenu.jsx';
-import Header from '../commom/Header.jsx';
+import TabMenu from '../common/TabMenu.jsx';
+import Header from '../common/Header.jsx';
 import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
+import './UserShopDetail.css'
 
 const UserShopDetail = () => {
     const navigate = useNavigate();
@@ -21,12 +22,14 @@ const UserShopDetail = () => {
     const [error, setError] = useState(null);
     const [basket, setBasket] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
-    const { user, setUser, user_x, setX, user_y, setY } = useContext(AdminFlagContext);
+    const { user, setUser, user_x, setX, user_y, setY,userId } = useContext(AdminFlagContext);
     const [mes, setMes] = useState("");
     const [useid, setUseid] = useState("");
     const [username, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const { stompClient, messages, sendMessage, setMessages, connected } = useWebSocket();
+    const [check,setCheck]=useState(false)
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -98,6 +101,8 @@ const UserShopDetail = () => {
                 console.log("주문클릭");
 
                 const orderData = {
+                    id:userId,
+                    price:-totalPrice,
                     customerId: useid,
                     storeId: datas.store_id,
                     orderDetails: orderDetails,
@@ -107,11 +112,19 @@ const UserShopDetail = () => {
                 };
 
                 try {
-                    const response = await axios.post('http://localhost:8080/search/order', orderData);
+                    const response = await axios.post('http://localhost:8080/account/pay', orderData);
                     console.log('Order response:', response.data);
-                    if (response.data == 1) {
-                        setMessages("");
+                    if (response.data == "SUCCESS") {
+                        setCheck(false)
                         alert("주문 성공");
+                        navigate('/');
+                    }
+                    else if(response.data=="Insufficient balance"){
+                        alert("잔액이 부족합니다")
+                        navigate('/');
+                    }
+                    else if(response.data=="Order failed"){
+                        alert("주문에 실패함")
                         navigate('/');
                     }
                 } catch (error) {
@@ -128,6 +141,34 @@ const UserShopDetail = () => {
             handleMesUpdate();
         }
     }, [messages, basket, datas.store_id, totalPrice, useid]);
+
+    //주문 계좌 연결하기
+    useEffect(() => {
+        const orderAccount = async () => {
+
+             try {
+                    const response = await axios.put('http://localhost:8080/account/pay', {id:userId,price:-totalPrice});
+                    console.log('Order response:', response.data);
+                    if (response.data == "SUCCESS") {
+                        setCheck(false)
+                        alert("주문 성공");
+                        navigate('/');
+                    }
+                    else if(response.data=="Insufficient balance"){
+                        alert("잔액이 부족합니다")
+                        navigate('/');
+                    }
+                } catch (error) {
+                    console.error('Order error:', error);
+                }
+            } 
+
+        if(check){
+            console.log("계좌연결시도")
+            orderAccount();
+        }
+    }, [check]);
+
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
@@ -178,7 +219,6 @@ const UserShopDetail = () => {
         }
     };
 
-
     return (
         <div>
             <Header />
@@ -215,26 +255,25 @@ const UserShopDetail = () => {
                         </div>
                     </div>
                     <div className="section" id="c">
-                        <div className="basket-header"><strong>장바구니</strong></div>
-                        <div className="basket-body">
-                        {basket.map((array) => (
-                            <div className='basket' key={array.menuName}>
-                                <div>{array.menuName}</div>
-                                <div className='basket-data'>
-                                    <button onClick={() => decreaseQuantity(array.menuName)}>-</button>
-                                    {array.quantity}
-                                    <button onClick={() => increaseQuantity(array.menuName)}>+</button>
-                                    <div>{array.menuPrice} 원</div>
-
+                    <div className="basket-header bg-primary text-white p-2"><strong>장바구니</strong></div>
+                        <div className="basket-body p-3">
+                            {basket.map((array) => (
+                                <div className="basket-item mb-3" key={array.menuName}>
+                                    <div className="item-name">{array.menuName}</div>
+                                    <div className="item-actions d-flex justify-content-between align-items-center mt-2">
+                                        <button className="btn btn-sm btn-outline-secondary" onClick={() => decreaseQuantity(array.menuName)}>-</button>
+                                        <span className="quantity mx-2">{array.quantity}</span>
+                                        <button className="btn btn-sm btn-outline-secondary" onClick={() => increaseQuantity(array.menuName)}>+</button>
+                                        <div className="item-price ml-auto">{array.menuPrice} 원</div>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
                         </div>
-                        <hr/>
-                        <div>총금액 {totalPrice} 원</div>
-                        <hr/>
-                        <div>
-                        <button onClick={handleOrder}>주문하기</button>
+                        <hr className="my-4" />
+                        <div className="total-price text-right"><strong>총금액</strong> {totalPrice} 원</div>
+                        <hr className="my-4" />
+                        <div className="order-button text-center">
+                            <button className="btn btn-primary btn-lg" onClick={handleOrder}>주문하기</button>
                         </div>
                     </div>
                 </div>
@@ -244,3 +283,46 @@ const UserShopDetail = () => {
 };
 
 export default UserShopDetail;
+
+
+// useEffect(() => {
+//     const handleMesUpdate = async () => {
+//         if (messages.content === "true" && totalPrice>0) {
+//             console.log(messages.content);
+//             const orderDetails = JSON.stringify(basket);
+//             console.log("주문클릭");
+
+//             const orderData = {
+//                 id:userId,
+//                 price:-totalPrice,
+//                 customerId: useid,
+//                 storeId: datas.store_id,
+//                 orderDetails: orderDetails,
+//                 totalPrice: totalPrice,
+//                 user_x: user_x,
+//                 user_y: user_y
+//             };
+
+//             try {
+//                 const response = await axios.post('http://localhost:8080/search/order', orderData);
+//                 console.log('Order response:', response.data);
+//                 if (response.data == 1) {
+//                     setMessages("");
+//                     setCheck(true)
+//                     // alert("주문 성공");
+//                     // navigate('/');
+//                 }
+//             } catch (error) {
+//                 console.error('Order error:', error);
+//             }
+//         } else {
+//             // alert("현재 음식점이 열려있지 않습니다");
+//             console.log("주문 실패");
+//             setMessages("");
+//         }
+//     };
+
+//     if (messages.content) {
+//         handleMesUpdate();
+//     }
+// }, [messages, basket, datas.store_id, totalPrice, useid]);

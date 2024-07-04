@@ -38,6 +38,22 @@ import UserShopComment from '../component/user/UserShopComment';
 import ShopComment from '../component/shop/ShopComment';
 import ManagerUserblock from '../component/manager/ManagerUserblock';
 import MypageReview from '../component/mypage/MypageReview';
+<<<<<<< HEAD
+=======
+import ShopCommentText from '../component/shop/ShopCommentText';
+import ManagerShopleave from '../component/manager/ManagerShopleave';
+import ShopUserJoin from '../component/shop/ShopUserJoin';
+import ShopUserLogin from '../component/shop/ShopUserLogin';
+import ManagerUserJoin from '../component/manager/ManagerUserJoin';
+import ManagerUserLogin from '../component/manager/ManagerUserLogin';
+import RiderUserJoin from '../component/rider/RiderUserJoin';
+import RiderUserLogin from '../component/rider/RiderUserLogin';
+import ShopMyPage from '../component/shop/ShopMyPage';
+import ShopMyPagemodify from '../component/shop/ShopMyPagemodify';
+import RiderMyPage from '../component/rider/RiderMyPage';
+import RiderMyPagemodify from '../component/rider/RiderMyPagemodify';
+import ManagerMyPagemodify from '../component/manager/ManagerMyPagemodify';
+>>>>>>> master
 import MypageReviewEdit from '../component/mypage/MypageReviewEdit';
 
 const Path = () => {
@@ -54,6 +70,7 @@ const Path = () => {
             <Route path="/ManagerApprove" element={<ManagerApprove />} />
             <Route path="/ManagerOrderReceipt" element={<ManagerOrderReceipt />} />
             <Route path="/ManagerRevenue" element={<ManagerRevenue />} />
+            <Route path="/ManagerMyPagemodify" element={<ManagerMyPagemodify />} />
 
             <Route path="/ShopJoin" element={<ShopJoin />} />
             <Route path="/ShopMain" element={<ShopMain />} />
@@ -64,11 +81,14 @@ const Path = () => {
             <Route path="/ShopOrder" element={<ShopOrder />} />
             <Route path="/ShopOrderReceipt" element={<ShopOrderReceipt/>} />
             <Route path="/ShopRevenue" element={<ShopRevenue/>} />
+            <Route path="/ShopMyPage" element={<ShopMyPage/>} />
+            <Route path="/ShopMyPagemodify" element={<ShopMyPagemodify/>} />
 
             <Route path="/MypageMain" element={<MypageMain />} />
             <Route path="/MyorderDetails" element={<MyorderDetails/>} />
             <Route path="/MypageUserEdit" element={<MypageUserEdit/>} />
-        
+            <Route path="/MypageReviewEdit" element={<MypageReviewEdit/>} />
+            
             <Route path="/RiderMain" element={<RiderMain />} />
             <Route path="/RiderCall" element={<RiderCall />} />
             <Route path="/RiderOrder" element={<RiderOrder />} />
@@ -77,6 +97,9 @@ const Path = () => {
             <Route path="/RiderOrderReceiptList" element={<RiderOrderReceiptList />} />
             <Route path="/RiderRechart" element={<RiderRechart />} />
             <Route path="/RiderRevenue" element={<RiderRevenue />} />
+            <Route path="/RiderMyPage" element={<RiderMyPage />} />
+            <Route path="/RiderMyPagemodify" element={<RiderMyPagemodify />} />
+            
 
 
             <Route path="/MypageComments" element={<MypageComments />} />
@@ -90,7 +113,21 @@ const Path = () => {
             <Route path="/ManagerUserblock" element={<ManagerUserblock />} />
 
             <Route path="/MypageReview" element={<MypageReview />} />
+<<<<<<< HEAD
             <Route path="/MypageReviewEdit" element={<MypageReviewEdit />} />
+=======
+            <Route path="/ShopCommentText" element={<ShopCommentText />} />
+            <Route path="/ManagerShopleave" element={<ManagerShopleave />} />
+
+            <Route path="/ShopUserJoin" element={<ShopUserJoin />} />
+            <Route path="/ShopUserLogin" element={<ShopUserLogin />} />
+
+            <Route path="/ManagerUserJoin" element={<ManagerUserJoin />} />
+            <Route path="/ManagerUserLogin" element={<ManagerUserLogin />} />
+
+            <Route path="/RiderUserJoin" element={<RiderUserJoin />} />
+            <Route path="/RiderUserLogin" element={<RiderUserLogin />} />
+>>>>>>> master
         </Routes>
     );
 };

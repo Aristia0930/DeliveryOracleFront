@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
-import Header from '../commom/Header';
+import Header from '../common/Header';
 import Card from 'react-bootstrap/Card';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
@@ -29,6 +29,7 @@ const Main = () => {
             })
             console.log(response.data)
             console.log(response.data.user_id)
+            console.log("유저권한",response.data.authList[0].auth)
         
         }catch(error){
             console.log(error)
@@ -67,36 +68,29 @@ const Main = () => {
 
     return (
         <div>
-
-        <Header></Header>
-        <div id="main_container">
-
-        <div class="item-list " onClick={userbutton}>
-            <div class="item ">
-                <p class="item-maintext">유저 페이지</p>
+        <Header/>
+            <div id="main_container">
+                <div class="item-list " onClick={userbutton}>
+                    <div class="item ">
+                        <p class="item-maintext">유저 페이지</p>
+                    </div>
+                </div>
+                <div class="item-list" onClick={shopbutton}>
+                    <div class="item">
+                        <p class="item-maintext">업체 페이지</p>
+                    </div>
+                </div>
+                <div class="item-list" onClick={managerbutton}>
+                    <div class="item">
+                        <p class="item-maintext">관리자 페이지</p>
+                    </div>
+                </div>
+                <div class="item-list" onClick={riderbutton}>
+                    <div class="item">
+                        <p class="item-maintext">라이더 페이지</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="item-list" onClick={shopbutton}>
-            <div class="item">
-                <p class="item-maintext">업체 페이지</p>
-            </div>
-        </div>
-        <div class="item-list" onClick={managerbutton}>
-            <div class="item">
-                <p class="item-maintext">관리자 페이지</p>
-            </div>
-        </div>
-
-        <div class="item-list" onClick={riderbutton}>
-            <div class="item">
-                <p class="item-maintext">라이더 페이지</p>
-            </div>
-        </div>
-
-
-            <button onClick={onButtonClick}>유저인증테스트</button>
-            
-        </div>
         </div>
     );
 };

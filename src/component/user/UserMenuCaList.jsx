@@ -388,9 +388,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import UserMenuCa from './UserMenuCa';
-import Header from '../commom/Header';
+import Header from '../common/Header';
 import './UserMenu.css';
-import TabMenu from '../commom/TabMenu';
+import TabMenu from '../common/TabMenu';
 import { useWebSocket } from "../../flag/WebSocketContext.jsx";
 
 const UserMenuCaList = () => {
@@ -409,6 +409,7 @@ const UserMenuCaList = () => {
 
     // Load initial data and initialize shop states
     useEffect(() => {
+        console.log("x",x)
         const fetchData = async () => {
             try {
                 const rs = await axios.get("http://localhost:8080/search/CaList", {
@@ -432,7 +433,7 @@ const UserMenuCaList = () => {
         fetchData();
     }, [caInfo, x, y]);
 
-    //음식점이 열려있는지 확인ㅅ하는 절차
+    //음식점이 열려있는지 확인하는 절차
 
     useEffect(() => {
         const checkAllShops = async () => {
@@ -492,8 +493,7 @@ const UserMenuCaList = () => {
         <div>
             <Header />
             <TabMenu />
-
-            <div className="container-custom">
+            <div className="container-custom"  style={{ margin: '20px' }}>
                 <p className="store-count">음식점 <span className="pd3">{data.length}곳</span>을 찾았습니다.</p>
                 <p className="superlist"><a href="#" className="badge badge-danger">SuperList</a></p>
                 <div className="big-column row">

@@ -5,9 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import StarRating from '../user/StartRating.jsx';
 import axios from 'axios';
 
-const MypageReviewList = ({ review }) => {
+const MypageReviewList = ({ review,setCheck }) => {
     const navigate = useNavigate();
+    console.log('리뷰:', review);
 
+<<<<<<< HEAD
     const handleDelete = () => {
         // 삭제 기능 구현 (가시성 표현 0이면 존재하지 않는 댓글, 1이면 존재하는 원본 댓글)
         axios.put(`/comments/ucv/updateCommentVisivility?comment_id=${review.commentId}`)
@@ -25,14 +27,42 @@ const MypageReviewList = ({ review }) => {
             alert("댓글 삭제 처리 중 에러가 발생!");
         });
 
+=======
+    const handleDelete = async() => {
+        // 삭제 기능 구현
+        try{
+            const rs= await axios.delete(`http://localhost:8080/comments/ucv/${review.commentId}`)
+
+            if (rs.status==200){
+                alert("댓글 삭제 완료")
+                setCheck(review.commentId)
+            }
+            else{
+                alert("댓글삭제 실패")
+                navigate("/MypageMain");
+            }
+
+        }catch(e){
+            console.log("연결실패",e)
+        }
+        
+
+        
+>>>>>>> master
     };
 
     console.log('리뷰 삭제 : ', review.commentId);
 
     // 수정 기능 구현
     const handleEdit = () => {
+<<<<<<< HEAD
         navigate(`MypageReviewEdit/${review.commentId}`) //수정 페이지로 이동하기
         console.log('리뷰 수정 : ', review.commentId);
+=======
+        // 수정 기능 구현
+        console.log('리뷰 수정:', review.comment_id);
+        navigate(`/MypageReviewEdit`, { state: { review: review } }) //수정 페이지로 이동하기
+>>>>>>> master
     };
 
     return (

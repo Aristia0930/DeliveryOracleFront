@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Header from '../commom/Header.jsx';
+import Header from '../common/Header.jsx';
 import axios from 'axios';
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import Button from 'react-bootstrap/Button';
@@ -9,6 +9,11 @@ import MypageReviewList from './MypageReviewList.jsx';
 const MypageReview = () => {
     const {user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
     const [review, setReview] = useState([]);
+<<<<<<< HEAD
+=======
+    const [check,setCheck]=useState('')
+
+>>>>>>> master
     
     useEffect(() => {
         const fetchOrderDetails = async () => {
@@ -29,7 +34,7 @@ const MypageReview = () => {
         };
 
         fetchOrderDetails();
-    }, [user]);
+    }, [user,check]);
     return (
         <div>
             <Header />
@@ -37,8 +42,14 @@ const MypageReview = () => {
 
                     {/* <Card.Title>주문 내역</Card.Title> */}
                     {
+<<<<<<< HEAD
                         review.map(review => (
                         <MypageReviewList key={review.commentId} review={review} />
+=======
+                        review.map(reviews => (<MypageReviewList review={reviews} setCheck={setCheck} />
+            
+                            
+>>>>>>> master
                         ))
                    }
   

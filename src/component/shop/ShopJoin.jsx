@@ -13,13 +13,15 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Sidebar from './headside/Sidebar';
 
 const ShopJoin = () => {
-  const {user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
+  const {role,user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
   const location = useLocation();
   //넘어온값
   // const id = location.state?.id;
+  const navigate = useNavigate();
+
   const id = userId;
     
-  const navigate = useNavigate();
+
 
     //상점이름
     const [name,setName]=useState("")

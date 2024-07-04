@@ -17,11 +17,12 @@ export const Flag =(props) => {
     const[user_y,setY]=useState(null)//유저y좌표
     const [userInfo, setUserInfo] = useState(null); // 유저 정보
     const [approvalStatus, setapprovalStatus] = useState(null); // 승인상태
+    const [role, setRole] = useState(null); // 유저권한
 
 
     //AdminFlagContext 안에 provider 이 있으으로 감싸면 된다
     return (
-        <AdminFlagContext.Provider value={{user,setUser,userDate,setUserDate,userId,setUserId,shopId,setShopId,riderId,setRiderId,user_x,setX,user_y,setY,userInfo,setUserInfo,approvalStatus,setapprovalStatus}}>
+        <AdminFlagContext.Provider value={{user,setUser,userDate,setUserDate,userId,setUserId,shopId,setShopId,riderId,setRiderId,user_x,setX,user_y,setY,userInfo,setUserInfo,approvalStatus,setapprovalStatus,role,setRole}}>
             {children}
         </AdminFlagContext.Provider>
     )

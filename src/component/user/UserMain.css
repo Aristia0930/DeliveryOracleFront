@@ -1,0 +1,38 @@
+/* UserMain.css */
+
+.menuitem {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.menuitem img {
+    max-width: 100%;
+    height: auto;
+}
+
+.item-maintext {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.item-recommend {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.crossline {
+    width: 100%;
+    height: 2px;
+    background-color: #ccc;
+    margin: 20px 0;
+}
+
+
+.user-location {
+    text-align: center;
+    margin: 20px 0;
+}

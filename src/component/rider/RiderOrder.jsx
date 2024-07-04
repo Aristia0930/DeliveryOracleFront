@@ -89,6 +89,7 @@ const RiderOrder = () => {
                         <Sidebar />
                     </Col>
                     <Col xs={10} id="page-content-wrapper">
+                    <h1>진행중인 배달</h1>
                         {orderData.reduce((acc, order, index) => {
                             // Every 4th item or the first item, create a new container
                             if (index % 4 === 0) {

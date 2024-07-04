@@ -1,0 +1,97 @@
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+//상점 회원 가입 페이지 
+const ShopUserJoin = () => {
+    const navigate=useNavigate()
+    const emailPass=true
+
+    const [name,setName] = useState("")
+    const [email,setEmail] = useState("")
+    const [password,setPassword]=useState("")
+
+    
+    //회원가입
+    const joinClick= (e) => {
+        e.preventDefault();
+        const signupData = {
+            email: email,
+            password: password,
+            name: name
+            
+          };
+          
+
+    
+          
+          // POST 요청을 보냅니다.
+          axios.post('http://localhost:8080/user/store', signupData,)
+        .then(rs => {
+            const response = rs.data;
+            console.log(rs.data);
+
+            // 회원가입 성공 여부 확인
+            if (response == "SUCCESS") {
+                navigate('/ShopMain');
+            } else if(response=="emailFAIL"){
+                alert("이메일이 중복입니다")
+            }
+            
+            else {
+                alert("가입 실패");
+            }
+        }).catch(error => {
+            console.log(error);
+            alert("오류가 발생했습니다. 다시 시도해 주세요.");
+        });
+
+
+    }
+    return (
+
+    <div>
+        <div id="main_container">
+    
+            <div class="form_container">
+    
+                <div class="form">
+    
+    
+                    <form action="#">
+                        <p class="user_email">
+                            <label for="user_email">아이디:이메일</label>
+                            <input type="email" id="user_email"  onChange={(e)=>setEmail(e.target.value)}/>
+                        </p>
+
+                        <p class="user_name">
+                            <label for="user_name">닉네임:사용자명</label>
+                            <input type="text" id="user_name" onChange={(e)=>setName(e.target.value)}/>
+                        </p>
+
+                    {/* <button  class="submit_btn">이메일 인증하기</button>
+                    {emailPass==true && <p class="login_user_password"> <label for="user_password">인증번호 확인:
+                    </label><input type="text"  class="emailpass" /> <button  class="btn_con">확인</button></p>}
+                    */}
+                        <p class="user_password">
+                            <label for="user_password">비밀번호</label>
+                            <input type="password" id="user_password" onChange={(e)=>setPassword(e.target.value)}/>
+                        </p>
+ 
+    
+                        <input type="submit" id="submit_btn" value="회원가입" class="submit_btn" onClick={joinClick}/>
+                    </form>
+    
+    
+    
+        </div>
+ 
+    </div>
+    
+    </div>
+                
+            </div>
+    );
+};
+
+export default ShopUserJoin;

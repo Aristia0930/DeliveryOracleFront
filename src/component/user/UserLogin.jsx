@@ -15,7 +15,7 @@ const UserLogin = () => {
     const loginClick = async(e) => {
         e.preventDefault();
 
-
+        try{
         const rs=await auth.login(email,password)
         const data=rs.data
         const headers=rs.headers
@@ -29,6 +29,18 @@ const UserLogin = () => {
 
             navigate("/")
         }
+        
+        
+    }
+        catch(e){
+            console.log("로그인오류",e)
+            if(e.response.status==401){
+                alert("id,pw 일치 하지 않음")
+            }
+            else if(e.response.status==402){
+                alert('id가 존재하지 않습니다')
+            }
+        }
 
 
     }
@@ -40,7 +52,7 @@ const UserLogin = () => {
                     <div className="form">
                         <form action="#">
                             <p className="login_user_name">
-                                <label htmlFor="user_name">사용자명:</label>
+                                <label htmlFor="user_name">아이디(이메일):</label>
                                 <input type="text" id="user_name" onChange={(e) => setEmail(e.target.value)} />
                             </p>
 
@@ -55,7 +67,7 @@ const UserLogin = () => {
 
                     <div className="bottom_box">
                         <div>
-                            <span>아이디가 없으신가요?</span><a href="#">회원가입</a>
+                            <span>아이디가 없으신가요?</span><a href="/UserJoin">회원가입</a>
                         </div>
                     </div>
                 </div>
