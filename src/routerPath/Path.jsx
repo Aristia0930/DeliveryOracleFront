@@ -96,7 +96,6 @@ const Path = () => {
             <Route path="/RiderRevenue" element={<RiderRevenue />} />
             <Route path="/RiderMyPage" element={<RiderMyPage />} />
             <Route path="/RiderMyPagemodify" element={<RiderMyPagemodify />} />
-            
 
 
             <Route path="/MypageComments" element={<MypageComments />} />
