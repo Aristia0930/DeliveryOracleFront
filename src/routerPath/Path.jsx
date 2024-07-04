@@ -52,7 +52,7 @@ import RiderMyPage from '../component/rider/RiderMyPage';
 import RiderMyPagemodify from '../component/rider/RiderMyPagemodify';
 import ManagerMyPagemodify from '../component/manager/ManagerMyPagemodify';
 import MypageReviewEdit from '../component/mypage/MypageReviewEdit';
-
+import UserAiList from '../component/user/UserAiList';
 const Path = () => {
     return (
         <Routes>
@@ -96,6 +96,7 @@ const Path = () => {
             <Route path="/RiderRevenue" element={<RiderRevenue />} />
             <Route path="/RiderMyPage" element={<RiderMyPage />} />
             <Route path="/RiderMyPagemodify" element={<RiderMyPagemodify />} />
+            
 
 
             <Route path="/MypageComments" element={<MypageComments />} />
@@ -109,7 +110,6 @@ const Path = () => {
             <Route path="/ManagerUserblock" element={<ManagerUserblock />} />
 
             <Route path="/MypageReview" element={<MypageReview />} />
-            <Route path="/MypageReviewEdit" element={<MypageReviewEdit />} />
             <Route path="/ShopCommentText" element={<ShopCommentText />} />
             <Route path="/ManagerShopleave" element={<ManagerShopleave />} />
 
@@ -121,7 +121,12 @@ const Path = () => {
 
             <Route path="/RiderUserJoin" element={<RiderUserJoin />} />
             <Route path="/RiderUserLogin" element={<RiderUserLogin />} />
+
+            <Route path="/UserAiList" element={<UserAiList />} />
         </Routes>
+        
+            
+
     );
 };
 

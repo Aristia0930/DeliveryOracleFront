@@ -11,11 +11,11 @@ const ManagerUserLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const [cookies, setCookie] = useCookies(['jwtToken']);
+    
     const loginClick = async(e) => {
         e.preventDefault();
 
-
+        try{
         const rs=await api.post(`http://localhost:8080/loginAdmin?email=${email}&password=${password}`)
         const data=rs.data
         const headers=rs.headers
@@ -35,7 +35,16 @@ const ManagerUserLogin = () => {
         }
 
 
+    }catch(e){
+        console.log("로그인오류",e)
+        if(e.response.status==401){
+            alert("id,pw 일치 하지 않음")
+        }
+        else if(e.response.status==402){
+            alert('id가 존재하지 않습니다')
+        }
     }
+}
 
     return (
         <div>
@@ -44,7 +53,7 @@ const ManagerUserLogin = () => {
                     <div className="form">
                         <form action="#">
                             <p className="login_user_name">
-                                <label htmlFor="user_name">사용자명:</label>
+                                <label htmlFor="user_name">아이디(이메일):</label>
                                 <input type="text" id="user_name" onChange={(e) => setEmail(e.target.value)} />
                             </p>
 
@@ -59,7 +68,7 @@ const ManagerUserLogin = () => {
 
                     <div className="bottom_box">
                         <div>
-                            <span>아이디가 없으신가요?</span><a href="#">회원가입</a>
+                            <span>아이디가 없으신가요?</span><a href="/ManagerUserJoin">회원가입</a>
                         </div>
                     </div>
                 </div>

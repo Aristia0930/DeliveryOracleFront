@@ -11,7 +11,6 @@ const UserLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const [cookies, setCookie] = useCookies(['jwtToken']);
     const loginClick = async(e) => {
         e.preventDefault();
 
@@ -52,7 +51,7 @@ const UserLogin = () => {
                     <div className="form">
                         <form action="#">
                             <p className="login_user_name">
-                                <label htmlFor="user_name">사용자명:</label>
+                                <label htmlFor="user_name">아이디(이메일):</label>
                                 <input type="text" id="user_name" onChange={(e) => setEmail(e.target.value)} />
                             </p>
 
