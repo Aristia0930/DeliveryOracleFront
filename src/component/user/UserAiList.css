@@ -1,0 +1,18 @@
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 화면 전체 높이 */
+  }
+  
+  .spinner-ai {
+    width: 100px; /* 스피너 크기 */
+    height: 100px; /* 스피너 크기 */
+  }
+  
+  .loading-text {
+    margin-top: 20px; /* 스피너와 텍스트 사이 간격 */
+    font-size: 20px; /* 텍스트 크기 */
+    color: #6c757d; /* 텍스트 색상 (secondary variant) */
+  }
