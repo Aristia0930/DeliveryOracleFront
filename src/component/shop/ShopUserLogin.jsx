@@ -52,7 +52,7 @@ const ShopUserLogin = () => {
                     <div className="form">
                         <form action="#">
                             <p className="login_user_name">
-                                <label htmlFor="user_name">아이디(이메일):</label>
+                                <label htmlFor="user_name">사용자명:</label>
                                 <input type="text" id="user_name" onChange={(e) => setEmail(e.target.value)} />
                             </p>
 
@@ -67,7 +67,7 @@ const ShopUserLogin = () => {
 
                     <div className="bottom_box">
                         <div>
-                            <span>아이디가 없으신가요?</span><a href="/ShopUserJoin">회원가입</a>
+                            <span>아이디가 없으신가요?</span><a href="#">회원가입</a>
                         </div>
                     </div>
                 </div>

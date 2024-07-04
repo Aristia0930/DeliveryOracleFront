@@ -9,7 +9,7 @@ import UserInfo from './UserInfo';
 import { Link, useNavigate } from 'react-router-dom';
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import axios from 'axios';
-import '../../css/Header.css';
+
 
 const Header = () => {
 
@@ -62,14 +62,8 @@ const Header = () => {
         
         <Navbar expand="xl" className="navbar">
             <Container>
+                <Link to="/"><h2>Delivery.Oracle</h2></Link>
 
-                <Link to="/" className="navbar-brand">
-                        <img src="/asset/logo.png" alt="Delivery.Oracle" />
-                    <div className="header-title">
-                        <span className="line">Delivery</span>
-                        <span className="line">Oracle</span>
-                    </div>
-                </Link>
                 <Search/>
                 <Form className="d-flex">
                     {user==null&&
