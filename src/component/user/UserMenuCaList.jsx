@@ -433,7 +433,7 @@ const UserMenuCaList = () => {
         fetchData();
     }, [caInfo, x, y]);
 
-    //음식점이 열려있는지 확인하는 절차
+    //음식점이 열려있는지 확인ㅅ하는 절차
 
     useEffect(() => {
         const checkAllShops = async () => {

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Header from '../common/Header';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
-import { Carousel } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card, Carousel } from 'react-bootstrap';
 import './UserMain.css';
 import axios from 'axios';
 
@@ -65,6 +65,18 @@ const UserMain = () => {
         }
     }, []);
 
+    // 사용자 로그인 페이지로 이동
+    const userlogin = (e) => {
+        e.preventDefault();
+        navigate("/UserLogin");
+    }
+
+    // 사용자 회원가입 페이지로 이동
+    const userjoin = (e) => {
+        e.preventDefault();
+        navigate("/UserJoin");
+    }
+
     return (
         <div>
             <Header />
@@ -108,49 +120,45 @@ const UserMain = () => {
                             </Carousel.Item>
                         </Carousel>
                     </div>
-                    <div id="main_container" className="container-fluid">
+            <div id="main_container" className="container-fluid">
                 <div className="row justify-content-center">
                     <div className="col-md-4">
                         <Link className="item-link" to={'/UserMenuCaList'} state={{ ca: 1, y: location.latitude, x: location.longitude }}>
-                            <div className="menuitem box">
-                                <img src="/imgs/item01.png" alt="Korean Food" />
+                            <div className="menuitem">
+                                <img src="/asset/Default_Vibrant_Koreaninspired_artwork_oil_on_canvas_depicting_2.jpg" alt="Korean Food" style={{ width:"150px",height:"150px" }}/>
                                 <p className="item-maintext">한식</p>
                             </div>
                         </Link>
                     </div>
                     <div className="col-md-4">
-                        <Link className="item-link" to={'/UserMenuCaList'} state={{ ca: 2, y: location.latitude, x: location.longitude }}>
-                            <div className="menuitem box">
-                                <img src="/imgs/item02.png" alt="Chinese Food" />
-                                <p className="item-maintext">중식</p>
-                            </div>
-                        </Link>    
+                        <div className="menuitem">
+                            <img src="/imgs/item02.png" alt="Chinese Food" />
+                            <p className="item-maintext">중식</p>
+                        </div>
                     </div>
                     <div className="col-md-4">
-                        <Link className="item-link" to={'/UserMenuCaList'} state={{ ca: 3, y: location.latitude, x: location.longitude }}>
-                            <div className="menuitem box">
-                                <img src="/imgs/item03.png" alt="Japan Food" />
-                                <p className="item-maintext">일식</p>
-                            </div>
-                        </Link>
+                        <div className="menuitem">
+                            <img src="/imgs/item03.png" alt="Japan Food" />
+                            <p className="item-maintext">일식</p>
+                        </div>
                     </div>
                     <div className="col-md-4">
-                        <Link className="item-link" to={'/UserMenuCaList'} state={{ ca: 4, y: location.latitude, x: location.longitude }}>
-                            <div className="menuitem box">
-                                <img src="/imgs/item05.png" alt="Chicken" />
-                                <p className="item-maintext">치킨</p>
-                            </div>
-                        </Link>
+                        <div className="menuitem">
+                            <img src="/imgs/item05.png" alt="Chicken" />
+                            <p className="item-maintext">치킨</p>
+                        </div>
                     </div>
                     <div className="col-md-4">
-                        <Link className="item-link" to={'/UserMenuCaList'} state={{ ca: 5, y: location.latitude, x: location.longitude }}>
-                            <div className="menuitem box">
-                                <img src="/imgs/item06.png" alt="Pizza" />
-                                <p className="item-maintext">피자</p>
-                            </div>
-                        </Link>
+                        <div className="menuitem">
+                            <img src="/imgs/item06.png" alt="Pizza" />
+                            <p className="item-maintext">피자</p>
+                        </div>
                     </div>
                     <div className="col-md-4">
+                        <div className="menuitem">
+                            <img src="/imgs/item07.png" alt="Bunsik" />
+                            <p className="item-maintext">분식</p>
+                        </div>
                         <Link className="item-link" to={'/UserAiList'} state={{ ca: 6, y: location.latitude, x: location.longitude }}>
                             <div className="menuitem box">
                                 <img src="/imgs/chatbot.png" alt="AI" style={{ width: '100px', height: '100px' }}/>
@@ -164,37 +172,58 @@ const UserMain = () => {
             <div className="item-recommend">
                 <div className="crossline"></div>
                 <h1>오늘은 이거 어때요?</h1>
-                <h1><strong><span className="highlight-style01">#인기메뉴★들</span></strong> 만 모았어요!</h1>
                 <div className="item item01">
                     <div className="codepen-carousel">
-                        <Carousel>
-                            <Carousel.Item>
-                                <img
-                                    className="d-block w-100"
-                                    src="https://via.placeholder.com/200x100"
-                                    alt="First slide"
-                                />
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                    className="d-block w-100"
-                                    src="https://via.placeholder.com/200x100"
-                                    alt="Second slide"
-                                />
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                    className="d-block w-100"
-                                    src="https://via.placeholder.com/200x100"
-                                    alt="Third slide"
-                                />
-                            </Carousel.Item>
-                        </Carousel>
+                        <div className="hideLeft">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
+                        <div className="prevLeftSecond">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
+                        <div className="prev">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
+                        <div className="selected">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
+                        <div className="next">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
+                        <div className="nextRightSecond">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
+                        <div className="hideRight">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
+                    </div>
+                </div>
+                <div className="item item02">
+                    <h1><strong><span className="highlight-style01">#인기메뉴★들</span></strong> 만 모았어요!</h1>
+                    <div className="codepen-carousel">
+                        <div className="hideLeft">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
+                        <div className="prevLeftSecond">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
+                        <div className="prev">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
+                        <div className="selected">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
+                        <div className="next">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
+                        <div className="nextRightSecond">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
+                        <div className="hideRight">
+                            <img src="https://via.placeholder.com/200x100" alt="item-recommend" />
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div className="crossline"></div>
 
             {/* 사용자 위치 정보 섹션 */}
             <div className="user-location">

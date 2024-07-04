@@ -1,22 +1,22 @@
 /* UserMain.css */
-
-.menuitem {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+.item-link {
+    text-decoration: none;
+    color: inherit;
 }
 
-.menuitem img {
-    max-width: 100%;
+.item {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.item img {
+    width: 100%;
     height: auto;
 }
 
 .item-maintext {
+    font-size: 1.2em;
     margin-top: 10px;
-    font-weight: bold;
 }
 
 .item-recommend {
@@ -31,6 +31,22 @@
     margin: 20px 0;
 }
 
+.codepen-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.codepen-carousel .carousel-item {
+    margin: 0 5px;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.codepen-carousel .carousel-item.selected {
+    opacity: 1;
+}
 
 .user-location {
     text-align: center;

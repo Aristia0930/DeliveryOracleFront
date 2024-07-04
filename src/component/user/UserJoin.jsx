@@ -194,7 +194,7 @@ const UserJoin = () => {
                     <div className="form">
                         <form action="#">
                             <p className="user_email">
-                                <label htmlFor="user_email">아이디:이메일 </label>
+                                <label htmlFor="user_email">이메일(Id) </label>
                                 <button className="btn_con2" onClick={emailPassButton}>중복확인</button>
                                 <input
                                     type="email"
@@ -205,7 +205,7 @@ const UserJoin = () => {
                                 {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
                             </p>
                             <p className="user_name">
-                                <label htmlFor="user_name">닉네임:사용자명</label>
+                                <label htmlFor="user_name">사용자명(닉네임)</label>
                                 <input
                                     type="text"
                                     id="user_name"
