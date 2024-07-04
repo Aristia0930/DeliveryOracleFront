@@ -38,8 +38,6 @@ import UserShopComment from '../component/user/UserShopComment';
 import ShopComment from '../component/shop/ShopComment';
 import ManagerUserblock from '../component/manager/ManagerUserblock';
 import MypageReview from '../component/mypage/MypageReview';
-<<<<<<< HEAD
-=======
 import ShopCommentText from '../component/shop/ShopCommentText';
 import ManagerShopleave from '../component/manager/ManagerShopleave';
 import ShopUserJoin from '../component/shop/ShopUserJoin';
@@ -53,7 +51,6 @@ import ShopMyPagemodify from '../component/shop/ShopMyPagemodify';
 import RiderMyPage from '../component/rider/RiderMyPage';
 import RiderMyPagemodify from '../component/rider/RiderMyPagemodify';
 import ManagerMyPagemodify from '../component/manager/ManagerMyPagemodify';
->>>>>>> master
 import MypageReviewEdit from '../component/mypage/MypageReviewEdit';
 
 const Path = () => {
@@ -113,9 +110,7 @@ const Path = () => {
             <Route path="/ManagerUserblock" element={<ManagerUserblock />} />
 
             <Route path="/MypageReview" element={<MypageReview />} />
-<<<<<<< HEAD
             <Route path="/MypageReviewEdit" element={<MypageReviewEdit />} />
-=======
             <Route path="/ShopCommentText" element={<ShopCommentText />} />
             <Route path="/ManagerShopleave" element={<ManagerShopleave />} />
 
@@ -127,7 +122,6 @@ const Path = () => {
 
             <Route path="/RiderUserJoin" element={<RiderUserJoin />} />
             <Route path="/RiderUserLogin" element={<RiderUserLogin />} />
->>>>>>> master
         </Routes>
     );
 };

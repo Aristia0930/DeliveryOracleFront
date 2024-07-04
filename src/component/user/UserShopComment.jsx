@@ -47,11 +47,6 @@ const UserShopComment = () => {
         fetchData()
     }, [datas]);
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
     return (
         <div>
             <Header />
