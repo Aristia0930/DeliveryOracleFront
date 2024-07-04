@@ -10,7 +10,7 @@ import ShopJoin from './ShopJoin';
 import ShopMenu from './ShopMenu';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
-
+import './ShopMain.css';  // CSS 파일 가져오기
 
 const ShopMain = () => {
     const navigate = useNavigate();    
@@ -45,12 +45,6 @@ const ShopMain = () => {
         fetchUserInfo();
     }, [user]);
     
-
-
-    
-
-    
-
 // const shoppMenu=async(e)=>{
 //     e.preventDefault()
 //     //아이디값을 넘겨서 그 아이디값의 상점 주인이 승인 되었는 확인하는 절차
@@ -99,7 +93,7 @@ return (
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="asset/Default_Vibrant_food_illustrations_in_digital_painting_showcas_2.jpg"
+                                    src="asset/Default_Vibrant_still_life_of_a_bustling_food_store_homepage_d_2.jpg"
                                     alt="First slide"
                                     style={{ width:"800px",height:"600px" }}/>
                                 <Carousel.Caption>
@@ -110,7 +104,7 @@ return (
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="asset/Default_Vibrant_stilllife_photographs_of_savory_meals_and_swee_1.jpg"
+                                    src="asset/Default_Vibrant_food_illustrations_in_digital_painting_showcas_2.jpg"
                                     alt="Second slide"
                                     style={{ width:"800px",height:"600px" }}
                                 />
@@ -122,7 +116,7 @@ return (
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="https://via.placeholder.com/800x400"
+                                    src="asset/Default_Vibrant_stilllife_photographs_of_savory_meals_and_swee_1.jpg"
                                     alt="Third slide"
                                 />
                                 <Carousel.Caption>
@@ -134,36 +128,36 @@ return (
                         <Row className="mt-4 w-100">
                             <Col md={4} className="d-flex justify-content-center mb-4">
                                 <Card style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" src="https://via.placeholder.com/150" alt="Sales Today" />
+                                    <Card.Img variant="top" src="asset/Default_Savory_steakhouse_cuisine_oil_on_canvas_depicting_a_mo_0.jpg" alt="Sales Today" />
                                     <Card.Body>
-                                        <Card.Title>Sales Today</Card.Title>
+                                        <Card.Title>와인과 함께</Card.Title>
                                         <Card.Text>
                                             {/* Replace with dynamic data */}
-                                            $1000
+                                             겁나 큰 스테이크!
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
                             </Col>
                             <Col md={4} className="d-flex justify-content-center mb-4">
                                 <Card style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" src="https://via.placeholder.com/150" alt="Pending Orders" />
+                                    <Card.Img variant="top" src="asset/chicken.PNG" alt="Pending Orders" />
                                     <Card.Body>
-                                        <Card.Title>Pending Orders</Card.Title>
+                                        <Card.Title>치킨은 국룰!</Card.Title>
                                         <Card.Text>
                                             {/* Replace with dynamic data */}
-                                            5
+                                            갓 튀겨낸 바삭바삭한 치킨!
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
                             </Col>
                             <Col md={4} className="d-flex justify-content-center mb-4">
                                 <Card style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" src="https://via.placeholder.com/150" alt="Shop Ratings" />
+                                    <Card.Img variant="top" src="asset/피자.jpg" alt="Shop Ratings" />
                                     <Card.Body>
-                                        <Card.Title>Shop Ratings</Card.Title>
+                                        <Card.Title>맛있게 늘어나는 치즈토핑!</Card.Title>
                                         <Card.Text>
                                             {/* Replace with dynamic data */}
-                                            4.5/5
+                                             페퍼로니 피자
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
