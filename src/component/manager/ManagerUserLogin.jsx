@@ -11,11 +11,11 @@ const ManagerUserLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const [cookies, setCookie] = useCookies(['jwtToken']);
+    
     const loginClick = async(e) => {
         e.preventDefault();
 
-
+        try{
         const rs=await api.post(`http://localhost:8080/loginAdmin?email=${email}&password=${password}`)
         const data=rs.data
         const headers=rs.headers
@@ -35,7 +35,16 @@ const ManagerUserLogin = () => {
         }
 
 
+    }catch(e){
+        console.log("로그인오류",e)
+        if(e.response.status==401){
+            alert("id,pw 일치 하지 않음")
+        }
+        else if(e.response.status==402){
+            alert('id가 존재하지 않습니다')
+        }
     }
+}
 
     return (
         <div>

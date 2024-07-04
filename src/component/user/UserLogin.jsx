@@ -11,7 +11,6 @@ const UserLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const [cookies, setCookie] = useCookies(['jwtToken']);
     const loginClick = async(e) => {
         e.preventDefault();
 

@@ -151,7 +151,7 @@ const UserMain = () => {
                         </Link>
                     </div>
                     <div className="col-md-4">
-                        <Link className="item-link" to={'/UserMenuCaList'} state={{ ca: 6, y: location.latitude, x: location.longitude }}>
+                        <Link className="item-link" to={'/UserAiList'} state={{ ca: 6, y: location.latitude, x: location.longitude }}>
                             <div className="menuitem box">
                                 <img src="/imgs/chatbot.png" alt="AI" style={{ width: '100px', height: '100px' }}/>
                                 <p className="item-maintext">AI추천</p>

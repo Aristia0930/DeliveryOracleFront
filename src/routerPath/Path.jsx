@@ -52,7 +52,7 @@ import RiderMyPage from '../component/rider/RiderMyPage';
 import RiderMyPagemodify from '../component/rider/RiderMyPagemodify';
 import ManagerMyPagemodify from '../component/manager/ManagerMyPagemodify';
 import MypageReviewEdit from '../component/mypage/MypageReviewEdit';
-
+import UserAiList from '../component/user/UserAiList';
 const Path = () => {
     return (
         <Routes>
@@ -121,6 +121,8 @@ const Path = () => {
 
             <Route path="/RiderUserJoin" element={<RiderUserJoin />} />
             <Route path="/RiderUserLogin" element={<RiderUserLogin />} />
+
+            <Route path="/UserAiList" element={<UserAiList />} />
         </Routes>
         
             
