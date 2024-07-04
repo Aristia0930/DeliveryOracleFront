@@ -7,7 +7,7 @@ const ManagerOrderReceiptList = ({ orders }) => {
     const navigate = useNavigate();
 
     if (!orders || orders.length === 0) {
-        return <p>배달 매칭된 주문이 없습니다.</p>;
+        return <p>배달매칭된 주문이 없습니다.</p>;
     }
 
     return (

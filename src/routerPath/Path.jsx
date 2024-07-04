@@ -110,7 +110,6 @@ const Path = () => {
             <Route path="/ManagerUserblock" element={<ManagerUserblock />} />
 
             <Route path="/MypageReview" element={<MypageReview />} />
-            <Route path="/MypageReviewEdit" element={<MypageReviewEdit />} />
             <Route path="/ShopCommentText" element={<ShopCommentText />} />
             <Route path="/ManagerShopleave" element={<ManagerShopleave />} />
 
@@ -125,6 +124,9 @@ const Path = () => {
 
             <Route path="/UserAiList" element={<UserAiList />} />
         </Routes>
+        
+            
+
     );
 };
 
