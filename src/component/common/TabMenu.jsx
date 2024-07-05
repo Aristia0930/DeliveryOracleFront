@@ -54,7 +54,7 @@ const TabMenu = () => {
         <Link className="nav-link" to="/UserMenuCaList" state={{ ca: 5, y: location.latitude, x: location.longitude }}>피자</Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/UserMenuCaList" state={{ ca: 6, y: location.latitude, x: location.longitude }}>AI추천</Link>
+        <Link className="nav-link" to="/UserAiList" state={{ ca: 6, y: location.latitude, x: location.longitude }}>AI추천</Link>
       </li>
     </ul>
   );

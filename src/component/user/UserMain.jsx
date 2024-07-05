@@ -1,11 +1,12 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../common/Header';
-import Slider from '../common/Slider.jsx';
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { Carousel } from 'react-bootstrap';
 import './UserMain.css';
+import '../common/Slider.css'
 import axios from 'axios';
+
 
 const UserMain = () => {
     const { user_x, setRole, setX, user_y, setY, userId, setUserId, user, setUserDate } = useContext(AdminFlagContext);
@@ -65,6 +66,68 @@ const UserMain = () => {
         }
     }, [setX, setY]);
 
+    // 밑에 슬라이더 코드
+
+    const carouselRef = useRef(null);
+    const [selectedIdx, setSelectedIdx] = useState(3);
+
+    const moveToSelected = (element) => {
+        let idx;
+
+        if (element === "next") {
+            idx = selectedIdx + 1;
+        } else if (element === "prev") {
+            idx = selectedIdx - 1;
+        } else {
+            idx = element;
+        }
+
+        if (idx < 0) {
+            idx = carouselRef.current.children.length - 1;
+        } else if (idx >= carouselRef.current.children.length) {
+            idx = 0;
+        }
+
+        setSelectedIdx(idx);
+    };
+
+    const handleKeydown = (e) => {
+        if (e.key === "ArrowLeft") {
+            moveToSelected('prev');
+        } else if (e.key === "ArrowRight") {
+            moveToSelected('next');
+        }
+    };
+
+    useEffect(() => {
+        const currentCarousel = carouselRef.current;
+        if (currentCarousel) {
+            currentCarousel.addEventListener('keydown', handleKeydown);
+            return () => {
+                currentCarousel.removeEventListener('keydown', handleKeydown);
+            };
+        }
+    }, [selectedIdx]);
+
+    const getClass = (index) => {
+        if (index === selectedIdx) return 'selected';
+        if (index === selectedIdx - 1) return 'prev';
+        if (index === selectedIdx + 1) return 'next';
+        if (index === selectedIdx - 2) return 'prevLeftSecond';
+        if (index === selectedIdx + 2) return 'nextRightSecond';
+        return index < selectedIdx ? 'hideLeft' : 'hideRight';
+    };
+
+    const imagePaths = [
+        "asset/img/item-recommend1.png",
+        "asset/img/item-recommend2.png",
+        "asset/hamburger.jpg",
+        "asset/hamburger.jpg",
+        "asset/hamburger.jpg",
+        "asset/img/item-recommend6.png",
+        "asset/img/item-recommend7.png"
+    ];
+
     return (
         <div>
             <Header />
@@ -75,7 +138,7 @@ const UserMain = () => {
                             className="d-block w-100"
                             src="asset/Default_Vibrant_food_illustrations_in_digital_painting_showcas_2.jpg"
                             alt="First slide"
-                            style={{ width: "800px", height: "300px" }}
+                            style={{ width: "800px", height: "400px" }}
                         />
                         <Carousel.Caption>
                             <h3>First slide label</h3>
@@ -87,7 +150,7 @@ const UserMain = () => {
                             className="d-block w-100"
                             src="asset/Default_Vibrant_stilllife_photographs_of_savory_meals_and_swee_1.jpg"
                             alt="Second slide"
-                            style={{ width: "800px", height: "300px" }}
+                            style={{ width: "800px", height: "400px" }}
                         />
                         <Carousel.Caption>
                             <h3>Second slide label</h3>
@@ -99,7 +162,7 @@ const UserMain = () => {
                             className="d-block w-100"
                             src="asset/Default_Vibrant_food_illustrations_in_digital_painting_showcas_1.jpg"
                             alt="Third slide"
-                            style={{ width: "800px", height: "300px" }}
+                            style={{ width: "800px", height: "400px" }}
                         />
                         <Carousel.Caption>
                             <h3>Third slide label</h3>
@@ -130,20 +193,34 @@ const UserMain = () => {
                 </div>
             </div>
 
+
+            <div className="crossline"></div>
             <div className="item-recommend">
-                <div className="crossline"></div>
+            <div>
                 <h1>오늘은 이거 어때요?</h1>
                 <h1><strong><span className="highlight-style01">#인기메뉴★들</span></strong> 만 모았어요!</h1>
-                <div className="item item01">
-                    <div className="codepen-carousel">
-                    <Slider/>
+            </div>
+            </div>
+            <div>
+                <div className="slider-container">
+                    <div id="carousel" className="codepen-carousel" ref={carouselRef} tabIndex="0" style={{ outline: 'none' }}>
+                        {imagePaths.map((path, index) => (
+                            <div
+                                key={index}
+                                className={getClass(index)}
+                                onClick={() => moveToSelected(index)}
+                            >
+                                <img src={path} alt={`추천 ${index}`} />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
 
             <div className="crossline"></div>
 
-            {/* 사용자 위치 정보 섹션
+
+            사용자 위치 정보 섹션 (없애고 풋터 붙일거임)
             <div className="user-location">
                 <h1>User Location</h1>
                 {error ? (
@@ -154,7 +231,7 @@ const UserMain = () => {
                         <p>Longitude X: {location.longitude}</p>
                     </div>
                 )}
-            </div> */}
+            </div>
 
         </div>
     );

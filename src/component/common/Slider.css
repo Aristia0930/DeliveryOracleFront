@@ -1,9 +1,7 @@
 /* Slider.css */
 #carousel {
   position: relative;
-  height: 400px;
-  top: 50%;
-  transform: translateY(-50%);
+  height: 400px; /* translateY 값을 -40%로 조정하여 슬라이더의 위치를 미세하게 조정 */
   overflow: hidden;
   z-index: 1; /* 슬라이더의 z-index 설정 */
 }
@@ -87,17 +85,3 @@
   width: 200px;
 }
 
-.item-recommend {
-  position: relative;
-  z-index: 2; /* item-recommend의 z-index 설정 */
-}
-
-.item-recommend .item {
-  position: relative;
-  z-index: 2; /* item의 z-index 설정 */
-}
-
-.item-recommend .crossline {
-  position: relative;
-  z-index: 2; /* crossline의 z-index 설정 */
-}
