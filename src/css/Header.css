@@ -57,4 +57,35 @@
     background-color: #0056b3;
 }
 
+/* Main 헤더 Css*/
 
+.header-wrapper {
+    background-color: #f8f9fa; /* 헤더 배경색 */
+    padding: 20px 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 120px; /* 로고 이미지 크기 */
+    margin-right: 10px;
+}
+
+.headertitle {
+    max-width: 600px; /* 타이틀 컨테이너 최대 너비 */
+    margin: 0 auto; /* 가운데 정렬 */
+}
+
+.headertitle h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.headertitle p {
+    font-size: 18px;
+    color: #555;
+}

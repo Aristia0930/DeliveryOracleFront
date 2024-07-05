@@ -30,7 +30,7 @@ const Search = () => {
                 
               <Form.Control
                 type="search"
-                placeholder="검색어를 입력해주세요"
+                placeholder="식당을 입력해주세요"
                 className="me-2 search-input"
                 aria-label="Search"
                 value={searchTerm}
