@@ -15,7 +15,7 @@ const RiderUserLogin = () => {
     const loginClick = async(e) => {
         e.preventDefault();
 
-
+        try{
         const rs=await api.post(`http://localhost:8080/loginRider?email=${email}&password=${password}`)
         const data=rs.data
         const headers=rs.headers
@@ -32,6 +32,14 @@ const RiderUserLogin = () => {
         else if (rs.status==207){
             alert("권한이 없습니다")
             navigate("/RiderMain")
+        }    }catch(e){
+            console.log("로그인오류",e)
+            if(e.response.status==401){
+                alert("id,pw 일치 하지 않음")
+            }
+            else if(e.response.status==402){
+                alert('id가 존재하지 않습니다')
+            }
         }
 
 
@@ -50,7 +58,8 @@ const RiderUserLogin = () => {
 
                             <p className="login_user_password">
                                 <label htmlFor="user_password">비밀번호:</label>
-                                <input type="password" id="user_password" onChange={(e) => setPassword(e.target.value)} />
+                                <input ty
+                                pe="password" id="user_password" onChange={(e) => setPassword(e.target.value)} />
                             </p>
 
                             <input type="submit" id="submit_btn" value="로그인" className="submit_btn" onClick={loginClick} />

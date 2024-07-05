@@ -11,6 +11,7 @@ import { AdminFlagContext } from "../../flag/Flag.jsx";
 const ManagerMain = () => {
     const {role, setRole,user,setUser,userId,setUserId,shopId,setShopid,userDate, setUserDate}=useContext(AdminFlagContext)
     const navigate = useNavigate();    
+    const [data,setData]=useState([]);
     useEffect(() => {
         const fetchUserInfo = async () => {
 
@@ -37,6 +38,27 @@ const ManagerMain = () => {
 
         fetchUserInfo();
     }, [user]);
+
+    useEffect(()=>{
+        const todayData = async () => {
+
+            try {
+                const response = await axios.get('http://localhost:8080/admin/Today');
+                console.log("오늘데이터",response.data)
+
+                setData(response.data)
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        
+        if(user){
+            todayData();
+
+        }
+
+    },[role])
     
     const approve=(e)=>{
         e.preventDefault()
@@ -57,8 +79,7 @@ const ManagerMain = () => {
                                     <Card.Body>
                                         <Card.Title>총 사용자 수</Card.Title>
                                         <Card.Text>
-                                            {/* 총 사용자 수 데이터 */}
-                                            123명
+                                            {data.visitorCount}
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
@@ -68,8 +89,8 @@ const ManagerMain = () => {
                                     <Card.Body>
                                         <Card.Title>총 주문 수</Card.Title>
                                         <Card.Text>
-                                            {/* 총 주문 수 데이터 */}
-                                            456건
+                                        {data.orderCount}
+                            
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
@@ -79,8 +100,8 @@ const ManagerMain = () => {
                                     <Card.Body>
                                         <Card.Title>오늘의 매출</Card.Title>
                                         <Card.Text>
-                                            {/* 오늘의 매출 데이터 */}
-                                            789,000원
+                                        {data.totalPriceSum}
+                                
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>

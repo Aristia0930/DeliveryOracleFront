@@ -44,7 +44,9 @@ const ShopUserJoin = () => {
             console.log(error);
             alert("오류가 발생했습니다. 다시 시도해 주세요.");
         });
-} else {
+} else if(name && email && password){
+    alert("이메일 중복 확인을 확인해주세요")}
+else {
     alert("빈칸을 채워주세요");
 }
 };

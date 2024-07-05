@@ -78,7 +78,7 @@ const ShopMenuList = ({ menu, onDelete }) => {
 
     const delButton = async () => {
         try {
-            const rs = await axios.get("http://localhost:8080/store/menuedel", {
+            const rs = await axios.delete("http://localhost:8080/store/menuedel", {
                 params: { id: menu.storeId, name: menu.menuName }
             });
             if (rs.data === 1) {

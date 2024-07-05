@@ -38,10 +38,11 @@ const ShopMenuedit = () => {
         }
 
         try{
-            const rs=await axios.post("http://localhost:8080/store/menuedit", formData)
+            const rs=await axios.put("http://localhost:8080/store/menuedit", formData)
             if(rs.status==200){
 
                 if(rs.data==1){
+                    alert("메뉴수정완료")
                     navigate("/ShopMain")
 
                 }

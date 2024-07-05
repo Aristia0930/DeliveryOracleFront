@@ -88,7 +88,7 @@ const ShopEdit = () => {
           
   
           try{
-              const rs=await axios.post("http://localhost:8080/store/store_edit", formData)
+              const rs=await axios.put("http://localhost:8080/store/store_edit", formData)
               if(rs.status==200){
                   alert("넘기기는 성공")
                   navigate("/ShopMain")
@@ -149,7 +149,9 @@ const ShopEdit = () => {
         e.preventDefault()
         console.log("삭제실행",shopData.store_id)
         try{
-            const rs=await axios.post("http://localhost:8080/store/delete", {store_id:shopData.store_id})
+            const rs=await axios.delete("http://localhost:8080/store/delete", {
+              data: { store_id: shopData.store_id }
+          });
             if(rs.status==200){
                 alert("삭제성공")
                 navigate("/ShopMain")
