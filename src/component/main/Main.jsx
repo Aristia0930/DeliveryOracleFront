@@ -1,42 +1,18 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
-import Header from '../common/Header';
 import Card from 'react-bootstrap/Card';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { useCookies } from 'react-cookie';
 import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
+import Header from './Header.jsx';
 
 const Main = () => {
     const navigate = useNavigate();
     const {user,setUser,userInfo, setUserInfo}=useContext(AdminFlagContext)
     // const [cookies] = useCookies(['jwtToken']);
     const { stompClient, messages, sendMessage ,setMessages} = useWebSocket();
-   setMessages("")
-    //유저인증테스트
-    
-
-    const onButtonClick=async(e) =>{
-        e.preventDefault();
-        // const token = cookies.jwtToken;
-        const token = user;
-        try{
-            const response = await axios.get('http://localhost:8080/api/api/userinfo', {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-            console.log(response.data)
-            console.log(response.data.user_id)
-            console.log("유저권한",response.data.authList[0].auth)
-        
-        }catch(error){
-            console.log(error)
-        }
-
-
-    }
 
     //유저로그인 페이지이동 
     const userbutton=(e)=>{
@@ -67,8 +43,9 @@ const Main = () => {
     }
 
     return (
+        
         <div>
-        <Header/>
+            <Header/>
             <div id="main_container">
                 <div class="item-list " onClick={userbutton}>
                     <div class="item ">

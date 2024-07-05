@@ -154,9 +154,10 @@ const ShopJoin = () => {
                   <Form.Select aria-label="Default select example"  onChange={(e)=>setcategory(e.target.value)}>
                     <option>카테고리 선택</option>
                     <option value="1">한식</option>
-                    <option value="2">치킨</option>
-                    <option value="3">중국집</option>
-                    <option value="4">일식</option>
+                    <option value="2">중식</option>
+                    <option value="3">일식</option>
+                    <option value="4">치킨</option>
+                    <option value="5">피자</option>
                   </Form.Select>
                 </p>
 
