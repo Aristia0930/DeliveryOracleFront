@@ -79,9 +79,6 @@ const ShopMenuRs = () => {
                         }}
                     />
                 </p>
-
-
-
                 <p class="shop_img">
                     <label for="shop_img">메뉴이미지</label>
                     <input type="file" required="required/" accept="image/*" onChange={(e)=>setImg(e.target.files[0])}/>

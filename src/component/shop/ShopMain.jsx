@@ -11,6 +11,7 @@ import ShopMenu from './ShopMenu';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import './ShopMain.css';  // CSS 파일 가져오기
+import Footer from '../common/Footer.jsx';
 
 const ShopMain = () => {
     const navigate = useNavigate();    
@@ -130,6 +131,7 @@ return (
                 </Col>
             </Row>
         </Container>
+        <Footer />
     </div>
 );
 };

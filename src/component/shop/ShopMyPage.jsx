@@ -6,7 +6,6 @@ import { AdminFlagContext } from '../../flag/Flag.jsx';
 import { useCookies } from 'react-cookie';
 import Header from './headside/Header.jsx';
 
-
 const ShopMyPage = () => {
     const navigate = useNavigate();
     const { user,setUser,userId,setUserId,shopId,setShopid } = useContext(AdminFlagContext); //현재 로그인된 사용자 정보 얻기 user 정보는 서버 요청 시 인증 토큰으로 사용됨.

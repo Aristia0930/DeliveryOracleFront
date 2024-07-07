@@ -11,6 +11,13 @@
     justify-content: center;
     order: 1;
 }
+#main_container3 {
+    height: 45vh;
+    padding-top: 135px;
+    display: flex;
+    justify-content: center;
+    order: 1;
+}
 
 .from_padding {
 

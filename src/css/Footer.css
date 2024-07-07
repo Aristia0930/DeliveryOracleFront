@@ -1,0 +1,61 @@
+/* html, body {
+    height: 100%;
+    margin: 0;
+} */
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    background-color: #343a40;
+    color: white;
+    padding: 90px 0;
+    width: 100%;
+    margin-top: auto; /* 푸터를 페이지 하단에 고정 */
+    clear: both; /* 추가 */
+    position: relative; /* 추가 */
+    bottom: 0; /* 추가 */
+}
+
+.footer-column {
+    margin-bottom: 30px;
+}
+
+.footer h5 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.footer p, .footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #b0bec5; /* 부가적인 정보의 색상 */
+}
+
+.footer ul {
+    padding-left: 0;
+}
+
+.footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.rights-text {
+    margin-bottom: 0;
+    color: #b0bec5;  /* 저작권 정보의 색상 */
+}

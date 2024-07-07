@@ -10,6 +10,8 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { MdOutlineMonetizationOn } from 'react-icons/md';
 import { FaRankingStar } from "react-icons/fa6";
+import Footer from '../common/Footer.jsx';
+
 
 const MypageMain = () => {
     const navigate = useNavigate();
@@ -186,7 +188,7 @@ const MypageMain = () => {
                 </Button>
             </Modal.Footer>
         </Modal>
-
+        <Footer />
             {/* <div className="container mt-5">
                 <Card>
                     <Card.Body>

@@ -7,6 +7,7 @@ import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { useCookies } from 'react-cookie';
 import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
 import Header from './Header.jsx';
+import Footer from '../common/Footer.jsx';
 
 const Main = () => {
     const navigate = useNavigate();
@@ -46,7 +47,7 @@ const Main = () => {
         
         <div>
             <Header/>
-            <div id="main_container">
+            <div id="main_container3">
                 <div class="item-list " onClick={userbutton}>
                     <div class="item ">
                         <p class="item-maintext">유저 페이지</p>
@@ -68,6 +69,7 @@ const Main = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

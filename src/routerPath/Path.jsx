@@ -53,6 +53,7 @@ import RiderMyPagemodify from '../component/rider/RiderMyPagemodify';
 import ManagerMyPagemodify from '../component/manager/ManagerMyPagemodify';
 import MypageReviewEdit from '../component/mypage/MypageReviewEdit';
 import UserAiList from '../component/user/UserAiList';
+
 const Path = () => {
     return (
         <Routes>

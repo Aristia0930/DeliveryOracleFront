@@ -5,6 +5,8 @@ import { AdminFlagContext } from "../../flag/Flag.jsx";
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MypageReviewList from './MypageReviewList.jsx';
+import Footer from '../common/Footer.jsx';
+
 const MypageReview = () => {
     const {user,setUser,userId,setUserId,shopId,setShopid}=useContext(AdminFlagContext)
     const [review, setReview] = useState([]);
@@ -41,6 +43,7 @@ const MypageReview = () => {
                    }
   
         </div>
+        <Footer />
         </div>
     );
 };

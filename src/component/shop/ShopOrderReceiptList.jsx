@@ -3,7 +3,6 @@ import { ListGroup } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 
 const ShopOrderList = ({ orders }) => {
-
     if (!orders || orders.length === 0) {
         return <p>배달매칭된 주문이 없습니다.</p>;
     }

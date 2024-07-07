@@ -12,7 +12,6 @@ import Header from './headside/Header';
 import { Container, Row, Col } from 'react-bootstrap';
 import Sidebar from './headside/Sidebar';
 
-
 const ShopEdit = () => {
     const {user,setUser,userId,setUserId,shopId,setShopId}=useContext(AdminFlagContext)
 
@@ -231,7 +230,6 @@ const ShopEdit = () => {
                       </Col>
                   </Row>
               </Container>
-  
       </div>
       );
   };
