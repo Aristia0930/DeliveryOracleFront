@@ -4,7 +4,6 @@ import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
-
 const ShopOrderList = ({ menu }) => {
     let orderDetailsArray = [];
     const[st,setSt]=useState(false)
@@ -48,7 +47,6 @@ const ShopOrderList = ({ menu }) => {
                     console.log("연결실패", e);
             }
             }
-
     }
 
     //주문거절은 3부여 

@@ -9,6 +9,7 @@ import { useWebSocket } from "../../flag/WebSocketContext.jsx";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import Spinner from 'react-bootstrap/Spinner';
 import './UserAiList.css';
+
 const UserAiList = () => {
     const location = useLocation();
     const caInfo = location.state?.ca || -1; // 카테고리 정보

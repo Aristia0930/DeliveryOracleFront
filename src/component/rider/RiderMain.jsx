@@ -6,6 +6,8 @@ import Sidebar from './headside/Sidebar';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import axios from 'axios';
+import Footer from '../common/Footer.jsx';
+
 const RiderMain = () => {
     const {setRole,user,setUser,userId,setUserId,shopId,setShopId,user_x,setX,user_y,setY}=useContext(AdminFlagContext)
     //jwt 아이디 저장한다.
@@ -88,6 +90,7 @@ const RiderMain = () => {
                     </Col>
                 </Row>
             </Container>
+            <Footer />
         </div>
     );
 };

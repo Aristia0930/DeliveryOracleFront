@@ -7,6 +7,7 @@ import Dashboard from './headside/Dashboard';
 import Sidebar from './headside/Sidebar';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
+import Footer from '../common/Footer.jsx';
 
 const ManagerMain = () => {
     const {role, setRole,user,setUser,userId,setUserId,shopId,setShopid,userDate, setUserDate}=useContext(AdminFlagContext)
@@ -89,6 +90,7 @@ const ManagerMain = () => {
                     </Col>
                 </Row>
             </Container>
+            <Footer />
         </div>
     );
 };

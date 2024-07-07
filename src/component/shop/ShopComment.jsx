@@ -11,8 +11,7 @@ import ShopMenu from './ShopMenu';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import ShopCommentList from './ShopCommentList.jsx';
-
-
+import Footer from '../common/Footer.jsx';
 
 const ShopComment = () => {
     const navigate = useNavigate();    
@@ -67,8 +66,7 @@ const ShopComment = () => {
                     </Col>
                 </Row>
             </Container>
-
-
+            <Footer />
         </div>
     );
 };

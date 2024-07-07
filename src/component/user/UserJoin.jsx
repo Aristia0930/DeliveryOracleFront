@@ -109,6 +109,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../common/Footer.jsx';
 
 const UserJoin = () => {
     const navigate = useNavigate();
@@ -233,6 +234,7 @@ const UserJoin = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

@@ -1,10 +1,7 @@
 // 리엑트 차트 그래프 예제 코드 
 import Rechart from "./ShopRechart";
 import React from 'react';
-
-
 import { Container, Row, Col, Button } from 'react-bootstrap';
-
 import Header from './headside/Header';
 import Sidebar from './headside/Sidebar';
 

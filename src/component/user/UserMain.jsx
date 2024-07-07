@@ -6,6 +6,7 @@ import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { Carousel } from 'react-bootstrap';
 import './UserMain.css';
 import axios from 'axios';
+import Footer from '../common/Footer.jsx';
 
 const UserMain = () => {
     const { user_x, setRole, setX, user_y, setY, userId, setUserId, user, setUserDate } = useContext(AdminFlagContext);
@@ -140,9 +141,9 @@ const UserMain = () => {
                     </div>
                 </div>
             </div>
-
+            
             <div className="crossline"></div>
-
+            <Footer />
             {/* 사용자 위치 정보 섹션
             <div className="user-location">
                 <h1>User Location</h1>
