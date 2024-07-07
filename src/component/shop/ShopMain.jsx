@@ -95,7 +95,7 @@ return (
                                     className="d-block w-100"
                                     src="asset/Default_Vibrant_still_life_of_a_bustling_food_store_homepage_d_2.jpg"
                                     alt="First slide"
-                                    style={{ width:"800px",height:"600px" }}/>
+                                    style={{ width:"800px",height:"800px" }}/>
                                 <Carousel.Caption>
                                     <h3>First slide label</h3>
                                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -106,7 +106,7 @@ return (
                                     className="d-block w-100"
                                     src="asset/Default_Vibrant_food_illustrations_in_digital_painting_showcas_2.jpg"
                                     alt="Second slide"
-                                    style={{ width:"800px",height:"600px" }}
+                                    style={{ width:"800px",height:"800px" }}
                                 />
                                 <Carousel.Caption>
                                     <h3>Second slide label</h3>
@@ -118,6 +118,7 @@ return (
                                     className="d-block w-100"
                                     src="asset/Default_Vibrant_stilllife_photographs_of_savory_meals_and_swee_1.jpg"
                                     alt="Third slide"
+                                    style={{ width:"800px",height:"800px" }}
                                 />
                                 <Carousel.Caption>
                                     <h3>Third slide label</h3>
@@ -125,44 +126,6 @@ return (
                                 </Carousel.Caption>
                             </Carousel.Item>
                         </Carousel>
-                        <Row className="mt-4 w-100">
-                            <Col md={4} className="d-flex justify-content-center mb-4">
-                                <Card style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" src="asset/Default_Savory_steakhouse_cuisine_oil_on_canvas_depicting_a_mo_0.jpg" alt="Sales Today" />
-                                    <Card.Body>
-                                        <Card.Title>와인과 함께</Card.Title>
-                                        <Card.Text>
-                                            {/* Replace with dynamic data */}
-                                             겁나 큰 스테이크!
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col md={4} className="d-flex justify-content-center mb-4">
-                                <Card style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" src="asset/chicken.PNG" alt="Pending Orders" />
-                                    <Card.Body>
-                                        <Card.Title>치킨은 국룰!</Card.Title>
-                                        <Card.Text>
-                                            {/* Replace with dynamic data */}
-                                            갓 튀겨낸 바삭바삭한 치킨!
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col md={4} className="d-flex justify-content-center mb-4">
-                                <Card style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" src="asset/피자.jpg" alt="Shop Ratings" />
-                                    <Card.Body>
-                                        <Card.Title>맛있게 늘어나는 치즈토핑!</Card.Title>
-                                        <Card.Text>
-                                            {/* Replace with dynamic data */}
-                                             페퍼로니 피자
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        </Row>
                     </div>
                 </Col>
             </Row>

@@ -6,11 +6,13 @@ import * as auth from '../../apis/auth.js';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { useCookies } from 'react-cookie';
+import Header from '../main/Header.jsx';
 const UserLogin = () => {
     const {user,setUser}=useContext(AdminFlagContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+
     const loginClick = async(e) => {
         e.preventDefault();
 
@@ -26,7 +28,7 @@ const UserLogin = () => {
             //플래그에 유저 인증 jwt 토큰 저장
             setUser(headers.authorization.replace("Bearer ",""))
 
-            navigate("/")
+            navigate("/UserMain")
         }
         
         
@@ -46,6 +48,7 @@ const UserLogin = () => {
 
     return (
         <div>
+            <Header/>
             <div id="main_container">
                 <div className="form_container">
                     <div className="form">
