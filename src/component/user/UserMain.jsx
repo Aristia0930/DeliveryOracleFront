@@ -119,13 +119,13 @@ const UserMain = () => {
     };
 
     const imagePaths = [
-        "asset/img/item-recommend1.png",
-        "asset/img/item-recommend2.png",
+        "asset/img/item-recommend.png",
+        "asset/salad.jpg",
+        "asset/steak.jpg",
         "asset/hamburger.jpg",
-        "asset/hamburger.jpg",
-        "asset/hamburger.jpg",
-        "asset/img/item-recommend6.png",
-        "asset/img/item-recommend7.png"
+        "asset/chicken.jpg",
+        "asset/pizza.jpg",
+        "asset/img/item-recommend.png"
     ];
 
     return (
@@ -138,7 +138,7 @@ const UserMain = () => {
                             className="d-block w-100"
                             src="asset/Default_Vibrant_food_illustrations_in_digital_painting_showcas_2.jpg"
                             alt="First slide"
-                            style={{ width: "800px", height: "400px" }}
+                            style={{ width: "800px", height: "600px" }}
                         />
                         <Carousel.Caption>
                             <h3>First slide label</h3>
@@ -150,7 +150,7 @@ const UserMain = () => {
                             className="d-block w-100"
                             src="asset/Default_Vibrant_stilllife_photographs_of_savory_meals_and_swee_1.jpg"
                             alt="Second slide"
-                            style={{ width: "800px", height: "400px" }}
+                            style={{ width: "800px", height: "600px" }}
                         />
                         <Carousel.Caption>
                             <h3>Second slide label</h3>
@@ -162,7 +162,7 @@ const UserMain = () => {
                             className="d-block w-100"
                             src="asset/Default_Vibrant_food_illustrations_in_digital_painting_showcas_1.jpg"
                             alt="Third slide"
-                            style={{ width: "800px", height: "400px" }}
+                            style={{ width: "800px", height: "600px" }}
                         />
                         <Carousel.Caption>
                             <h3>Third slide label</h3>
