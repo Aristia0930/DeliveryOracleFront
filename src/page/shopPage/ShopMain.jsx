@@ -77,8 +77,6 @@ const ShopMain = () => {
 //             navigate("/ShopOrder", {state : {id:userId}})
 
 
-
-
 // }
 return (
     <div>
@@ -94,12 +92,12 @@ return (
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="asset/Default_Vibrant_still_life_of_a_bustling_food_store_homepage_d_2.jpg"
+                                    src="asset/DeliveryStore_Main.jpg"
                                     alt="First slide"
                                     style={{ width:"800px",height:"800px" }}/>
                                 <Carousel.Caption>
-                                    <h3>First slide label</h3>
-                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                    <h3>첫 가입 고객 혜택 EVENT! 30% 할인 적용!!</h3>
+                                    <p>처음으로 가입 해주시는 업체 사장님들께는 이용료 30% 할인 혜택 드립니다!</p>
                                 </Carousel.Caption>
                             </Carousel.Item>
                             <Carousel.Item>
@@ -110,8 +108,8 @@ return (
                                     style={{ width:"800px",height:"800px" }}
                                 />
                                 <Carousel.Caption>
-                                    <h3>Second slide label</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <h3>두번째 혜택!</h3>
+                                    <p>저희 서비스를 소개해주시는 가맹점 업주분들께는 10% 추가할인 혜택 드립니다!</p>
                                 </Carousel.Caption>
                             </Carousel.Item>
                             <Carousel.Item>
@@ -122,8 +120,8 @@ return (
                                     style={{ width:"800px",height:"800px" }}
                                 />
                                 <Carousel.Caption>
-                                    <h3>Third slide label</h3>
-                                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                    <h3>사장님들은 음식만! 서비스는 우리가!!</h3>
+                                    <p>업주분들께서는 음식만 신경써주세요! 서비스는 저희가 하겠습니다!</p>
                                 </Carousel.Caption>
                             </Carousel.Item>
                         </Carousel>

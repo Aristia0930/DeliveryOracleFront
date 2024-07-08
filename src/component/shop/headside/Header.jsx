@@ -81,9 +81,16 @@ const Header = () => {
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg" className="header-navbar">
+                <Link to="/" className="navbar-brand">
+                        <img src="/asset/logo.png" alt="Delivery.Oracle" />
+                    <div className="header-title">
+                        <span className="line">Delivery</span>
+                        <span className="line">Oracle</span>
+                    </div>
+                </Link>
             <Container>
                 <Navbar.Brand as={Link} to="/ShopMain" className="brand">
-                    사장님 페이지
+                    STORE DashBoard
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
