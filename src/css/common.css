@@ -11,13 +11,13 @@
     justify-content: center;
     order: 1;
 }
-#main_container3 {
+/* #main_container3 {
     height: 45vh;
     padding-top: 135px;
     display: flex;
     justify-content: center;
     order: 1;
-}
+} */
 
 .from_padding {
 
@@ -175,27 +175,51 @@ form .emailpass {
     background-color: #9d9de5;
 }
 
-/* 메인 */
+/* 첫 메인 바디 */
+
+#main_container3 {
+    height: 45vh;
+    padding-top: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 중앙 정렬 */
+    flex-wrap: wrap; /* 여러 줄로 정렬 */
+    gap: 20px; /* 항목 간 간격 */
+}
 
 .item-list {
-    margin-bottom: -10px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* 부드러운 전환 효과 */
+    cursor: pointer; /* 마우스 포인터 변경 */
+}
+
+.item-list:hover {
+    transform: translateY(-5px); /* 살짝 위로 이동 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 효과 */
 }
 
 .item-list > .item {
     width: 237px;
     height: 170px;
-    margin: 10px;
-    margin-left: 25px;
-    border: 1px solid #dbdbdb;
+    margin: 0; /* 항목 간격 제거 (gap 사용) */
+    border: 1px solid #e0e0e0;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
+    border-radius: 8px; /* 둥근 테두리 */
+    transition: background-color 0.2s ease-in-out; /* 부드러운 전환 효과 */
 }
 
+.item-list > .item:hover {
+    background-color: #9d9de5;; /* 호버 시 배경색 변경 */
+}
+
+
 .item-maintext {
-    font-size: 23px;
-    margin: 0; /* 중앙 정렬을 위해 margin을 제거합니다 */
+    font-size: 25px; /* 적절한 텍스트 크기 */
+    margin: 0;
     text-align: center; /* 텍스트 중앙 정렬 */
+    color: #333; /* 텍스트 색상 */
 }
 
 /* 업체 */

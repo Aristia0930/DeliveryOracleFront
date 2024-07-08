@@ -57,10 +57,10 @@
     background-color: #0056b3;
 }
 
-/* Main 헤더 Css*/
+/* 처음 Main 헤더 Css*/
 
 .header-wrapper {
-    background-color: #f8f9fa; /* 헤더 배경색 */
+    background-color: #C9C9C9;  /* 헤더 배경색 */
     padding: 20px 0;
 }
 

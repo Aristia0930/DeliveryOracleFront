@@ -4,6 +4,7 @@
   height: 400px; /* translateY 값을 -40%로 조정하여 슬라이더의 위치를 미세하게 조정 */
   overflow: hidden;
   z-index: 1; /* 슬라이더의 z-index 설정 */
+  margin-bottom: 20px;
 }
 
 #carousel div {

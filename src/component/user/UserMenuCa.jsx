@@ -2,11 +2,10 @@ import React from 'react';
 import { Card, Badge } from 'react-bootstrap';
 import { FaStar } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './UserMenuCa.css';
 
 const UserMenuCa = ({ data, shop }) => {
     return (
-        <Card className="item-card mb-3" style={{ width: '100%' }}>
+        <Card className="item-card mb-3" style={{ width: '100%' ,cursor: 'pointer'}}>
             <Card.Body className="d-flex align-items-start">
                 <div className="item-image">
                     <img src={`/imgs/${data.store_image}`} alt="item" width="70" />
@@ -19,7 +18,7 @@ const UserMenuCa = ({ data, shop }) => {
                         </span>
                     </Card.Title>
                     <Card.Text>
-                        <FaStar className="scope-rate" /> <strong>{data.rating}</strong>
+                        {/* <FaStar className="scope-rate" /> <strong>{data.rating}</strong> */}
                         <span className="pd2">최근리뷰 {data.recent_reviews} | 사장님댓글 {data.recent_comments}</span>
                     </Card.Text>
                     <Card.Text className="info-detailmenu pd1">
