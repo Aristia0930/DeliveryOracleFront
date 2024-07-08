@@ -49,24 +49,36 @@ const Main = () => {
         <div>
             <Header/>
             <div id="main_container3">
-                <div class="item-list " onClick={userbutton}>
-                    <div class="item ">
-                        <p class="item-maintext">유저 페이지</p>
+                <div class="item-list" onClick={userbutton}>
+                    <div class="item">
+                        <div>
+                            <img src="asset/king.png" width={100}/>
+                            <p class="item-maintext">유저 페이지</p>
+                        </div>
                     </div>
                 </div>
                 <div class="item-list" onClick={shopbutton}>
                     <div class="item">
-                        <p class="item-maintext">업체 페이지</p>
+                        <div>
+                            <img src="asset/waiter.png" width={100}/>
+                            <p class="item-maintext">업체 페이지</p>
+                        </div>
                     </div>
                 </div>
                 <div class="item-list" onClick={managerbutton}>
                     <div class="item">
-                        <p class="item-maintext">관리자 페이지</p>
+                        <div>
+                            <img src="asset/admin.png" width={100}/>
+                            <p class="item-maintext">관리자 페이지</p>
+                        </div>
                     </div>
                 </div>
                 <div class="item-list" onClick={riderbutton}>
                     <div class="item">
-                        <p class="item-maintext">라이더 페이지</p>
+                        <div>
+                            <img src="asset/rider.png" width={100}/>
+                            <p class="item-maintext">라이더 페이지</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -76,3 +88,5 @@ const Main = () => {
 };
 
 export default Main;
+
+
