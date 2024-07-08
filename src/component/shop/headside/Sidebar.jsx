@@ -40,6 +40,14 @@ const Sidebar = () => {
 
         fetchData();}
     }, [userId]); 
+
+    useEffect(()=>{
+        if (role == null) {
+            navigate("/ShopMain");
+        } else if (role != "ROLE_STORE") {
+            window.location.href = "/ShopMain";
+        }
+    },[role])
     
 
     const shoppMenu=async(e)=>{

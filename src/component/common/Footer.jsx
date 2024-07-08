@@ -4,7 +4,8 @@ import '../../css/Footer.css';
 
 const Footer = () => {
     return (
-        <footer className="footer">
+        
+        <footer className="footer mt-auto py-3" >
             <Container>
                 <Row>
                     <Col md={4} className="footer-column text-md-left">

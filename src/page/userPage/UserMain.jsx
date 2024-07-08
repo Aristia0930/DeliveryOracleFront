@@ -219,6 +219,7 @@ const UserMain = () => {
             </div>
             
             <div className="crossline"></div>
+            <div className="ft"></div>
             <Footer />
             {/* 사용자 위치 정보 섹션
             <div className="user-location">

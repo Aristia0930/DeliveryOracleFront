@@ -44,7 +44,7 @@
 
 // export default Sidebar;
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useContext } from "react";
@@ -56,6 +56,13 @@ import { useNavigate } from 'react-router-dom';
 const Sidebar = () => {
     const { role } = useContext(AdminFlagContext);
     const navigate = useNavigate();  
+    useEffect(()=>{
+        if (role == null) {
+            navigate("/ManagerMain");
+        } else if (role != "ROLE_ADMIN") {
+            window.location.href = "/ManagerMain";
+        }
+    },[role])
 
     //권한확인
     const roleExist = async (src) => {

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Nav } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { FaHome, FaBiking, FaClipboardList, FaHistory, FaDollarSign } from 'react-icons/fa';
@@ -8,6 +8,13 @@ import { AdminFlagContext } from "../../../flag/Flag.jsx";
 const Sidebar = () => {
     const { role } = useContext(AdminFlagContext);
     const navigate = useNavigate();  
+    useEffect(()=>{
+        if (role == null) {
+            navigate("/RiderMain");
+        } else if (role != "ROLE_RIDER") {
+            window.location.href = "/RiderMain";
+        }
+    },[role])
 
     // 권한 확인
     const roleExist = async (src) => {

@@ -19,6 +19,7 @@ const RiderOrderList = ({ order, handleOrder, keyProp }) => {
 
   useEffect(() => {
       const script = document.createElement("script");
+      console.log("현재 내위치",user_x)
       script.async = true;
       script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&autoload=false`;
       document.head.appendChild(script);
@@ -58,7 +59,7 @@ const RiderOrderList = ({ order, handleOrder, keyProp }) => {
               }
 
               const userMarker = new window.kakao.maps.Marker({
-                  position: new window.kakao.maps.LatLng(order.user_y, order.user_x)
+                  position: new window.kakao.maps.LatLng(user_y,user_x)
               });
               userMarker.setMap(map);
           });
