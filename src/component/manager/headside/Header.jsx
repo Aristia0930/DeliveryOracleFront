@@ -29,8 +29,15 @@ const Header = () => {
         //     </Container>
         // </Navbar>
         <Navbar bg="dark" variant="dark" expand="lg" className="header-navbar">
+             <Link to="/" className="navbar-brand">
+                        <img src="/asset/logo.png" alt="Delivery.Oracle" />
+                    <div className="header-title">
+                        <span className="line">Delivery</span>
+                        <span className="line">Oracle</span>
+                    </div>
+                </Link>
         <Container>
-            <Navbar.Brand as={Link} to="/ManagerMain" className="brand">Admin Dashboard</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/ManagerMain" className="brand">ADMIN Dashboard</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                 <Nav>
