@@ -62,12 +62,12 @@ const ShopMyPage = () => {
                         <Row className="text-center">
                             <Col xs={12} md={6} className="mb-3">
                                 <div className="nav-box">
-                                    <Link to="/MyorderDetails" className="nav-link">매출내역</Link>
+                                    <Link to="/ShopComment" className="nav-link">댓글관리</Link>
                                 </div>
                             </Col>
                             <Col xs={12} md={6} className="mb-3">
                                 <div className="nav-box">
-                                    <Link to="/MypageReview" className="nav-link">업체관리</Link>
+                                    <Link to="/ShopEdit" className="nav-link">업체관리</Link>
                                 </div>
                             </Col>
                         </Row>

@@ -46,10 +46,10 @@ const Header = () => {
         <div className="header-wrapper">
             <Container>
             <Link to="/" className="logo-container">
-                    <img src="/asset/logo.png" alt="Delivery.Oracle" className="logo" />
+                    <img src="/asset/logo.png" alt="Delivery Oracle" className="logo" />
                     <div className="headertitle">
                         <h2><span>{currentTxt}</span></h2>
-                        <p>홈페이지에 오신 것을 환영합니다.</p>
+                        <strong><p>홈페이지에 오신 것을 환영합니다.</p></strong>
                     </div>
             </Link>
             </Container>

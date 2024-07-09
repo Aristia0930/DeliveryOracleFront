@@ -30,7 +30,7 @@ const Header = () => {
         // </Navbar>
         <Navbar bg="dark" variant="dark" expand="lg" className="header-navbar">
              <Link to="/" className="navbar-brand">
-                        <img src="/asset/logo.png" alt="Delivery.Oracle" />
+                        <img src="/asset/logo.png" alt="Delivery Oracle" />
                     <div className="header-title">
                         <span className="line">Delivery</span>
                         <span className="line">Oracle</span>

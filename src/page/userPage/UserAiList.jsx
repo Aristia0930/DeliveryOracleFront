@@ -9,6 +9,7 @@ import { useWebSocket } from "../../flag/WebSocketContext.jsx";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import Spinner from 'react-bootstrap/Spinner';
 import './UserAiList.css';
+import Footer from '../../component/common/Footer.jsx';
 
 const UserAiList = () => {
     const location = useLocation();
@@ -93,13 +94,6 @@ const UserAiList = () => {
         }
     }, [data]);
 
-    // if (loading) return <div className="loading-container"> 
-    //     <Spinner animation="border" variant="secondary" className='spinner-ai'/>
-    //  <p className="loading-text">로딩 중...</p>
-    //  </div>;
-    // if (error) return <div>{error}</div>;
-
-    // Check shop status
     const check = async (array) => {
         setCurrentCheck(array); // Store the current item being checked
 
@@ -134,31 +128,22 @@ const UserAiList = () => {
      </div> :
             <div className="container-custom" style={{ margin: '20px' }}>
                 <p className="store-count">음식점 <span className="pd3">{count}곳</span>을 찾았습니다.</p>
-                <p className="superlist"><a href="#" className="badge badge-danger">SuperList</a></p>
-                <div className="big-column row">
-                    {Object.keys(data).reduce((acc, menuName, index) => {
-                        const stores = data[menuName];
-                        if (index % 2 === 0) {
-                            acc.push([]);
-                        }
-                        acc[acc.length - 1].push({ menuName, stores });
-                        return acc;
-                    }, []).map((itemGroup, groupIndex) => (
-                        <div className="row" key={groupIndex}>
-                            {itemGroup.map((item, index) => (
-                                <div>
-                                <h3>{item.menuName.substring(0,item.menuName.indexOf(':'))}</h3>
-                                <h5>{item.menuName.substring(item.menuName.indexOf(':')+1)}</h5>
-                                    {item.stores.map((store, storeIndex) => (
-                                        <div className="col-md-6 mb-4" key={index} onClick={() => check2(shopStates[store.owner_id], store)}>
-                                        <UserMenuCa key={storeIndex} data={store} shop={shopStates[store.owner_id]} />
-                                     </div>))}
-                               
-                            </div>))}
+                <hr/>
+                <div className="row big-column">
+                    {Object.keys(data).map((menuName, index) => (
+                        <div className="col-md-6" key={index}>
+                            <strong><h3>{menuName.substring(0, menuName.indexOf(':'))}</h3></strong>
+                            <h5>{menuName.substring(menuName.indexOf(':') + 1)}</h5>
+                            {data[menuName].map((store, storeIndex) => (
+                                <div className="mb-4" key={storeIndex} onClick={() => check2(shopStates[store.owner_id], store)}>
+                                    <UserMenuCa data={store} shop={shopStates[store.owner_id]} />
+                                </div>
+                            ))}
                         </div>
                     ))}
                 </div>
             </div>}
+            <Footer/>
         </div>
     );
 };
