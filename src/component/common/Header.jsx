@@ -62,7 +62,6 @@ const Header = () => {
         
         <Navbar expand="xl" className="navbar">
             <Container>
-
                 <Link to="/" className="navbar-brand">
                         <img src="/asset/logo.png" alt="Delivery.Oracle" />
                     <div className="header-title">
@@ -81,8 +80,6 @@ const Header = () => {
                 {user&&
                 <UserInfo />}
             </Container>
-
-
         </Navbar >
 
     );

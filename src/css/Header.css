@@ -1,12 +1,4 @@
-.navbar {
-    
-    background-color: #F2E9D0;
-    /* background-color: #c0c0fc; */
-    background-color: #C9C9C9; 
-    background-color: #A3A096; 
-    padding: 1rem 1.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+/* 유저헤더 */
 
 .header-container {
     display: flex;
@@ -21,8 +13,8 @@
 }
 
 .navbar-brand img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     margin-right: 10px;
 }
 
@@ -66,10 +58,11 @@
 .logo-container {
     display: flex;
     align-items: center;
+    text-decoration: none;
 }
 
 .logo {
-    width: 100px; /* 로고 이미지 크기 */
+    width: 120px; /* 로고 이미지 크기 */
     margin-right: 10px;
 }
 

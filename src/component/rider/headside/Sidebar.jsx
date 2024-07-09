@@ -48,7 +48,7 @@ const Sidebar = () => {
 
             <Nav.Item onClick={() => roleExist("RiderRevenue")}>
                 <Nav.Link>
-                    <FaDollarSign className="me-2" /> 총수익
+                    <FaDollarSign className="me-2" /> 매출내역
                 </Nav.Link>
             </Nav.Item>
         </Nav>

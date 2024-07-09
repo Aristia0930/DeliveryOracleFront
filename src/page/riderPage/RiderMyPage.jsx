@@ -51,7 +51,7 @@ const RiderMyPage = () => {
                                 <div>
                                     <p className="mb-0"><strong>이메일(Id): {userInfo.email}</strong></p>
                                     <p className="mb-0"><strong>닉네임: {userInfo.name}</strong></p>
-                                    <p className="mb-0"><Link to="/ShopMyPagemodify">계정관리/수정</Link> </p>
+                                    <p className="mb-0"><Link to="/RiderMyPagemodify">계정관리/수정</Link> </p>
                                 </div>
                             </div>
                         ) : (
@@ -63,12 +63,12 @@ const RiderMyPage = () => {
                         <Row className="text-center">
                             <Col xs={12} md={6} className="mb-3">
                                 <div className="nav-box">
-                                    <Link to="/MyorderDetails" className="nav-link">매출내역</Link>
+                                    <Link to="/RiderOrderReceipt" className="nav-link">완료내역</Link>
                                 </div>
                             </Col>
                             <Col xs={12} md={6} className="mb-3">
                                 <div className="nav-box">
-                                    <Link to="/MypageReview" className="nav-link">업체관리</Link>
+                                    <Link to="/RiderRevenue" className="nav-link">매출내역</Link>
                                 </div>
                             </Col>
                         </Row>
