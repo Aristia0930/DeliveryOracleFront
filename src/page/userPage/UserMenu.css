@@ -22,6 +22,7 @@ a:hover {
 
 .container-custom {
     margin: 20px;
+    min-height: 100vh;
 }
 
 .store-count {
