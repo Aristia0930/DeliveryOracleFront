@@ -45,40 +45,31 @@ const Main = () => {
     }
 
     return (
-        
         <div>
-            <Header/>
+            <Header />
             <div id="main_container3">
-                <div class="item-list" onClick={userbutton}>
-                    <div class="item">
-                        <div>
-                            <img src="asset/king.png" width={100}/>
-                            <p class="item-maintext">유저 페이지</p>
-                        </div>
+                <div className="item-list" onClick={userbutton}>
+                    <div className="item">
+                        <img src="asset/king.png" width={100} />
+                        <p className="item-maintext">유저 페이지</p>
                     </div>
                 </div>
-                <div class="item-list" onClick={shopbutton}>
-                    <div class="item">
-                        <div>
-                            <img src="asset/waiter.png" width={100}/>
-                            <p class="item-maintext">업체 페이지</p>
-                        </div>
+                <div className="item-list" onClick={shopbutton}>
+                    <div className="item">
+                        <img src="asset/waiter.png" width={100} />
+                        <p className="item-maintext">업체 페이지</p>
                     </div>
                 </div>
-                <div class="item-list" onClick={managerbutton}>
-                    <div class="item">
-                        <div>
-                            <img src="asset/admin.png" width={100}/>
-                            <p class="item-maintext">관리자 페이지</p>
-                        </div>
+                <div className="item-list" onClick={managerbutton}>
+                    <div className="item">
+                        <img src="asset/admin.png" width={100} />
+                        <p className="item-maintext">관리자 페이지</p>
                     </div>
                 </div>
-                <div class="item-list" onClick={riderbutton}>
-                    <div class="item">
-                        <div>
-                            <img src="asset/rider.png" width={100}/>
-                            <p class="item-maintext">라이더 페이지</p>
-                        </div>
+                <div className="item-list" onClick={riderbutton}>
+                    <div className="item">
+                        <img src="asset/rider.png" width={100} />
+                        <p className="item-maintext">라이더 페이지</p>
                     </div>
                 </div>
             </div>
