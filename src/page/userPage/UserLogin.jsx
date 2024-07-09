@@ -22,6 +22,7 @@ const UserLogin = () => {
         const data=rs.data
         const headers=rs.headers
         console.log(headers.authorization.replace("Bearer ",""))
+        console.log(rs)
         if (rs.status==200){
 
             //토큰으로 저장
@@ -31,7 +32,13 @@ const UserLogin = () => {
 
             navigate("/UserMain")
         }
-        
+        else if (rs.status==207){
+            alert("권한이 없습니다")
+            navigate("/UserMain")
+        }else if(rs.status==208){
+            alert("아이디 정지 상태 관리자 한테 문의 하세요")
+            navigate("/UserMain")
+        }
         
     }
         catch(e){
@@ -50,7 +57,7 @@ const UserLogin = () => {
     return (
         <div>
             <Header/>
-            <div id="main_container">
+            <div id="main_container3">
                 <div className="form_container">
                     <div className="form">
                         <form action="#">

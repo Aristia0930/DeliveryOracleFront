@@ -14,7 +14,7 @@ import '../../css/Header.css';
 const Header = () => {
 
 
-    const { user,setUser,userDate,setUserDate,userId,setUserId,shopId,setShopid,user_x,setX,user_y,setY,userInfo,setUserInfo} = useContext(AdminFlagContext);
+    const { role, setRole,user,setUser,userDate,setUserDate,userId,setUserId,shopId,setShopid,user_x,setX,user_y,setY,userInfo,setUserInfo} = useContext(AdminFlagContext);
     const navigate = useNavigate();  
 
     
@@ -29,6 +29,9 @@ const Header = () => {
                 console.log(response.data);
                 setUserId(response.data.user_id)
                 setUserInfo(response.data)
+                if(response.data.authList[0].auth!="ROLE_USER"){
+                    window.location.href = "/UserMain";
+                }
             } catch (error) {
                 console.log(error);
             }

@@ -89,7 +89,7 @@ if (!emailRegex.test(email)) {
 return (
         <div>
             <Header/>
-            <div id="main_container">
+            <div id="main_container3">
                 <div className="form_container">
                     <div className="form">
                         <form action="#">
