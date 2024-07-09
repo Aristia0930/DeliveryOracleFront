@@ -93,11 +93,11 @@ const UserAiList = () => {
         }
     }, [data]);
 
-    if (loading) return <div className="loading-container"> 
-        <Spinner animation="border" variant="secondary" className='spinner-ai'/>
-     <p className="loading-text">로딩 중...</p>
-     </div>;
-    if (error) return <div>{error}</div>;
+    // if (loading) return <div className="loading-container"> 
+    //     <Spinner animation="border" variant="secondary" className='spinner-ai'/>
+    //  <p className="loading-text">로딩 중...</p>
+    //  </div>;
+    // if (error) return <div>{error}</div>;
 
     // Check shop status
     const check = async (array) => {
@@ -127,6 +127,11 @@ const UserAiList = () => {
         <div>
             <Header />
             <TabMenu />
+            {loading ? 
+            <div className="loading-container"> 
+        <Spinner animation="border" variant="secondary" className='spinner-ai'/>
+     <p className="loading-text">로딩 중...</p>
+     </div> :
             <div className="container-custom" style={{ margin: '20px' }}>
                 <p className="store-count">음식점 <span className="pd3">{count}곳</span>을 찾았습니다.</p>
                 <p className="superlist"><a href="#" className="badge badge-danger">SuperList</a></p>
@@ -142,7 +147,8 @@ const UserAiList = () => {
                         <div className="row" key={groupIndex}>
                             {itemGroup.map((item, index) => (
                                 <div>
-                                <h3>{item.menuName}</h3>
+                                <h3>{item.menuName.substring(0,item.menuName.indexOf(':'))}</h3>
+                                <h5>{item.menuName.substring(item.menuName.indexOf(':')+1)}</h5>
                                     {item.stores.map((store, storeIndex) => (
                                         <div className="col-md-6 mb-4" key={index} onClick={() => check2(shopStates[store.owner_id], store)}>
                                         <UserMenuCa key={storeIndex} data={store} shop={shopStates[store.owner_id]} />
@@ -152,7 +158,7 @@ const UserAiList = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div>}
         </div>
     );
 };

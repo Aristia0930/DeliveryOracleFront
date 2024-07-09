@@ -1,19 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const TabMenu = () => {
 
   const { user_x, setRole,setX, user_y, setY ,userId,setUserId,user,setUser,setUserDate} = useContext(AdminFlagContext);
   const [location, setLocation] = useState({ latitude: null, longitude: null });
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState(1);
-
+  const [activeTab, setActiveTab] = useState(0);
+  const currentLocation = useLocation();
   const handleTabClick = (ca) => {
+    console.log("실행버튼",ca)
     setActiveTab(ca); // 탭이 클릭했을때 nav-link active 활성화
 
   };
+  useEffect(() => {
+    const path = currentLocation.pathname;
+    if (path.includes('/UserMenuCaList')) {
+      const tab = new URLSearchParams(currentLocation.search).get('ca');
+      setActiveTab(Number(tab));
+    } else if (path.includes('/UserAiList')) {
+      setActiveTab(6);
+    }
+  }, []);
+
 
   useEffect(() => {
     if (navigator.geolocation) {
