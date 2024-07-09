@@ -92,17 +92,15 @@ const ManagerShopleave = () => {
                     <Table responsive striped bordered hover>
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>유저 이메일</th>
                         <th>신고횟수</th>
-                        <th>Action</th>
-                        <th>Action2</th>
+                        <th>신고내용</th>
+                        <th>퇴출하기</th>
                     </tr>
                 </thead>
                 <tbody>
                     {data.map((item, index) => (
                         <tr key={index}>
-                            <td>{index + 1}</td>
                             <td>{item.storeName}</td>
                             <td>{item.count}</td>
                             <td>

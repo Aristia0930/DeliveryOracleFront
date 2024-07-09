@@ -129,58 +129,58 @@ const ShopJoin = () => {
       
                     <div id="main_container">
     
-    <div class="shop_container">
-        <div class="form">
-            <form action="#">
-                <p class="shop_name">
-                    <label for="shop_name">업체이름</label>
-                    <input type="text" id="shop_name" onChange={(e)=>setName(e.target.value)}/>
-                </p>
-                <p>
-                <label for="shop_name">주소 <Button variant="primary" size="sm" onClick={handleComplete}>주소 찾기</Button>{' '}</label>
-                <input className="user_enroll_text" placeholder="주소"  type="text" required={true} name="address" onChange={handleInput} value={address.address}/>
-                
-                {popup && <AddressP company={address} setcompany={setAddress}></AddressP>}
-             
-                </p>
+                <div class="shop_container">
+                    <div class="form">
+                        <form action="#">
+                            <p class="shop_name">
+                                <label for="shop_name">업체이름</label>
+                                <input type="text" id="shop_name" onChange={(e)=>setName(e.target.value)}/>
+                            </p>
+                            <p>
+                            <label for="shop_name">주소 <Button variant="primary" size="sm" onClick={handleComplete}>주소 찾기</Button>{' '}</label>
+                            <input className="user_enroll_text" placeholder="주소"  type="text" required={true} name="address" onChange={handleInput} value={address.address}/>
+                            
+                            {popup && <AddressP company={address} setcompany={setAddress}></AddressP>}
+                        
+                            </p>
 
-                <p class="shop_text">
-                    <label for="shop_text">업체설명</label>
-                    <textarea name="postContent" rows={6} onChange={(e)=>setTest(e.target.value)}/>
-                </p>
+                            <p class="shop_text">
+                                <label for="shop_text">업체설명</label>
+                                <textarea name="postContent" rows={6} onChange={(e)=>setTest(e.target.value)}/>
+                            </p>
 
-                <p class="shop_category">
-                <label for="shop_category">카테고리</label>
-                  <Form.Select aria-label="Default select example"  onChange={(e)=>setcategory(e.target.value)}>
-                    <option>카테고리 선택</option>
-                    <option value="1">한식</option>
-                    <option value="2">중식</option>
-                    <option value="3">일식</option>
-                    <option value="4">치킨</option>
-                    <option value="5">피자</option>
-                  </Form.Select>
-                </p>
+                            <p class="shop_category">
+                            <label for="shop_category">카테고리</label>
+                              <Form.Select aria-label="Default select example"  onChange={(e)=>setcategory(e.target.value)}>
+                                <option>카테고리 선택</option>
+                                <option value="1">한식</option>
+                                <option value="2">중식</option>
+                                <option value="3">일식</option>
+                                <option value="4">치킨</option>
+                                <option value="5">피자</option>
+                              </Form.Select>
+                            </p>
 
-                <p class="shop_img">
-                    <label for="shop_img">업체이미지</label>
-                    <input type="file" required="required/" accept="image/*" onChange={(e)=>setImg(e.target.files[0])}/>
-                </p>
-                <div className="d-grid gap-2">
-                <Button variant="primary" type="submit" id="submit_btn" class="submit_btn" onClick={shopjoin}>등록하기</Button>
-                </div>
-            </form>
+                            <p class="shop_img">
+                                <label for="shop_img">업체이미지</label>
+                                <input type="file" required="required/" accept="image/*" onChange={(e)=>setImg(e.target.files[0])}/>
+                            </p>
+                            <div className="d-grid gap-2">
+                            <Button variant="primary" type="submit" id="submit_btn" class="submit_btn" onClick={shopjoin}>등록하기</Button>
+                            </div>
+                        </form>
 
-            <ul>
-        {coordinates.map((coord, index) => (
-          <li key={index}>
-            X: {coord.x}, Y: {coord.y}
-          </li>
+                        <ul>
+                    {coordinates.map((coord, index) => (
+                      <li key={index}>
+                        X: {coord.x}, Y: {coord.y}
+                      </li>
 
-        ))}
-            </ul> 
-          </div>
-        </div>
-      </div>
+                    ))}
+                        </ul> 
+                      </div>
+                    </div>
+                  </div>
                     </Col>
                 </Row>
             </Container>

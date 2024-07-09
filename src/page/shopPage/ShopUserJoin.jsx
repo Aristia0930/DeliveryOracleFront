@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../../component/main/Header';
+import Footer from '../../component/common/Footer';
 
 //상점 회원 가입 페이지 
 const ShopUserJoin = () => {
@@ -22,10 +24,7 @@ const ShopUserJoin = () => {
                 password: password,
                 name: name
             };
-          
-
-    
-          
+        
           // POST 요청을 보냅니다.
           axios.post('http://localhost:8080/user/store', signupData,)
           .then(rs => {
@@ -34,7 +33,7 @@ const ShopUserJoin = () => {
 
             // 회원가입 성공 여부 확인
             if (response === "SUCCESS") {
-                navigate('/');
+                navigate('/ShopMain');
             } else if (response === "emailFAIL") {
                 alert("이메일이 중복입니다");
             } else {
@@ -44,11 +43,12 @@ const ShopUserJoin = () => {
             console.log(error);
             alert("오류가 발생했습니다. 다시 시도해 주세요.");
         });
-} else if(name && email && password){
-    alert("이메일 중복 확인을 확인해주세요")}
-else {
-    alert("빈칸을 채워주세요");
-}
+    } else if(name && email && password){
+        alert("이메일 중복 확인을 확인해주세요")}
+    else {
+        alert("빈칸을 채워주세요");
+    }
+
 };
 
 // 중복확인
@@ -88,53 +88,55 @@ if (!emailRegex.test(email)) {
 }, [email]);
 
 return (
-<div>
-    <div id="main_container">
-        <div className="form_container">
-            <div className="form">
-                <form action="#">
-                    <p className="user_email">
-                        <label htmlFor="user_email">아이디:이메일 </label>
-                        <button className="btn_con2" onClick={emailPassButton}>중복확인</button>
-                        <input
-                            type="email"
-                            id="user_email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
-                    </p>
-                    <p className="user_name">
-                        <label htmlFor="user_name">닉네임:사용자명</label>
-                        <input
-                            type="text"
-                            id="user_name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                    </p>
-                    <p className="user_password">
-                        <label htmlFor="user_password">비밀번호</label>
-                        <input
-                            type="password"
-                            id="user_password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </p>
-                    <input
-                        type="submit"
-                        id="submit_btn"
-                        value="회원가입"
-                        className="submit_btn"
-                        onClick={joinClick}
-                    />
-                </form>
+        <div>
+            <Header/>
+            <div id="main_container">
+                <div className="form_container">
+                    <div className="form">
+                        <form action="#">
+                            <p className="user_email">
+                                <label htmlFor="user_email">아이디:이메일 </label>
+                                <button className="btn_con2" onClick={emailPassButton}>중복확인</button>
+                                <input
+                                    type="email"
+                                    id="user_email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                                {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
+                            </p>
+                            <p className="user_name">
+                                <label htmlFor="user_name">닉네임:사용자명</label>
+                                <input
+                                    type="text"
+                                    id="user_name"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                />
+                            </p>
+                            <p className="user_password">
+                                <label htmlFor="user_password">비밀번호</label>
+                                <input
+                                    type="password"
+                                    id="user_password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </p>
+                            <input
+                                type="submit"
+                                id="submit_btn"
+                                value="회원가입"
+                                className="submit_btn"
+                                onClick={joinClick}
+                            />
+                        </form>
+                    </div>
+                </div>
             </div>
+            <Footer/>
         </div>
-    </div>
-</div>
-);
+    );
 };
 
 export default ShopUserJoin;

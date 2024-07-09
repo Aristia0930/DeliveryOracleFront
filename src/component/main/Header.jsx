@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import '../../css/Header.css';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const txtArr = ['Do Eat!', 'Delivery Oracle'];
@@ -44,13 +45,13 @@ const Header = () => {
     return (
         <div className="header-wrapper">
             <Container>
-                <div className="logo-container">
+            <Link to="/" className="logo-container">
                     <img src="/asset/logo.png" alt="Delivery.Oracle" className="logo" />
                     <div className="headertitle">
                         <h2><span>{currentTxt}</span></h2>
                         <p>홈페이지에 오신 것을 환영합니다.</p>
                     </div>
-                </div>
+            </Link>
             </Container>
         </div>
     );

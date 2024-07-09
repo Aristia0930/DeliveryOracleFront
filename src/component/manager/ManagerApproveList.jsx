@@ -84,7 +84,7 @@ const ManagerApproveList = () => {
             // 이 경우, owner_id가 URL의 쿼리 스트링으로 전달되어 Spring Boot의 @RequestParam으로 받을 수 있습니다.
 
             const response = await axios.get('http://localhost:8080/admin/approve', {
-                params: { owner_id: id }
+                params: { store_id: id }
             });
 
             // POST 요청: POST 요청을 사용할 경우, FormData를 생성하여 요청 본문에 데이터를 포함시킬 수 있습니다.
@@ -101,7 +101,7 @@ const ManagerApproveList = () => {
 
                 // 승인 후 데이터 바로 업데이트 
                 const updatedData = data.map(item =>
-                    item.owner_id === id ? { ...item, approval_status: 1 } : item
+                    item.store_id === id ? { ...item, approval_status: 1 } : item
                 );
                 setData(updatedData);
             }
@@ -115,8 +115,7 @@ const ManagerApproveList = () => {
             <Table responsive striped bordered hover>
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Owner ID</th>
+                        <th>Store ID</th>
                         <th>Store Name</th>
                         <th>Modification Date</th>
                         <th>Approval Status</th>
@@ -126,14 +125,13 @@ const ManagerApproveList = () => {
                 <tbody>
                     {data.map((item, index) => (
                         <tr key={index}>
-                            <td>{index + 1}</td>
-                            <td>{item.owner_id}</td>
+                            <td>{item.store_id}</td>
                             <td>{item.store_name}</td>
                             <td>{item.modification_date}</td>
-                            <td>{item.approval_status === 1 ? "1" : "0"}</td>
+                            <td>{item.approval_status === 1 ? "1" : item.approval_status}</td>
                             <td>
-                                {item.approval_status === 0 ? (
-                                    <Button onClick={() => handleApprove(item.owner_id)}>승인</Button>
+                                {item.approval_status === 0 || item.approval_status === 2 ? (
+                                    <Button onClick={() => handleApprove(item.store_id)}>승인</Button>
                                 ) : "완료"}
                             </td>
                         </tr>
