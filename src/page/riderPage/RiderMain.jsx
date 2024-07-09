@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../../component/rider/headside/Header.jsx';
@@ -11,6 +11,7 @@ import { AdminFlagContext } from "../../flag/Flag.jsx";
 const RiderMain = () => {
     const { setRole, user, setUser, userId, setUserId, shopId, setShopId, user_x, setX, user_y, setY } = useContext(AdminFlagContext);
     const navigate = useNavigate();
+    const [userInfo, setUserInfo] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -22,6 +23,8 @@ const RiderMain = () => {
                         Authorization: `Bearer ${token}`
                     }
                 });
+                console.log(response.data);
+                setUserInfo(response.data);
                 setUserId(response.data.user_id);
                 setRole(response.data.authList[0].auth);
             } catch (error) {
@@ -85,14 +88,15 @@ const RiderMain = () => {
         document.head.appendChild(script);
 
         return () => {
-            document.head.removeChild(script); // 컴포넌트가 언마운트될 때 스크립트 제거
+            document.head.removeChild(script); 
         };
     }, [user_x, user_y]);
-    const [x,setXx]=useState();
-    const [y,setYy]=useState();
-    const xybutton=()=>{
-      setX(x)
-      setY(y)
+
+    const [x, setXx] = useState();
+    const [y, setYy] = useState();
+    const xybutton = () => {
+        setX(x);
+        setY(y);
     }
 
     return (
@@ -104,20 +108,32 @@ const RiderMain = () => {
                         <Sidebar />
                     </Col>
                     <Col xs={10} id="page-content-wrapper">
-                    
-                        <h1>메인</h1>
-                        <h3>현재 x : {user_x} / 현재 y : {user_y} </h3>
-                        <input type='text' placeholder="x좌표" onChange={(e)=>setXx(e.target.value)}></input>
-                        <input type='text' placeholder="y좌표"  onChange={(e)=>setYy(e.target.value)}></input>
-                        <button onClick={xybutton}> 좌표새로지정</button>
-
-                        <div id="main_container">
-                        <Card style={{ width: '45rem' }}>
-                            <Card.Body>
-                                <Card.Title>현재 내위치</Card.Title>
-                                <div id="map" style={{ width: "100%", height: "600px" }}></div>
-                            </Card.Body>
-                        </Card></div>
+                        <div className="d-flex justify-content-center my-4">
+                            <Card style={{ width: '45rem' }}>
+                                <Card.Body>
+                                    <Card.Title className="text-center">{userInfo ? `${userInfo.name} 님의 현재 위치를 표시합니다!` : "라이더님 로그인 해주세요!"}</Card.Title>
+                                    <Card.Text className="text-center">
+                                        <strong>현재 x :</strong> {user_x} / <strong>현재 y :</strong> {user_y}
+                                    </Card.Text>
+                                  <div className="d-flex justify-content-center align-items-center">
+                                    <Form className="text-center">
+                                        <Row className="align-items-center">
+                                            <Col xs="auto">
+                                                <Form.Control type="text" placeholder="x좌표" onChange={(e) => setXx(e.target.value)} />
+                                            </Col>
+                                            <Col xs="auto">
+                                                <Form.Control type="text" placeholder="y좌표" onChange={(e) => setYy(e.target.value)} />
+                                            </Col>
+                                            <Col xs="auto">
+                                                <Button variant="primary" onClick={xybutton}>좌표 새로고침</Button>
+                                            </Col>
+                                        </Row>
+                                    </Form>
+                                 </div>
+                                    <div id="map" style={{ width: "100%", height: "600px", marginTop: "20px" }}></div>
+                                </Card.Body>
+                            </Card>
+                        </div>
                     </Col>
                 </Row>
             </Container>
@@ -127,3 +143,4 @@ const RiderMain = () => {
 };
 
 export default RiderMain;
+

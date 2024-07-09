@@ -41,8 +41,6 @@ const RiderUserLogin = () => {
                 alert('id가 존재하지 않습니다')
             }
         }
-
-
     }
 
     return (
@@ -58,8 +56,7 @@ const RiderUserLogin = () => {
 
                             <p className="login_user_password">
                                 <label htmlFor="user_password">비밀번호:</label>
-                                <input ty
-                                pe="password" id="user_password" onChange={(e) => setPassword(e.target.value)} />
+                                <input type="password" id="user_password" onChange={(e) => setPassword(e.target.value)} />
                             </p>
 
                             <input type="submit" id="submit_btn" value="로그인" className="submit_btn" onClick={loginClick} />
