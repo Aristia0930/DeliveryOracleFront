@@ -110,6 +110,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../component/common/Footer.jsx';
+import Header from '../../component/main/Header.jsx';
 
 const UserJoin = () => {
     const navigate = useNavigate();
@@ -137,7 +138,7 @@ const UserJoin = () => {
 
                     // 회원가입 성공 여부 확인
                     if (response === "SUCCESS") {
-                        navigate('/');
+                        navigate('/UserMain');
                     } else if (response === "emailFAIL") {
                         alert("이메일이 중복입니다");
                     } else {
@@ -153,6 +154,7 @@ const UserJoin = () => {
          else {
             alert("빈칸을 채워주세요");
         }
+        
     };
 
     // 중복확인
@@ -193,6 +195,7 @@ const UserJoin = () => {
 
     return (
         <div>
+            <Header/>
             <div id="main_container">
                 <div className="form_container">
                     <div className="form">

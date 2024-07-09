@@ -89,8 +89,8 @@ const Header = () => {
                     </div>
                 </Link>
             <Container>
-                <Navbar.Brand as={Link} to="/ShopMain" className="brand">
-                    STORE DashBoard
+                <Navbar.Brand as={Link} to="/ShopMain" className="brand" >
+                    사장님 페이지
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">

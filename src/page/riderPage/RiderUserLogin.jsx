@@ -6,6 +6,8 @@ import * as auth from '../../apis/auth.js';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { useCookies } from 'react-cookie';
+import Header from '../../component/main/Header.jsx';
+import Footer from '../../component/common/Footer.jsx';
 const RiderUserLogin = () => {
     const {user,setUser}=useContext(AdminFlagContext)
     const [email, setEmail] = useState("");
@@ -47,6 +49,7 @@ const RiderUserLogin = () => {
 
     return (
         <div>
+            <Header/>
             <div id="main_container">
                 <div className="form_container">
                     <div className="form">
@@ -73,6 +76,7 @@ const RiderUserLogin = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };

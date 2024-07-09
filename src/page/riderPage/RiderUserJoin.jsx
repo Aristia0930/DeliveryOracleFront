@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../../component/main/Header';
+import Footer from '../../component/common/Footer';
 
 //랴이더 회원 가입 페이지 
 const RiderUserJoin = () => {
@@ -33,7 +35,7 @@ const RiderUserJoin = () => {
 
             // 회원가입 성공 여부 확인
             if (response === "SUCCESS") {
-                navigate('/');
+                navigate('/RiderMain');
             } else if (response === "emailFAIL") {
                 alert("이메일이 중복입니다");
             } else {
@@ -43,12 +45,11 @@ const RiderUserJoin = () => {
             console.log(error);
             alert("오류가 발생했습니다. 다시 시도해 주세요.");
         });
-} else if(name && email && password){
-    alert("이메일 중복 확인을 확인해주세요")}
-else {
-    alert("빈칸을 채워주세요");
-}
-
+        } else if(name && email && password){
+            alert("이메일 중복 확인을 확인해주세요")}
+        else {
+            alert("빈칸을 채워주세요");
+        }
     }
     // 중복확인
 const emailPassButton = (e) => {
@@ -88,6 +89,7 @@ const emailPassButton = (e) => {
     
     return (
     <div>
+        <Header/>
         <div id="main_container">
             <div className="form_container">
                 <div className="form">
@@ -132,6 +134,7 @@ const emailPassButton = (e) => {
                 </div>
             </div>
         </div>
+        <Footer/>
     </div>
     );
 };

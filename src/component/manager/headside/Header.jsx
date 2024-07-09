@@ -35,9 +35,9 @@ const Header = () => {
                         <span className="line">Delivery</span>
                         <span className="line">Oracle</span>
                     </div>
-                </Link>
+            </Link>
         <Container>
-            <Navbar.Brand as={Link} to="/ManagerMain" className="brand">ADMIN Dashboard</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/ManagerMain" className="brand">관리자 페이지</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                 <Nav>

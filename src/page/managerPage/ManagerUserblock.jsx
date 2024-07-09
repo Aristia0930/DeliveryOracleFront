@@ -94,31 +94,24 @@ const ManagerUserblock = () => {
                     <Table responsive striped bordered hover>
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>유저 이메일</th>
                         <th>신고횟수</th>
-                        <th>Action</th>
-                        <th>Action2</th>
+                        <th>상세보기</th>
+                        <th>차단하기</th>
                     </tr>
                 </thead>
                 <tbody>
                     {data.map((item, index) => (
                         <tr key={index}>
-                            <td>{index + 1}</td>
                             <td>{item.email}</td>
                             <td>{item.countOfComments}</td>
                             <td>
-
-                                    <Button onClick={() => handleOpenModal(item.commentAuthorId)}>상세보기</Button>
-
-                         
+                                <Button onClick={() => handleOpenModal(item.commentAuthorId)}>상세보기</Button>
                             </td>
                             <td>
-
-
                                 <Button onClick={() => userblock(item.commentAuthorId)}>블락하기</Button>
 
-                                </td>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

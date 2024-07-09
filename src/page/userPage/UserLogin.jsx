@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { useCookies } from 'react-cookie';
 import Header from '../../component/main/Header.jsx';
+import Footer from '../../component/common/Footer.jsx';
 const UserLogin = () => {
     const {user,setUser}=useContext(AdminFlagContext)
     const [email, setEmail] = useState("");
@@ -74,6 +75,7 @@ const UserLogin = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };

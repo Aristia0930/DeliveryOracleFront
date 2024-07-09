@@ -35,7 +35,7 @@ const Header = () => {
                     </div>
                 </Link>
             <Container>
-                <Navbar.Brand as={Link} to="/RiderMain" className="brand">RIDER DashBoard</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/RiderMain" className="brand">라이더 페이지</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>
