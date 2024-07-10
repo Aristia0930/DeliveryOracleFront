@@ -15,15 +15,28 @@ const TabMenu = () => {
     setActiveTab(ca); // 탭이 클릭했을때 nav-link active 활성화
 
   };
-  useEffect(() => {
-    const path = currentLocation.pathname;
-    if (path.includes('/UserMenuCaList')) {
-      const tab = new URLSearchParams(currentLocation.search).get('ca');
-      setActiveTab(Number(tab));
-    } else if (path.includes('/UserAiList')) {
+  // useEffect(() => {
+  //   const path = currentLocation.pathname;
+  //   if (path.includes('/UserMenuCaList')) {
+  //     const tab = new URLSearchParams(currentLocation.search).get('ca');
+  //     setActiveTab(Number(tab));
+  //   } else if (path.includes('/UserAiList')) {
+  //     setActiveTab(6);
+  //   }
+  // }, []);
+
+    useEffect(() => {
+    const state = currentLocation.state;
+    const ca = state?.ca;
+
+    if (currentLocation.pathname === '/UserMenuCaList' && ca) {
+      setActiveTab(Number(ca));
+    } else if (currentLocation.pathname === '/UserAiList') {
       setActiveTab(6);
+    } else {
+      setActiveTab(null); // 기본값으로 설정
     }
-  }, []);
+  }, [currentLocation]);
 
 
   useEffect(() => {

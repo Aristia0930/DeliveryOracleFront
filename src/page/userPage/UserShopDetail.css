@@ -1,15 +1,78 @@
-/* 네비게이션 링크에 마우스를 올렸을 때의 스타일 */
-.nav-link:hover {
-    color: #FF5733; /* 예시로 빨간색(혹은 다른 원하는 색상)을 지정 */
-    text-decoration: none; /* 링크에 밑줄 제거 */
-}
-
 /* 장바구니 */
 
 .basket-header {
-    background-color: #F2E9D0;
-    margin-bottom: 0; /* 이전에 있던 여백을 제거 */
-  }
+    background-color: #8BD0DD;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.basket-body {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.basket-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.item-name {
+    flex: 1;
+}
+
+.item-actions {
+    display: flex;
+    align-items: center;
+}
+
+.item-price {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.total-price {
+    font-weight: bold;
+    font-size: 18px;
+    color: red;
+    text-align: right;
+    padding: 10px 0;
+}
+
+.order-button .btn {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.order-button .btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.order-button .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-outline-secondary {
+    border-color: #ccc;
+    color: #333;
+    margin: 0 5px;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #ddd;
+}
+
 /*  */
 .section#c {
     background-color: white; /* 원하는 배경색으로 변경 가능 */

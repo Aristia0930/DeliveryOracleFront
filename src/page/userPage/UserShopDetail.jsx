@@ -12,6 +12,7 @@ import TabMenu from '../../component/common/TabMenu.jsx';
 import Header from '../../component/common/Header.jsx';
 import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
 import './UserShopDetail.css'
+import PaySection from './PaySection.jsx';
 
 const UserShopDetail = () => {
     const navigate = useNavigate();
@@ -29,6 +30,7 @@ const UserShopDetail = () => {
     const [email, setEmail] = useState("");
     const { stompClient, messages, sendMessage, setMessages, connected } = useWebSocket();
     const [check,setCheck]=useState(false)
+    const [showModal, setShowModal] = useState(false); // 추가: 모달 표시 여부를 관리하는 상태
 
 
     useEffect(() => {
@@ -117,15 +119,15 @@ const UserShopDetail = () => {
                     if (response.data == "SUCCESS") {
                         setCheck(false)
                         alert("주문 성공");
-                        navigate('/');
+                        navigate('/UserMain');
                     }
                     else if(response.data=="Insufficient balance"){
                         alert("잔액이 부족합니다")
-                        navigate('/');
+                        navigate('/MypageMain');
                     }
                     else if(response.data=="Order failed"){
                         alert("주문에 실패함")
-                        navigate('/');
+                        navigate('/UserMain');
                     }
                 } catch (error) {
                     console.error('Order error:', error);
@@ -152,11 +154,11 @@ const UserShopDetail = () => {
                     if (response.data == "SUCCESS") {
                         setCheck(false)
                         alert("주문 성공");
-                        navigate('/');
+                        navigate('/UserMain');
                     }
                     else if(response.data=="Insufficient balance"){
                         alert("잔액이 부족합니다")
-                        navigate('/');
+                        navigate('/UserMain');
                     }
                 } catch (error) {
                     console.error('Order error:', error);
@@ -215,9 +217,14 @@ const UserShopDetail = () => {
             stompClient.send('/app/sendMessage', {}, JSON.stringify({ from: email, content: "message" }));
         } else {
             alert("잘못된접근입니다.");
-            navigate('/');
+            navigate('/UserMain');
         }
     };
+
+    const handleCloseModal = () => setShowModal(false);
+
+    const handleShowModal = () => setShowModal(true);
+    
 
     return (
         <div>
@@ -255,29 +262,47 @@ const UserShopDetail = () => {
                         </div>
                     </div>
                     <div className="section" id="c">
-                    <div className="basket-header bg-primary text-white p-2"><strong>장바구니</strong></div>
+                        <div className="basket-header bg-primary text-white p-2"><strong>장바구니</strong></div>
                         <div className="basket-body p-3">
                             {basket.map((array) => (
                                 <div className="basket-item mb-3" key={array.menuName}>
                                     <div className="item-name">{array.menuName}</div>
                                     <div className="item-actions d-flex justify-content-between align-items-center mt-2">
+                                        <div className="item-price ml-auto">{array.menuPrice}원</div>
                                         <button className="btn btn-sm btn-outline-secondary" onClick={() => decreaseQuantity(array.menuName)}>-</button>
                                         <span className="quantity mx-2">{array.quantity}</span>
                                         <button className="btn btn-sm btn-outline-secondary" onClick={() => increaseQuantity(array.menuName)}>+</button>
-                                        <div className="item-price ml-auto">{array.menuPrice} 원</div>
                                     </div>
                                 </div>
                             ))}
+                            <div className="total-price text-right"><div className="total-price"><strong>합계 :</strong> {totalPrice}원</div>
+                            </div>
+        
                         </div>
-                        <hr className="my-4" />
-                        <div className="total-price text-right"><strong>총금액</strong> {totalPrice} 원</div>
-                        <hr className="my-4" />
                         <div className="order-button text-center">
-                            <button className="btn btn-primary btn-lg" onClick={handleOrder}>주문하기</button>
+                            <button className="btn btn-primary btn-lg" onClick={handleShowModal}><strong>결제하기</strong></button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* 결제 모달 */}
+            <PaySection
+
+                showModal={showModal}
+                handleCloseModal={handleCloseModal}
+                handleOrder={handleOrder}
+                totalPrice={totalPrice}
+  
+                // handleOrder={handleModalOrder}
+                // totalPrice={totalPrice}
+                // userId={userId}
+                // useid={useid}
+                // datas={datas}
+                // basket={basket}
+                // setCheck={setCheck}
+                // navigate={navigate}
+            />
         </div>
     );
 };

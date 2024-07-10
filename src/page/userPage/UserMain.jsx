@@ -177,9 +177,9 @@ const UserMain = () => {
                     {[
                         { ca: 1, img: "/imgs/item01.png", text: "한식" ,url:"/UserMenuCaList"},
                         { ca: 2, img: "/imgs/item02.png", text: "중식" ,url:"/UserMenuCaList"},
-                        { ca: 3, img: "/imgs/item03.png", text: "일식",url:"/UserMenuCaList" },
-                        { ca: 4, img: "/imgs/item05.png", text: "치킨",url:"/UserMenuCaList" },
-                        { ca: 5, img: "/imgs/item06.png", text: "피자",url:"/UserMenuCaList" },
+                        { ca: 3, img: "/imgs/item03.png", text: "일식" ,url:"/UserMenuCaList"},
+                        { ca: 4, img: "/imgs/item05.png", text: "치킨" ,url:"/UserMenuCaList"},
+                        { ca: 5, img: "/imgs/item06.png", text: "피자" ,url:"/UserMenuCaList"},
                         { ca: 6, img: "/imgs/chatbot.png", text: "AI추천",url:"/UserAiList"},
                     ].map((item, index) => (
                         <div className="col-md-4" key={index}>
