@@ -53,6 +53,7 @@ import RiderMyPagemodify from '../component/rider/RiderMyPagemodify';
 import ManagerMyPagemodify from '../component/manager/ManagerMyPagemodify';
 import MypageReviewEdit from '../page/mypage/MypageReviewEdit';
 import UserAiList from '../page/userPage/UserAiList';
+import PaySection from '../page/userPage/PaySection';
 
 const Path = () => {
     return (
@@ -63,6 +64,7 @@ const Path = () => {
             <Route path="/UserJoin" element={<UserJoin />} />
             <Route path="/UserMenuCaList" element={<UserMenuCaList />} />
             <Route path="/UserShopDetail" element={<UserShopDetail />} />
+            <Route path="/PaySection" element={<PaySection />} />
 
             <Route path="/ManagerMain" element={<ManagerMain />} />
             <Route path="/ManagerApprove" element={<ManagerApprove />} />

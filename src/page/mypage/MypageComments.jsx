@@ -63,14 +63,14 @@ const MypageComments = () => {
 
 
                 if (rs.data) {
-                  navigate("/");
+                  navigate("/MyorderDetails");
                 } else {
                     console.log("없음");
                 }
             }
             else{
                 alert("오류발생")
-                navigate("/");
+                navigate("/MyorderDetails");
             }
         } catch (e) {
             console.log("연결실패", e);
