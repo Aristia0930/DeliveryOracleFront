@@ -54,6 +54,32 @@ const UserLogin = () => {
 
     }
 
+    //카카오 로그인
+    const REST_API_KEY=process.env.REACT_APP_REST_API_KEY;
+    const REDIRECT_URI="http://localhost:3000/auth/80";
+    const kakaurl=`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`
+    const kakao = () => {
+        // const width = 500;
+        // const height = 600;
+        // const left = window.screen.width / 2 - width / 2;
+        // const top = window.screen.height / 2 - height / 2;
+
+        // window.open(
+        //     kakaurl,
+        //     "KakaoLogin",
+        //     `width=${width},height=${height},left=${left},top=${top}`
+            
+        // );
+        window.location.href = kakaurl;
+
+
+
+
+    }
+
+
+
+
     return (
         <div>
             <Header/>
@@ -77,6 +103,7 @@ const UserLogin = () => {
 
                     <div className="bottom_box">
                         <div>
+                            <button onClick={kakao}>카카오 로그인</button>
                             <span>아이디가 없으신가요?</span><a href="/UserJoin">회원가입</a>
                         </div>
                     </div>

@@ -53,7 +53,7 @@ import RiderMyPagemodify from '../component/rider/RiderMyPagemodify';
 import ManagerMyPagemodify from '../component/manager/ManagerMyPagemodify';
 import MypageReviewEdit from '../page/mypage/MypageReviewEdit';
 import UserAiList from '../page/userPage/UserAiList';
-
+import Kakao from '../page/userPage/Kakao';
 const Path = () => {
     return (
         <Routes>
@@ -124,6 +124,8 @@ const Path = () => {
             <Route path="/RiderUserLogin" element={<RiderUserLogin />} />
 
             <Route path="/UserAiList" element={<UserAiList />} />
+
+            <Route path="/auth/80" element={<Kakao />} />
         </Routes>
         
             
