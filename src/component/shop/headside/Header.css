@@ -29,3 +29,8 @@
     right: 0;
     left: auto;
 }
+
+.header-navbar .justify-content-center {
+    flex-grow: 1; /* 다른 요소들과 중앙 정렬을 맞추기 위해 flex-grow를 추가 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+}

@@ -49,7 +49,7 @@ const ShopOrderList = ({ menu }) => {
             }
     }
 
-    //주문거절은 3부여 
+    //주문거절은 5부여 
     const refuse= async(e)=>{
         e.preventDefault();
         //주문상태가 0 일경우에만

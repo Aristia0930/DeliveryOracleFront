@@ -120,13 +120,13 @@ const UserMain = () => {
     };
 
     const imagePaths = [
-        "asset/img/item-recommend.png",
-        "asset/salad.jpg",
+        "asset/bulgogi.jpg",
+        "asset/pajeon.jpg",
         "asset/steak.jpg",
         "asset/hamburger.jpg",
         "asset/chicken.jpg",
         "asset/pizza.jpg",
-        "asset/img/item-recommend.png"
+        "asset/salad.jpg"
     ];
 
     return (
