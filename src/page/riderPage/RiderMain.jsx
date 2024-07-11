@@ -13,6 +13,7 @@ const RiderMain = () => {
     const navigate = useNavigate();
     const [userInfo, setUserInfo] = useState(null);
     const [error, setError] = useState(null);
+    const [loding,setLoding]=useState(false)
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -56,6 +57,8 @@ const RiderMain = () => {
     }, []);
 
     useEffect(() => {
+        if(user_x){
+
         const script = document.createElement("script");
         const apiKey = "d75de8ff5686d9730ec2b1a409f5b7a6";
         script.async = true;
@@ -89,7 +92,7 @@ const RiderMain = () => {
 
         return () => {
             document.head.removeChild(script); 
-        };
+        };}
     }, [user_x, user_y]);
 
     const [x, setXx] = useState();

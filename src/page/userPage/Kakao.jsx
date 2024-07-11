@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Spinner from 'react-bootstrap/Spinner';
 const Kakao = () => {
     const navigate = useNavigate();
     const {user,setUser}=useContext(AdminFlagContext)
@@ -45,9 +46,10 @@ const Kakao = () => {
         }
     }, []);
     return (
-        <div>
-            로그인중입니다
-        </div>
+        <div className="loading-container"> 
+        <Spinner animation="border" variant="secondary" className='spinner-ai'/>
+            <p className="loading-text">로딩 중...</p>
+     </div>
     );
 };
 
