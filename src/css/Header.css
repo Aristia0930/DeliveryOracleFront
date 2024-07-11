@@ -1,4 +1,5 @@
 /* 유저헤더 */
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
 
 .header-container {
     display: flex;
@@ -19,8 +20,8 @@
 }
 
 .header-title {
-    font-family: 'Arial', sans-serif;
-    font-size: 1.5rem;
+    font-family: "Itim", cursive;
+    font-size: 2.0rem;
     font-weight: bold;
     color: #ffffff;
 }
@@ -67,6 +68,7 @@
 }
 
 .headertitle {
+    font-family: "Itim", cursive;
     max-width: 600px; /* 타이틀 컨테이너 최대 너비 */
     margin: 0 auto; /* 가운데 정렬 */
     text-align: center; /* 가운데 정렬 추가 */
@@ -77,20 +79,27 @@
     font-weight: bold; /* 텍스트 굵기 */
     color: #000801bd; /* 텍스트 색상 */
     margin-bottom: 10px;
-    animation: fadeIn 1s ease-in-out; /* 애니메이션 효과 */
+    /* animation: fadeIn 1s ease-in-out; 애니메이션 효과 */
 }
 
 .headertitle p {
     font-size: 20px; /* 텍스트 크기 */
-    color: #555;
+    color: #000000;
     margin-top: 10px;
 }
 
-@keyframes fadeIn {
+.headertitle strong {
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: inherit;
+    color: inherit;
+}
+
+/* @keyframes fadeIn {
     from {
         opacity: 0;
     }
     to {
         opacity: 1;
     }
-}
+} */

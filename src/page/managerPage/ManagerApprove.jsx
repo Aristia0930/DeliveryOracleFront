@@ -3,7 +3,6 @@ import ManagerApproveList from '../../component/manager/ManagerApproveList';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import Header from '../../component/manager/headside/Header';
-import Dashboard from '../../component/manager/headside/Dashboard';
 import Sidebar from '../../component/manager/headside/Sidebar';
 
 const ManagerApprove = () => {

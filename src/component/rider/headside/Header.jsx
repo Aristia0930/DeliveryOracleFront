@@ -35,7 +35,11 @@ const Header = () => {
                     </div>
                 </Link>
             <Container>
-                <Navbar.Brand as={Link} to="/RiderMain" className="brand">라이더 페이지</Navbar.Brand>
+                <Nav className="justify-content-center flex-grow-1"> {/* 중앙 정렬 클래스 추가 */}
+                    <Navbar.Brand as={Link} to="/RiderMain" className="brand">
+                        라이더 페이지
+                    </Navbar.Brand>
+                </Nav>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>

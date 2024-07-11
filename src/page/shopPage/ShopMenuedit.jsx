@@ -73,7 +73,6 @@ const ShopMenuedit = () => {
 
         <div class="form">
 
-
             <form action="#">
                 <p class="shop_name">
                     <label for="shop_name">메뉴이름</label>

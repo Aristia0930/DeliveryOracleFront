@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import Header from '../../component/manager/headside/Header.jsx';
-import Dashboard from '../../component/manager/headside/Dashboard.jsx';
 import Sidebar from '../../component/manager/headside/Sidebar.jsx';
 import { useContext } from "react";
 import { AdminFlagContext } from "../../flag/Flag.jsx";

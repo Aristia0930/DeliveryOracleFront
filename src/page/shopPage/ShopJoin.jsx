@@ -62,7 +62,7 @@ const ShopJoin = () => {
         try{
             const rs=await axios.post("http://localhost:8080/store/join", formData)
             if(rs.status==200){
-                alert("넘기기는 성공")
+                alert("등록이 요청 되었습니다!")
                 navigate("/ShopMain")
 
             }

@@ -92,7 +92,7 @@ const ManagerShopleave = () => {
                     <Table responsive striped bordered hover>
                 <thead>
                     <tr>
-                        <th>유저 이메일</th>
+                        <th>업체이름</th>
                         <th>신고횟수</th>
                         <th>신고내용</th>
                         <th>퇴출하기</th>

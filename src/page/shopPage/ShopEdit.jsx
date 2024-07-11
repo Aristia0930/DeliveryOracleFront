@@ -52,7 +52,7 @@ const ShopEdit = () => {
             }catch(e){
                 console.log("에러",e)
                 alert("오류발생")
-                navigate("/")
+                navigate("/ShopMain")
             }
             
         }   
@@ -89,7 +89,7 @@ const ShopEdit = () => {
           try{
               const rs=await axios.put("http://localhost:8080/store/store_edit", formData)
               if(rs.status==200){
-                  alert("넘기기는 성공")
+                  alert("수정이 완료 되었습니다!")
                   navigate("/ShopMain")
   
               }
