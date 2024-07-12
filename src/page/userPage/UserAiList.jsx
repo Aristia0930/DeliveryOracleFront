@@ -27,6 +27,13 @@ const UserAiList = () => {
     const { user, setUser, userId, setUserId, shopId, setShopid, userDate, setUserDate } = useContext(AdminFlagContext);
     const [count,setCount]=useState(0);
     useEffect(() => {
+
+        if (!user) {
+            alert("AI 기능사용을 위해 로그인해주세요!");
+            navigate('/UserMain');
+        }
+
+
         console.log("x", x);
         let counts=0
         const fetchData = async () => {
@@ -64,6 +71,7 @@ const UserAiList = () => {
         fetchData();
 
     }, [userId, x, y]);
+
 
     useEffect(() => {
         const checkAllShops = async () => {

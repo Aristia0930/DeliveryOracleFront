@@ -133,7 +133,7 @@ const MypageMain = () => {
                                 <div>
                                     <p className="mb-0"><strong>이메일(Id): {userInfo.email}</strong></p>
                                     <p className="mb-0"><strong>닉네임: {userInfo.name}</strong></p>
-                                    <p className="mb-0"><Link to="/MypageUserEdit">계정관리/수정</Link> </p>
+                                    <p className="mb-0"><Link to="/MypageUserEdit" style={{color:"blue"}}><strong>계정관리/수정</strong></Link> </p>
                                     <p className="mb-0"><MdOutlineMonetizationOn className='sidebar-icon'/>잔액: {account} 원 / <Button className='charge-button' onClick={handleOpenModal}>충전하기</Button></p>
                                 </div>
                                
