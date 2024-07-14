@@ -32,7 +32,7 @@ const MypageReview = () => {
     return (
         <div>
             <Header />
-        <div className="text-center" style={{  margin: '25px' }}>
+        <div className="text-center" style={{  margin: '25px' , minHeight: '70vh'}}>
 
                     {/* <Card.Title>주문 내역</Card.Title> */}
                     {
