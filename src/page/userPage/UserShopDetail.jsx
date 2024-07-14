@@ -13,6 +13,7 @@ import Header from '../../component/common/Header.jsx';
 import { useWebSocket  } from "../../flag/WebSocketContext.jsx";
 import './UserShopDetail.css'
 import PaySection from './PaySection.jsx';
+import Footer from '../../component/common/Footer.jsx';
 
 const UserShopDetail = () => {
     const navigate = useNavigate();
@@ -230,7 +231,7 @@ const UserShopDetail = () => {
         <div>
             <Header />
             <TabMenu />
-            <div className='mv'>
+            <div className='mv' style={{ minHeight: '58vh'}}>
                 <div className="container">
                     <div className="left-sections">
                         <div className="section" id="a">
@@ -254,7 +255,6 @@ const UserShopDetail = () => {
                                 <Nav.Item>
                                     <Nav.Link eventKey="link-2"><Link to={`/UserShopIntroduce`} state={{ data: datas }}>매장소개</Link></Nav.Link>
                                 </Nav.Item>
-
                             </Nav>
                             {data && data.map(array => (
                                 <UserShopDetailMenu key={array.menuName} data={array} plus={handlePlus} />
@@ -285,6 +285,7 @@ const UserShopDetail = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
 
             {/* 결제 모달 */}
             <PaySection
@@ -293,15 +294,6 @@ const UserShopDetail = () => {
                 handleCloseModal={handleCloseModal}
                 handleOrder={handleOrder}
                 totalPrice={totalPrice}
-  
-                // handleOrder={handleModalOrder}
-                // totalPrice={totalPrice}
-                // userId={userId}
-                // useid={useid}
-                // datas={datas}
-                // basket={basket}
-                // setCheck={setCheck}
-                // navigate={navigate}
             />
         </div>
     );

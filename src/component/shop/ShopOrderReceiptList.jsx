@@ -9,6 +9,7 @@ const ShopOrderList = ({ orders }) => {
 
     return (
         <ListGroup>
+            {/* 너무 이상한 코드를 준 gpt */}
             {orders.map(order => {
                 let orderDetailsArray = [];
                 try {
@@ -36,9 +37,9 @@ const ShopOrderList = ({ orders }) => {
                         <Card key={order.order_id} style={{ width: '40rem', margin: 'auto', marginBottom: '20px' }}>
                             <Card.Body>
                                 <h5><strong>Order ID:</strong> {order.order_id}</h5>
-                                <p>고객정보 Username : {order.name}, 이메일(Id) : ({order.email})</p>
-                                <p>주문정보: {cleanOrderDetails.join(", ")}</p>
-                                <p>가격: {order.total_price}</p>
+                                <p><strong>고객정보:</strong> Username : {order.name}, 이메일(ID) : {order.email}</p>
+                                <p><strong>주문정보:</strong> {cleanOrderDetails.join(", ")}</p>
+                                <p><strong>가격:</strong> {order.total_price}</p>
                             </Card.Body>
                         </Card>
                     </div>

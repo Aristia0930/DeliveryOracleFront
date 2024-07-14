@@ -99,14 +99,13 @@ const UserLogin = () => {
 
                             <input type="submit" id="submit_btn" value="로그인" className="submit_btn" onClick={loginClick} />
                             <div onClick={kakao}>
-                            <img src='./asset/kakao_login_large_wide.png' alt='카카오 로그인' style={{ width: '268px', height: '32px' ,marginTop : '5px'}} />
+                            <img src='./asset/kakao_login_large_wide.png' alt='카카오 로그인' style={{ width: '268px', height: '40px' ,marginTop : '5px'}} />
                         </div>
                         </form>
                     </div>
 
                     <div className="bottom_box">
                         <div>
-
                             <span>아이디가 없으신가요?</span><a href="/UserJoin">회원가입</a>
                         </div>
                     </div>

@@ -51,7 +51,7 @@ const RiderMyPage = () => {
                                 <div>
                                     <p className="mb-0"><strong>이메일(Id): {userInfo.email}</strong></p>
                                     <p className="mb-0"><strong>닉네임: {userInfo.name}</strong></p>
-                                    <p className="mb-0"><Link to="/RiderMyPagemodify">계정관리/수정</Link> </p>
+                                    <p className="mb-0"><Link to="/RiderMyPagemodify" style={{color:"blue"}}><strong>계정관리/수정</strong></Link> </p>
                                 </div>
                             </div>
                         ) : (
